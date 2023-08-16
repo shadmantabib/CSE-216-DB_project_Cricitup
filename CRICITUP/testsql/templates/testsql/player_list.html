@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Player List</title>
+</head>
+<body>
+    <h1>Player List</h1>
+    <form action="{% url 'testsql:get_players_by_country' %}" method="get">
+        Please enter a country: <input type="text" name="country">
+        <button type="submit">Show Players</button>
+    </form>
+    {% if players %}
+    <h2>Players from {{ selected_country }}</h2>
+    <ul>
+        {% for player in players %}
+        <li>{{ player.0 }} {{ player.1 }} ({{ player.2 }})</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</body>
+</html>
