@@ -16,4 +16,4 @@ def get_players_by_country(request):
         'players': players
     }
 
-    return render(request, 'testsql/player_list.html', context)
+    return render(request, 'testsql/index.html', context)
