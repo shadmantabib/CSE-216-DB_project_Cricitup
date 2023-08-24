@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'testsql',
     'test2',
     'cricitup',
+    'home',
+    
 ]
 
 MIDDLEWARE = [

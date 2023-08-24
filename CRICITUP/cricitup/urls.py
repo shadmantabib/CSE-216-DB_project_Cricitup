@@ -22,7 +22,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('testsql/',include('testsql.urls')),
     path('test2/',include('test2.urls')),
-    path('', views.index, name='index'),
-
+    #path('', views.index, name='index'),
+    path('', include('home.urls')),
     
 ]
+
