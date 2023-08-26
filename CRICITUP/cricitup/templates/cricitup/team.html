@@ -1,8 +1,28 @@
 {% extends 'cricitup/base.html' %}
 {% load static %}
+
 {% block content %}
-
-
+    <div class="container mt-5 pt-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 text-center">
+                <h2></h2>
+                <h2></h2>
+                <h2></h2>
+                <table class="table table-bordered custom-table mt-5">
+                    <thead>
+                        <tr>
+                            <th>Team Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for team in teams %}
+                            <tr>
+                                <td class="highlight-team">{{ team.Team_Name }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 {% endblock %}
-
-
