@@ -1,4 +1,3 @@
-
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -85,14 +84,14 @@
           <div class="ml-auto">
             <nav class="site-navigation position-relative text-right" role="navigation">
               <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-                <li class="active"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="active"><a href="{% url 'home' %}" class="nav-link">Home</a></li>
                 <li><a href="matches.html" class="nav-link">Matches</a></li>
-                <li><a href="{% url 'players' %}" class="nav-link">Players</a></li>
-               <!--- <li><a href="blog.html" class="nav-link">Blog</a></li>-->
+                <li><a href="{% url 'players:players' %}" class="nav-link">Players</a></li>
+                <!--- <li><a href="blog.html" class="nav-link">Blog</a></li>-->
                 <li><a href="contact.html" class="nav-link">Contact</a></li>
-                <li><a href="{% url 'teams' %}" class="nav-link">Teams</a></li>
                 <li><a href="ground.html" class="nav-link">Ground</a></li>
-                <li><a href="contact.html" class="nav-link">Developers</a></li>
+                <li><a href="{% url 'coaches:coaches' %}" class="nav-link">Coaches</a></li>
+        
 
 
               </ul>

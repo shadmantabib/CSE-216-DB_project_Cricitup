@@ -1,0 +1,224 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Cricitup &mdash; L2-T2 Database</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'cricitup/fonts/icomoon/style.css' %}">
+
+  <link rel="stylesheet" href="{% static 'cricitup/css/bootstrap/bootstrap.css' %}"/>
+  <link rel="stylesheet" href="{% static 'cricitup/css/jquery-ui.css' %}"/>
+  <link rel="stylesheet" href="{% static 'cricitup/css/owl.carousel.min.css' %}"/>
+  <link rel="stylesheet" href="{% static 'cricitup/css/owl.theme.default.min.css' %}"/>
+  <link rel="stylesheet" href="{% static 'cricitup/css/owl.theme.default.min.css' %}"/>
+  
+  <link rel="stylesheet" href="{% static 'cricitup/css/jquery.fancybox.min.css' %}"/>
+  
+  <link rel="stylesheet" href="{% static 'cricitup/css/bootstrap-datepicker.css' %}"/>
+  
+  <link rel="stylesheet" href="{% static 'cricitup/fonts/flaticon/font/flaticon.css' %}"/>
+  
+  <link rel="stylesheet" href="{% static 'cricitup/css/aos.css' %}">
+  
+  <link rel="stylesheet" href="{% static 'cricitup/css/style.css' %}"/>
+  
+  <style>
+    /* Adjust the font size for the navigation menu items */
+    .nav-link {
+      font-size: 36px; /* You can adjust the value as needed */
+    }
+    
+      .hero {
+        position: relative;
+        height: 1235px;
+        overflow: hidden;
+      }
+    
+      .hero img {
+        position: absolute;
+        width:1920px;
+        height:1235px;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+      }
+      .form-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh; /* Adjust the height as needed */
+    }
+    .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+}
+.player-image {
+        max-width: 100px; /* Adjust the maximum width as needed */
+        height: auto;
+    }
+
+    .card {
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    width: calc(33.33% - 20px); /* Adjust the width as needed */
+    background-color: white;
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px; /* Adjust the height as needed */
+}
+
+.card-image img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+    /* Additional styling for the form elements if desired */
+    form {
+        text-align: center;
+    }
+    label, input, button {
+        margin-bottom: 10px;
+    }
+    
+  </style>
+  
+  
+  
+  
+  
+
+
+
+</head>
+
+<body>
+
+  <div class="site-wrap">
+
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+
+
+    <header class="site-navbar py-4" role="banner">
+
+      <div class="container">
+        <div class="d-flex align-items-center">
+          <div class="site-logo">
+            <a href="index.html">
+              <img src="{% static 'cricitup/images/logo.png' %}" alt="Logo"/>
+            </a>
+          </div>
+          <div class="ml-auto">
+            <nav class="site-navigation position-relative text-right" role="navigation">
+              <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
+                <li class="active"><a href="{% url 'home' %}" class="nav-link">Home</a></li>
+                <li><a href="matches.html" class="nav-link">Matches</a></li>
+                <li><a href="{% url 'players:players' %}" class="nav-link">Players</a></li>
+                <!--- <li><a href="blog.html" class="nav-link">Blog</a></li>-->
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="ground.html" class="nav-link">Ground</a></li>
+                <li><a href="{% url 'coaches:coaches' %}" class="nav-link">Coaches</a></li>
+
+
+              </ul>
+            </nav>
+
+            <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black float-right text-white"><span
+                class="icon-menu h3 text-white"></span></a>
+          </div>
+        </div>
+      </div>
+
+    </header>
+
+    <div class="hero overlay">
+      <img src="{% static 'cricitup/images/bg_1.jpg' %}" alt="Background 1">
+      <img src="{% static 'cricitup/images/bg_2.jpg' %}" alt="Background 2">
+      <img src="{% static 'cricitup/images/bg_3.jpg' %}" alt="Background 3">
+    </div>
+    
+    <script>
+      const images = document.querySelectorAll('.hero img');
+      let currentImageIndex = 0;
+    
+      function showNextImage() {
+        images[currentImageIndex].style.opacity = 0;
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        images[currentImageIndex].style.opacity = 1;
+      }
+    
+      setInterval(showNextImage, 3000); // Change image every 5 seconds
+    </script>
+    <section>
+      <!-- <h1>where is this text</h1>
+      <h2>Players from me</h2> -->
+      <div class="row">
+        <div class="col-lg-12">
+            <h1>Coach List</h1>
+            <div class="card-container">
+                {% for coach in coaches %}
+                <div class="card">
+                  <div class="card-image">
+                  <img src="{% if coach.3 %}{{ coach.3 }}{% else %}{% static 'cricitup/images/default.jpg' %}{% endif %}" alt="{{ coach.0 }}" class="player-image">
+                  </div>
+                  <p>{{ coach.0 }}</p>
+                  <p>Nationality: {{ coach.1 }}</p>
+                    <p>Age: {{ coach.2 }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+      </div>
+    
+    
+  
+    <!-- .site-wrap -->
+  
+    <script src="{% static 'cricitup/js/jquery-3.3.1.min.js' %}"></script>
+      <script src="{% static 'cricitup/js/jquery-migrate-3.0.1.min.js' %}"></script>
+      <script src="{% static 'cricitup/js/jquery-ui.js' %}"></script>
+      <script src="{% static 'cricitup/js/popper.min.js' %}"></script>
+      <script src="{% static 'cricitup/js/bootstrap.min.js' %}"></script>
+      <script src="{% static 'cricitup/js/owl.carousel.min.js' %}"></script>
+      <script src="{% static 'cricitup/js/jquery.stellar.min.js' %}"></script>
+      <script src="{% static 'cricitup/js/jquery.countdown.min.js' %}"></script>
+      <script src="{% static 'cricitup/js/bootstrap-datepicker.min.js' %}"></script>
+      <script src="{% static 'cricitup/js/jquery.easing.1.3.js' %}"></script>
+      <script src="{% static 'cricitup/js/aos.js' %}"></script>
+      <script src="{% static 'cricitup/js/jquery.fancybox.min.js' %}"></script>
+      <script src="{% static 'cricitup/js/jquery.sticky.js' %}"></script>
+      <script src="{% static 'cricitup/js/jquery.mb.YTPlayer.min.js' %}"></script>
+  
+      <!-- Your custom scripts -->
+      <script src="{% static 'cricitup/js/main.js' %}"></script>
+  </body>
+  
+  </html> 
