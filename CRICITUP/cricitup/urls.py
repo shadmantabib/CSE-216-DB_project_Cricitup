@@ -24,6 +24,13 @@ urlpatterns = [
     path('test2/',include('test2.urls')),
     #path('', views.index, name='index'),
     path('', include('home.urls')),
+    path('players/', include('players.urls', namespace='players')),
+    path('coaches/', include('coaches.urls', namespace='coaches')),
+    # path('umpires/', include('umpires.urls', namespace='umpires')),
+    # path('grounds/', include('grounds.urls', namespace='grounds')),
+
+
+
     
 ]
 
