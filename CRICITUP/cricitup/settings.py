@@ -42,6 +42,10 @@ INSTALLED_APPS = [
     'test2',
     'cricitup',
     'home',
+    'players',
+    'coaches',
+    'umpires',
+    'grounds',
     
 ]
 
