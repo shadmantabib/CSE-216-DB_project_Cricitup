@@ -29,5 +29,5 @@ def coaches_list(request):
         'coaches': coaches_data
     }
 
-    return render(request, 'coaches/coaches.html', context)
+    return render(request, 'coaches/coaches2.html', context)
 

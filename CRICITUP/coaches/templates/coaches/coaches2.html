@@ -159,43 +159,34 @@
 
     </header>
 
-    <div class="hero overlay">
-      <img src="{% static 'cricitup/images/bg_1.jpg' %}" alt="Background 1">
-      <img src="{% static 'cricitup/images/bg_2.jpg' %}" alt="Background 2">
-      <img src="{% static 'cricitup/images/bg_3.jpg' %}" alt="Background 3">
-    </div>
+    <style>
+        .site-content {
+            padding-top: 100px; /* Adjust the value as needed */
+        }
+    </style>
     
-    <script>
-      const images = document.querySelectorAll('.hero img');
-      let currentImageIndex = 0;
-    
-      function showNextImage() {
-        images[currentImageIndex].style.opacity = 0;
-        currentImageIndex = (currentImageIndex + 1) % images.length;
-        images[currentImageIndex].style.opacity = 1;
-      }
-    
-      setInterval(showNextImage, 3000); // Change image every 5 seconds
-    </script>
-    <section>
-      <!-- <h1>where is this text</h1>
-      <h2>Players from me</h2> -->
-      <div class="row">
-        <div class="col-lg-12">
-            <h1>Coach List</h1>
-            <div class="card-container">
-                {% for coach in coaches %}
-                <div class="card">
-                  <div class="card-image">
-                  <img src="{% if coach.3 %}{{ coach.3 }}{% else %}{% static 'cricitup/images/default.jpg' %}{% endif %}" alt="{{ coach.0 }}" class="player-image">
-                  </div>
-                  <p>{{ coach.0 }}</p>
-                  <p>Nationality: {{ coach.1 }}</p>
-                    <p>Age: {{ coach.2 }}</p>
+   
+
+    <section class="site-content">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>Coach List</h1>
+                    <div class="card-container">
+                        {% for coach in coaches %}
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="{% if coach.3 %}{{ coach.3 }}{% else %}{% static 'cricitup/images/default.jpg' %}{% endif %}" alt="{{ coach.0 }}" class="player-image">
+                            </div>
+                            <p>{{ coach.0 }}</p>
+                            <p>Nationality: {{ coach.1 }}</p>
+                            <p>Age: {{ coach.2 }}</p>
+                        </div>
+                        {% endfor %}
+                    </div>
                 </div>
-                {% endfor %}
             </div>
-        </div>
+        </section>
+        
       </div>
     
     
