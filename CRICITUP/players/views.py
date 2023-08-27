@@ -3,7 +3,7 @@ from django.db import connection
 
 
 def players(request):
-    return render(request, 'players/players.html')
+    return render(request, 'players/players1.html')
 
 def get_players_by_country(request):
 
@@ -21,4 +21,4 @@ def get_players_by_country(request):
         'players': players
     }
 
-    return render(request, 'players/players.html', context)
+    return render(request, 'players/players1.html', context)

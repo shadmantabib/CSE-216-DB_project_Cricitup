@@ -148,7 +148,6 @@
                 <li><a href="{% url 'coaches:coaches' %}" class="nav-link">Coaches</a></li>
 
 
-
               </ul>
             </nav>
 
@@ -160,40 +159,35 @@
 
     </header>
 
-    <div class="hero overlay">
-      <img src="{% static 'cricitup/images/bg_1.jpg' %}" alt="Background 1">
-      <img src="{% static 'cricitup/images/bg_2.jpg' %}" alt="Background 2">
-      <img src="{% static 'cricitup/images/bg_3.jpg' %}" alt="Background 3">
-    </div>
+    <style>
+        .site-content {
+            padding-top: 100px; /* Adjust the value as needed */
+        }
+    </style>
     
-    <section>
-      <!-- <h1>where is this text</h1>
-      <h2>Players from me</h2> -->
-      <div class="row">
-        <div class="col-lg-12">
-            <h1>Player List</h1>
-            <form action="{% url 'players:get_players_by_country' %}" method="get">
-                Please enter a country: <input type="text" name="country">
-                <button type="submit">Show Players</button>
-            </form>
-            {% if players %}
-            <h2>Players from {{ selected_country }}</h2>
-            <div class="card-container">
-                {% for player in players %}
-                <div class="card">
-                  <div class="card-image">
-                  <img src="{% if player.4 %}{{ player.4 }}{% else %}{% static 'cricitup/images/default.jpg' %}{% endif %}" alt="{{ player.0 }}" class="player-image">
-                  </div>
-                <p>{{ player.0 }}</p>
-                    <p>Nationality: {{ player.1 }}</p>
-                    <p>Player Type: {{ player.2 }}</p>
-                    <p>Age: {{ player.3 }}</p>
+   
+
+    <section class="site-content">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>Coach List</h1>
+                    <div class="card-container">
+                        {% for coach in coaches %}
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="{% if coach.3 %}{{ coach.3 }}{% else %}{% static 'cricitup/images/default.jpg' %}{% endif %}" alt="{{ coach.0 }}" class="player-image">
+                            </div>
+                            <p>{{ coach.0 }}</p>
+                            <p>Nationality: {{ coach.1 }}</p>
+                            <p>Age: {{ coach.2 }}</p>
+                        </div>
+                        {% endfor %}
+                    </div>
                 </div>
-                {% endfor %}
             </div>
-            {% endif %}
-        </div>
-    </div>
+        </section>
+        
+      </div>
     
     
   
