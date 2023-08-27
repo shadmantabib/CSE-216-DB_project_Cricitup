@@ -181,10 +181,12 @@
             <div class="card-container">
                 {% for player in players %}
                 <div class="card">
-                  <div class="card-image">
-                  <img src="{% if player.4 %}{{ player.4 }}{% else %}{% static 'cricitup/images/default.jpg' %}{% endif %}" alt="{{ player.0 }}" class="player-image">
-                  </div>
-                <p>{{ player.0 }}</p>
+                    <div class="card-image">
+                        <a href="{% url 'players:players_detail' player_id=player.playerId %}">
+                            <img src="{% if player.4 %}{{ player.4 }}{% else %}{% static 'cricitup/images/default.jpg' %}{% endif %}" alt="{{ player.0 }}" class="player-image">
+                        </a>
+                    </div>
+                    <p>{{ player.0 }}</p>
                     <p>Nationality: {{ player.1 }}</p>
                     <p>Player Type: {{ player.2 }}</p>
                     <p>Age: {{ player.3 }}</p>
@@ -194,6 +196,7 @@
             {% endif %}
         </div>
     </div>
+    
     
     
   
