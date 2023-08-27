@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'coaches',
     'umpires',
     'grounds',
+    'teams',
     
 ]
 

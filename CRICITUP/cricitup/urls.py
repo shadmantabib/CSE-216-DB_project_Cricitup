@@ -26,7 +26,8 @@ urlpatterns = [
     path('', include('home.urls')),
     path('players/', include('players.urls', namespace='players')),
     path('coaches/', include('coaches.urls', namespace='coaches')),
-    # path('umpires/', include('umpires.urls', namespace='umpires')),
+    path('umpires/', include('umpires.urls', namespace='umpires')),
+    path('teams/', include('teams.urls', namespace='teams')),
     # path('grounds/', include('grounds.urls', namespace='grounds')),
 
 
