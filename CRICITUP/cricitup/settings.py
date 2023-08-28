@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'umpires',
     'grounds',
     'teams',
+    'matches',
+    'matchdet',
     
 ]
 

@@ -140,12 +140,12 @@
             <nav class="site-navigation position-relative text-right" role="navigation">
               <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
                 <li class="active"><a href="{% url 'home' %}" class="nav-link">Home</a></li>
-                <li><a href="matches.html" class="nav-link">Matches</a></li>
                 <li><a href="{% url 'players:players' %}" class="nav-link">Players</a></li>
                 <!--- <li><a href="blog.html" class="nav-link">Blog</a></li>-->
                 <li><a href="contact.html" class="nav-link">Contact</a></li>
                 <li><a href="ground.html" class="nav-link">Ground</a></li>
                 <li><a href="{% url 'coaches:coaches' %}" class="nav-link">Coaches</a></li>
+                <li><a href="{% url 'matches:matches' %}" class="nav-link">Matches</a></li>
 
 
               </ul>
@@ -159,11 +159,7 @@
 
     </header>
 
-    <div class="hero overlay">
-      <img src="{% static 'cricitup/images/bg_1.jpg' %}" alt="Background 1">
-      <img src="{% static 'cricitup/images/bg_2.jpg' %}" alt="Background 2">
-      <img src="{% static 'cricitup/images/bg_3.jpg' %}" alt="Background 3">
-    </div>
+    
     
     <script>
       const images = document.querySelectorAll('.hero img');
@@ -187,9 +183,9 @@
                 {% for coach in coaches %}
                 <div class="card">
                   <div class="card-image">
-                  <img src="{% if coach.3 %}{{ coach.3 }}{% else %}{% static 'cricitup/images/default.jpg' %}{% endif %}" alt="{{ coach.0 }}" class="player-image">
+                  <img src="{% if coach.3 %}{{ coach.3 }}{% else %}{% static 'cricitup/images/defaultcoach.jpg' %}{% endif %}" alt="{{ coach.0 }}" class="player-image">
                   </div>
-                  <p>{{ coach.0 }}</p>
+                  <p><strong>{{ coach.0 }}</strong></p>
                   <p>Nationality: {{ coach.1 }}</p>
                     <p>Age: {{ coach.2 }}</p>
                 </div>
