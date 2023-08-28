@@ -126,16 +126,25 @@
       <div class="site-mobile-menu-body"></div>
     </div>
 
-
     <header class="site-navbar py-4" role="banner">
+    <style>
+      .small-logo {
+        width: 150px; /* Adjust the value to your desired width */
+        height: 150; /* Automatically adjust the height based on the aspect ratio */
+    }
+    
+    .site-logo {
+        margin-right: 10px; /* Add some space between the logo and the navigation links */
+    }
+    </style>
 
       <div class="container">
         <div class="d-flex align-items-center">
           <div class="site-logo">
             <a href="index.html">
-              <img src="{% static 'cricitup/images/logo.png' %}" alt="Logo"/>
-            </a>
+              <img src="{% static 'cricitup/images/logo.png' %}" alt="Logo" class="small-logo round-logo"/> 
           </div>
+          
           <div class="ml-auto">
             <nav class="site-navigation position-relative text-right" role="navigation">
               <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
