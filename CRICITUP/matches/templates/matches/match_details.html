@@ -153,7 +153,7 @@
                 <li><a href="contact.html" class="nav-link">Contact</a></li>
                 <li><a href="ground.html" class="nav-link">Ground</a></li>
                 <li><a href="{% url 'coaches:coaches' %}" class="nav-link">Coaches</a></li>
-                <li><a href="{% url 'teams:teams' %}" class="nav-link">Teams</a></li>
+                <li><a href="{% url 'teams:teams' %}" class="nav-link">Coaches</a></li>
                 <li><a href="{% url 'matches:matches' %}" class="nav-link">Matches</a></li>
 
 
@@ -169,58 +169,50 @@
     </header>
 
     <style>
+        /* Other styles... */
+        
         .site-content {
-            padding-top: 100px; /* Adjust the value as needed */
+            padding-top: 150px; /* Adjust the value as needed */
         }
-    </style>
-
-
-    <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-lg-8 text-center" style="margin-top: 300px;">
-                <h2>Team Records</h2>
-                <table class="table table-bordered custom-table mt-4">
-                    <thead>
-                        <tr>
-                            <th>Team ID</th>
-                            <th>Team Name</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for team in teams %}
-                            <tr>
-                                <td>{{ team.Team_id }}</td>
-                                <td class="highlight-team">
-                                    <a href="{% url 'teams:team_detail' team_id=team.Team_id %}">{{ team.Team_Name }}</a>
-                                </td>
-                              
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-   
-
+        
+        /* Center the team information */
+        .team-info-container {
+            margin-top: 150px; /* Adjust the value to center the container vertically */
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f5f5f5;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            color: #020000; /* Change the font color to a darker color */
+        }
+        .team-info-container h1 {
+            font-weight: bold;
+            font-style: italic;
+            color: black; /* Change the color to black */
+        }
+      </style>
     
-<script src="{% static 'cricitup/js/jquery-3.3.1.min.js' %}"></script>
-    <script src="{% static 'cricitup/js/jquery-migrate-3.0.1.min.js' %}"></script>
-    <script src="{% static 'cricitup/js/jquery-ui.js' %}"></script>
-    <script src="{% static 'cricitup/js/popper.min.js' %}"></script>
-    <script src="{% static 'cricitup/js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'cricitup/js/owl.carousel.min.js' %}"></script>
-    <script src="{% static 'cricitup/js/jquery.stellar.min.js' %}"></script>
-    <script src="{% static 'cricitup/js/jquery.countdown.min.js' %}"></script>
-    <script src="{% static 'cricitup/js/bootstrap-datepicker.min.js' %}"></script>
-    <script src="{% static 'cricitup/js/jquery.easing.1.3.js' %}"></script>
-    <script src="{% static 'cricitup/js/aos.js' %}"></script>
-    <script src="{% static 'cricitup/js/jquery.fancybox.min.js' %}"></script>
-    <script src="{% static 'cricitup/js/jquery.sticky.js' %}"></script>
-    <script src="{% static 'cricitup/js/jquery.mb.YTPlayer.min.js' %}"></script>
-    <script src="{% static 'cricitup/js/jquery-3.3.1.min.js' %}"></script>
-    <!-- ... (Rest of the scripts) ... -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Detail</title>
+</head>
+<body>
+    <div class="site-content">
+        <div class="team-info-container">
+          <h1>Match Detail</h1>
+          <p>Match ID: {{ match.0 }}</p>
+          <p>Match Name: {{ match.1 }}</p>
+          <p>Man of the Match:{{match.2}} </p>
+          <p>Weather:{{match.3}} </p>
+          <p>Winner:{{match.4}} </p>
+          <p>Ground:{{match.5}} </p>
 
+
+
+          <!-- Add more details about the team here -->
+        </div>
+      </div>
 </body>
-
 </html>

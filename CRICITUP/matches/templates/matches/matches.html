@@ -178,20 +178,20 @@
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-lg-8 text-center" style="margin-top: 300px;">
-                <h2>Team Records</h2>
+                <h2>Match  Records</h2>
                 <table class="table table-bordered custom-table mt-4">
                     <thead>
                         <tr>
-                            <th>Team ID</th>
-                            <th>Team Name</th>
+                            <th>Match ID</th>
+                            <th>Match Name</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {% for team in teams %}
+                        {% for match in matches %}
                             <tr>
-                                <td>{{ team.Team_id }}</td>
+                                <td>{{ match.0 }}</td>
                                 <td class="highlight-team">
-                                    <a href="{% url 'teams:team_detail' team_id=team.Team_id %}">{{ team.Team_Name }}</a>
+                                    <a href="{% url 'matches:match_details' match_id=match.0 %}">{{ match.1 }}</a>
                                 </td>
                               
                             </tr>
