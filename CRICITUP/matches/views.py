@@ -25,12 +25,15 @@ def match_details(request, match_id):
     WHERE MATCH_ID = %s
     """
 
+
     # Execute the PL/SQL query to fetch team details
     with connection.cursor() as cursor:
         cursor.execute(query, [match_id])
         match = cursor.fetchone()  # Fetch the result
+        match_winner=cursor.callfunc('Find_Match_Winner',str,[match_id])
     
     context = {
-        'match': match
+        'match': match,
+        'match_winner':match_winner,
     }
     return render(request, 'matches/match_details.html', context)
