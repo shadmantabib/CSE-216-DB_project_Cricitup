@@ -146,16 +146,15 @@
           <div class="ml-auto">
             <nav class="site-navigation position-relative text-right" role="navigation">
               <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-                <li class="active"><a href="{% url 'home' %}" class="nav-link">Home</a></li>
+                <li><a href="{% url 'home' %}" class="nav-link">Home</a></li>
                 <li><a href="{% url 'players:players' %}" class="nav-link">Players</a></li>
                 <!--- <li><a href="blog.html" class="nav-link">Blog</a></li>-->
                  <!--- <li><a href="contact.html" class="nav-link">Contact</a></li>-->
-                <li><a href="ground.html" class="nav-link">Ground</a></li>
+                <li><a href="{% url 'grounds:grounds' %}" class="nav-link">Ground</a></li>
                 <li><a href="{% url 'coaches:coaches' %}" class="nav-link">Coaches</a></li>
                 <li><a href="{% url 'umpires:umpires' %}" class="nav-link">Umpires</a></li>
                 <li><a href="{% url 'teams:teams' %}" class="nav-link">Teams</a></li>
-                <li><a href="{% url 'matches:matches' %}" class="nav-link">Matches</a></li>
-
+                <li class="active"><a href="{% url 'matches:matches' %}" class="nav-link">Matches</a></li>
 
               </ul>
             </nav>
@@ -204,9 +203,9 @@
           <h1>Match Detail</h1>
           <p>Match ID: {{ match.0 }}</p>
           <p>Match Name: {{ match.1 }}</p>
-          <p>Man of the Match:{{match.2}} </p>
+          <p>Highest Scorer:{{highest_scorer}} </p>
           <p>Weather:{{match.3}} </p>
-          <p>Winner:{{match_winner}} </p>
+          <p>Winner:<strong>{{match_winner}}</strong> </p>
           <p>Ground:{{match.5}} </p>
 
 
