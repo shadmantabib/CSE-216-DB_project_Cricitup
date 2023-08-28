@@ -27,14 +27,7 @@
   <link rel="stylesheet" href="{% static 'cricitup/css/aos.css' %}">
   
   <link rel="stylesheet" href="{% static 'cricitup/css/style.css' %}"/>
-  <style>
-    /* Other styles... */
-    
-    .site-content {
-        padding-top: 150px; /* Adjust the value as needed */
-    }
-</style>
-
+  
   <style>
     /* Adjust the font size for the navigation menu items */
     .nav-link {
@@ -136,12 +129,22 @@
 
     <header class="site-navbar py-4" role="banner">
 
+            <style>
+      .small-logo {
+        width: 150px; /* Adjust the value to your desired width */
+        height: 150; /* Automatically adjust the height based on the aspect ratio */
+    }
+    
+    .site-logo {
+        margin-right: 10px; /* Add some space between the logo and the navigation links */
+    }
+  </style>
+
       <div class="container">
         <div class="d-flex align-items-center">
           <div class="site-logo">
             <a href="index.html">
-              <img src="{% static 'cricitup/images/logo.png' %}" alt="Logo"/>
-            </a>
+              <img src="{% static 'cricitup/images/logo.png' %}" alt="Logo" class="small-logo round-logo"/> 
           </div>
           <div class="ml-auto">
             <nav class="site-navigation position-relative text-right" role="navigation">
@@ -150,7 +153,7 @@
                 <li><a href="{% url 'players:players' %}" class="nav-link">Players</a></li>
                 <!--- <li><a href="blog.html" class="nav-link">Blog</a></li>-->
                  <!--- <li><a href="contact.html" class="nav-link">Contact</a></li>-->
-                <li><a href="ground.html" class="nav-link">Ground</a></li>
+                <li><a href="{% url 'grounds:grounds' %}" class="nav-link">Ground</a></li>
                 <li><a href="{% url 'coaches:coaches' %}" class="nav-link">Coaches</a></li>
                 <li><a href="{% url 'umpires:umpires' %}" class="nav-link">Umpires</a></li>
                 <li><a href="{% url 'teams:teams' %}" class="nav-link">Teams</a></li>
@@ -168,59 +171,40 @@
     </header>
 
     <style>
-        /* Other styles... */
-        
         .site-content {
-            padding-top: 150px; /* Adjust the value as needed */
+            padding-top: 100px; /* Adjust the value as needed */
         }
-        
-        /* Center the team information */
-        .team-info-container {
-            margin-top: 150px; /* Adjust the value to center the container vertically */
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            background-color: #f5f5f5;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            color: #020000; /* Change the font color to a darker color */
-        }
-        .team-info-container h1 {
-            font-weight: bold;
-            font-style: italic;
-            color: black; /* Change the color to black */
-        }
-      </style>
+    </style>
     
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Team Detail</title>
-</head>
-<body>
-    <div class="site-content">
-        <div class="team-info-container">
-          <h1>Team Detail</h1>
-          <p>Team ID: {{ team.0 }}</p>
-          <p>Team Name: {{ team.1 }}</p>
-          <p>Hosted Series Count: {{ hosted_series_count }}</p>
-          <p>Win Series Count: {{ win_series_count }}</p>
-          
-            <!-- <p>Stat ID: {{ team_stats_row.0 }}</p> -->
-            <p>Wins: {{ team_stats_row.1|default_if_none:0 }}</p>
-            <p>Losses: {{ team_stats_row.2|default_if_none:0 }}</p>
-            <p>Draws: {{ team_stats_row.3|default_if_none:0 }}</p>
-            <p>Abandoned: {{ team_stats_row.4|default_if_none:0 }}</p>
-            <p>Not Played: {{ team_stats_row.5|default_if_none:0 }}</p>
-            <p>Points: {{ team_stats_row.6|default_if_none:0 }}</p>
-          
-          <!-- <p><strong>Series Count:</strong> {{ series_count }}</p> -->
-        </body>
-          <!-- Add more details about the team here -->
-        </div>
+   
+
+    <section class="site-content">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>Venues List List</h1>
+                    <div class="card-container">
+                        {% for coach in venues %}
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="{% static 'cricitup/images/default.jpg' %}" alt="{{ coach.1 }}" class="player-image">
+                            </div>
+                            <p>{{ coach.1 }}</p>
+                            <p>city: {{ coach.2 }}</p>
+                            <p>Street: {{ coach.3 }}</p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </section>
+        
       </div>
-</body>
-<script src="{% static 'cricitup/js/jquery-3.3.1.min.js' %}"></script>
+    
+    
+  
+    <!-- .site-wrap -->
+  
+    <script src="{% static 'cricitup/js/jquery-3.3.1.min.js' %}"></script>
       <script src="{% static 'cricitup/js/jquery-migrate-3.0.1.min.js' %}"></script>
       <script src="{% static 'cricitup/js/jquery-ui.js' %}"></script>
       <script src="{% static 'cricitup/js/popper.min.js' %}"></script>
@@ -237,4 +221,6 @@
   
       <!-- Your custom scripts -->
       <script src="{% static 'cricitup/js/main.js' %}"></script>
-</html>
+  </body>
+  
+  </html> 
