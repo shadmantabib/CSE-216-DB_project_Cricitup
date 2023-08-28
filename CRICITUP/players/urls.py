@@ -6,5 +6,7 @@ app_name='players'
 urlpatterns = [
     path('',views.players,name='players'),
     path('get-players-by-country/', views.get_players_by_country, name='get_players_by_country'),
+    path('players/<int:player_id>/', views.players_details, name='players_details'),
+
 
 ]

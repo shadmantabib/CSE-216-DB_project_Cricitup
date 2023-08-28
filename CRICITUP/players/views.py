@@ -22,3 +22,41 @@ def get_players_by_country(request):
     }
 
     return render(request, 'players/players1.html', context)
+def players_details(request, player_id):
+    sql_query = """
+        SELECT (FIRST_NAME ||' '||LAST_NAME) FULL_NAME, NATIONALITY, TYPE,
+               EXTRACT(YEAR FROM SYSDATE) - EXTRACT(YEAR FROM DATE_OF_BIRTH) AGE,
+               IMAGE_URL
+        FROM PLAYER PL
+        JOIN PERSON PR ON PL.PLAYERID = PR.PERSONID
+        WHERE PL.PLAYERID = %s
+    """
+    
+    with connection.cursor() as cursor:
+        cursor.execute(sql_query, [player_id])
+        player_data = cursor.fetchone()
+        
+    if player_data:
+        player_name = player_data[0]
+        player_nationality = player_data[1]
+        player_type = player_data[2]
+        player_age = player_data[3]
+        player_image_url = player_data[4]
+
+    else:
+        player_name = "Unknown"
+        player_nationality = "Unknown"
+        player_type = "Unknown"
+        player_age = "Unknown"
+        player_image_url = None
+    
+    context = {
+        'player_id': player_id,
+        'player_name': player_name,
+        'player_nationality': player_nationality,
+        'player_type': player_type,
+        'player_age': player_age,
+        'player_image_url': player_image_url
+    }
+    
+    return render(request, 'players/players_details.html', context)
