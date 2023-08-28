@@ -31,9 +31,11 @@ def match_details(request, match_id):
         cursor.execute(query, [match_id])
         match = cursor.fetchone()  # Fetch the result
         match_winner=cursor.callfunc('Find_Match_Winner',str,[match_id])
-    
+        highest_scorer=cursor.callfunc('Find_Highest_Scorer',str,[match_id])
+
     context = {
         'match': match,
         'match_winner':match_winner,
+        'highest_scorer':highest_scorer,
     }
     return render(request, 'matches/match_details.html', context)
