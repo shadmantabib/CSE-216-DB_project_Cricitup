@@ -49,6 +49,11 @@ INSTALLED_APPS = [
     'teams',
     'matches',
     'matchdet',
+    'loginpage',
+    'signup',
+    'adminpage',
+
+
     
 ]
 
