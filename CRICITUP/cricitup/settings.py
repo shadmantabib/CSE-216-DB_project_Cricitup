@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'loginpage',
     'signup',
     'adminpage',
+    'addplayer',
 
 
     
