@@ -10,6 +10,8 @@ urlpatterns = [
     path('umpires/', include('umpires.urls')),
     path('teams/', include('teams.urls')),
     path('matches/', include('matches.urls')),
-    path('grounds/', include('grounds.urls'))
+    path('grounds/', include('grounds.urls')),
+    path('login/', include('loginpage.urls')),
+
 
 ]
