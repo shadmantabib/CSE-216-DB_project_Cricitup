@@ -32,6 +32,7 @@ urlpatterns = [
     path('signup/', include('signup.urls', namespace='signup')),
     path('adminpage/', include('adminpage.urls', namespace='adminpage')),
     path('addplayer/', include('addplayer.urls', namespace='addplayer')),
+    path('addground/', include('addground.urls', namespace='addground')),
 
     # ...
     path('admin/', admin.site.urls),
