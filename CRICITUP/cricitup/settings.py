@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'adminpage',
     'addplayer',
     'addground',
+    'addteam',
 
 
     
