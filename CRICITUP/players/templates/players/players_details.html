@@ -73,7 +73,7 @@
         }
 
         .player-image {
-            max-width: 100px;
+            max-width: 1000px;
             /* Adjust the maximum width as needed */
             height: auto;
         }
@@ -119,6 +119,41 @@
         button {
             margin-bottom: 10px;
         }
+        .player-details {
+    display: flex;
+    align-items: center;
+}
+
+.player-image-container {
+    margin-right: 200px; /* Adjust as needed */
+}
+
+.player-image {
+    width: 500px; /* Adjust the size as needed */
+    /* height: auto;  */
+}
+
+.player-info {
+    font-size: 18px;
+}
+
+.player-stats {
+    margin-top: 20px; /* Adjust as needed */
+}
+
+.player-stats h2 {
+    font-size: 24px;
+}
+
+.player-stats ul {
+    list-style: none;
+    padding: 0;
+}
+
+.player-stats li {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
     </style>
 
 
@@ -207,22 +242,30 @@
                 /* Change the color to black */
             }
         </style>
-        <div class="site-content">
-            <div class="team-info-container">
-                {% if player_image_url %}
-                <img src="{{ player_image_url }}" alt="{{ player_name }}" class="player-image">
-                {% else %}
-                <img src="{% static 'cricitup/images/default.jpg' %}" alt="{{ player_name }}" class="player-image">
-                {% endif %}
-                <h1>{{ player_name }}</h1>
-                <p>Nationality: {{ player_nationality }}</p>
-                <p>Player Type: {{ player_type }}</p>
-                <p>Age: {{ player_age }}</p>
-            </div>
-
-            
-          
+    <div class="site-content">
+        <div class="team-info-container">
+            {% if player_image_url %}
+            <img src="{% static 'cricitup/images/'|add:player_image_url %}" alt="{{ player_name }}" class="player-image" width="300" height="400">
+            {% else %}
+            <img src="{% static 'cricitup/images/default.jpg' %}" alt="{{ player_name }}" class="player-image" width="300" height="400">
+            {% endif %}
+            <h1>{{ player_name }}</h1>
+            <p>Nationality: {{ player_nationality }}</p>
+            <p>Player Type: {{ player_type }}</p>
+            <p>Age: {{ player_age }}</p>
+            <p>Total Match Played: {{player_stat.8}}</p>
+    
+            <p>No of Hundreds: {{player_stat.0}}</p>
+            <p>No of Fifties: {{player_stat.1}}</p>
+            <p>Total Run: {{player_stat.2}}</p>
+            <p>Average: {{player_stat.3}}</p>
+            <p>Strike Rate: {{player_stat.4}}</p>
+            <p>Total Six: {{player_stat.5}}</p>
+            <p>Total Fours: {{player_stat.6}}</p>
+            <p>Total Ball Played: {{player_stat.7}}</p>
         </div>
+    </div>
+    
     </div>
 
 </body>

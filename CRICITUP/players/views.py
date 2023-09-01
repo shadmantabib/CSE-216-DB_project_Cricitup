@@ -23,6 +23,7 @@ def get_players_by_country(request):
 
     return render(request, 'players/players1.html', context)
 def players_details(request, player_id):
+    player_stat=[]
     sql_query = """
         SELECT (FIRST_NAME ||' '||LAST_NAME) FULL_NAME, NATIONALITY, TYPE,
                EXTRACT(YEAR FROM SYSDATE) - EXTRACT(YEAR FROM DATE_OF_BIRTH) AGE,
@@ -31,10 +32,12 @@ def players_details(request, player_id):
         JOIN PERSON PR ON PL.PLAYERID = PR.PERSONID
         WHERE PL.PLAYERID = %s
     """
-    
-    with connection.cursor() as cursor:
-        cursor.execute(sql_query, [player_id])
-        player_data = cursor.fetchone()
+    sql_query_2="""SELECT hundreds,fifties,total_run,avg,str_rate,totalsix,totalfours,totalball,totalmatch from batting_stat where playerid=%s
+"""
+    cursor = connection.cursor()
+
+    cursor.execute(sql_query, [player_id])
+    player_data = cursor.fetchone()
         
     if player_data:
         player_name = player_data[0]
@@ -49,6 +52,9 @@ def players_details(request, player_id):
         player_type = "Unknown"
         player_age = "Unknown"
         player_image_url = None
+
+    cursor.execute(sql_query_2,[player_id])
+    player_stat=cursor.fetchone()
     
     context = {
         'player_id': player_id,
@@ -56,7 +62,9 @@ def players_details(request, player_id):
         'player_nationality': player_nationality,
         'player_type': player_type,
         'player_age': player_age,
-        'player_image_url': player_image_url
+        'player_image_url': player_image_url,
+        'player_stat':player_stat
+
     }
     
     return render(request, 'players/players_details.html', context)
