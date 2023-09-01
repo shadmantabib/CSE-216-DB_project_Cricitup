@@ -4,11 +4,11 @@ from django.db import connection
 def team_records(request):
     # Execute the SQL query
     with connection.cursor() as cursor:
-        cursor.execute("SELECT Team_id, Team_Name FROM Team order by team_rating")
+        cursor.execute("SELECT TEAM_ID,Team_Name, TEAM_RATING, ROWNUM AS Team_Rank FROM ( SELECT TEAM_ID,Team_Name, TEAM_RATING FROM Team ORDER BY TEAM_RATING DESC ) ranked_teams")
         teams = cursor.fetchall()
 
     # Prepare the data for rendering
-    team_records = [{'Team_id': team[0], 'Team_Name': team[1]} for team in teams]
+    team_records = [{'Team_id': team[0], 'Team_Name': team[1],'Team_rank':team[3]} for team in teams]
 
     return render(request, 'teams/teams.html', {'teams': team_records})
 

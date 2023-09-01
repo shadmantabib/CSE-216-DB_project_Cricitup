@@ -40,29 +40,7 @@
     .nav-link {
       font-size: 36px; /* You can adjust the value as needed */
     }
-    /* Add this CSS to your existing styles or a separate stylesheet */
-.team-card {
-    border: 1px solid #ccc;
-    padding: 15px;
-    border-radius: 5px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    background-color: white;
-    transition: transform 0.3s ease-in-out;
-}
-.small-logo {
-        width: 150px; /* Adjust the value to your desired width */
-        height: 150; /* Automatically adjust the height based on the aspect ratio */
-    }
     
-    .site-logo {
-        margin-right: 10px; /* Add some space between the logo and the navigation links */
-    }
-       
-
-.team-card:hover {
-    transform: translateY(-5px);
-}
-
       .hero {
         position: relative;
         height: 1235px;
@@ -162,7 +140,7 @@
         <div class="d-flex align-items-center">
           <div class="site-logo">
             <a href="index.html">
-              <img src="{% static 'cricitup/images/logo.png' %}" alt="Logo" class="small-logo round-logo"/> 
+              <img src="{% static 'cricitup/images/logo.png' %}" alt="Logo"/>
             </a>
           </div>
           <div class="ml-auto">
@@ -195,20 +173,34 @@
         }
     </style>
 
-<div class="container mt-5" style="margin-top: 1000px;">
-  <div class="row">
-      {% for team in teams %}
-      <div class="col-lg-4 mb-4">
-          <div class="team-card">
-              <h3>Team Rank: {{ team.Team_id }}</h3>
-              <h4 class="highlight-team">
-                  <a href="{% url 'teams:team_detail' team_id=team.Team_id %}">{{ team.Team_Name }}</a>
-              </h4>
-          </div>
-      </div>
-      {% endfor %}
-  </div>
-</div>
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center" style="margin-top: 300px;">
+                <h2>Team Records</h2>
+                <table class="table table-bordered custom-table mt-4">
+                    <thead>
+                        <tr>
+                            <th>Team Rank</th>
+                            <th>Team Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for team in teams %}
+                            <tr>
+                                <td>{{ team.Team_rank }}</td>
+                                <td class="highlight-team">
+                                    <a href="{% url 'teams:team_detail' team_id=team.Team_id %}">{{ team.Team_Name }}</a>
+                                </td>
+                              
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+   
 
     
 <script src="{% static 'cricitup/js/jquery-3.3.1.min.js' %}"></script>
