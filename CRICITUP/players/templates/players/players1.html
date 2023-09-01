@@ -120,6 +120,18 @@
         .card:hover {
           transform: translateY(-5px);
         }
+        .player-image-cell
+        {
+          display: block;
+          justify-content: center;
+          align-items: center;
+          height:150px;
+        }
+        .player-image-cell img
+        {
+          max-width: 100%;
+          max-height: 100%;
+        }
       </style>
     
 
@@ -133,19 +145,79 @@
         </div>
   
         {% if players %}
-        <div class="card-container">
-          {% for player in players %}
-          <div class="card">
-            <div class="card-image">
-              <img src="{% if player.4 %}{{ player.4 }}{% else %}{% static 'cricitup/images/default.jpg' %}{% endif %}" alt="{{ player.0 }}" class="player-image">
+
+        <!-- <div class="table-container">
+          <table class="styled-table">
+              <thead>
+                  <tr>
+                      <th>Player Image</th>
+                      <th>Name</th>
+                      <th>Nationality</th>
+                      <th>Player Type</th>
+                      <th>Age</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  {% for player in players %}
+                  <tr>
+                      <td class="player-image-cell">
+                          <a href="{% url 'players:players_details' player_id=player.5 %}">
+                              <img src="{% if player.4 %}{{ player.4 }}{% else %}{% static 'cricitup/images/default.jpg' %}{% endif %}" alt="{{ player.0 }}" class="player-image">
+                          </a>
+                      </td>
+                      <td>{{ player.0 }}</td>
+                      <td>{{ player.1 }}</td>
+                      <td>{{ player.2 }}</td>
+                      <td>{{ player.3 }}</td>
+                  </tr>
+                  {% endfor %}
+              </tbody>
+          </table>
+      </div> -->
+      <section class="ftco-section">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-md-6 text-center mb-5">
+              <h2 class="heading-section">Players of {{selected_country}}</h2>
             </div>
-            <p>{{ player.0 }}</p>
-            <p>Nationality: {{ player.1 }}</p>
-            <p>Player Type: {{ player.2 }}</p>
-            <p>Age: {{ player.3 }}</p>
           </div>
-          {% endfor %}
+          <div class="row">
+            <div class="col-md-12">
+              <div class="table-wrap">
+                <table class="table table-bordered table-dark table-hover">
+                  <thead>
+                    <tr>
+                    <th>Player Image</th>
+                    <th>Name</th>
+                    <th>Nationality</th>
+                    <th>Player Type</th>
+                    <th>Age</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for player in players %}
+    
+                    <tr>
+                      <th class="player-image-cell" style="text-align: center;">
+                        <a href="{% url 'players:players_details' player_id=player.5 %}">
+                            <img src="{% if player.4 %}{{ player.4 }}{% else %}{% static 'cricitup/images/default.jpg' %}{% endif %}" alt="{{ player.0 }}" class="player-image">
+                        </a>
+                    </th>
+                      <td><h5><b>{{ player.0 }}</b></h5></td>
+                                <td><h5>{{ player.1 }}</h5></td>
+                                <td><h5>{{ player.2 }}</h5></td>
+                              <td><h5>{{ player.3 }}</h5></td>
+                    </tr>
+                  {% endfor %}
+    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
         </div>
+      </section>
+      
         {% endif %}
       </section>
   
