@@ -53,8 +53,9 @@ INSTALLED_APPS = [
     'signup',
     'adminpage',
     'addplayer',
-
-
+    'addground',
+    'addteam',
+    'addseries',
     
 ]
 

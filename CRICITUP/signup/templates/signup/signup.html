@@ -5,58 +5,122 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up Form</title>
    
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <style>
-        /* Add your custom CSS styles here */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-image: url('https://c7.alamy.com/comp/TCJWK5/the-world-cup-trophy-on-display-during-the-icc-cricket-world-cup-group-stage-match-at-the-cardiff-wales-stadium-TCJWK5.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .main {
+            background-color: rgba(15, 118, 139, 0.219);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            width: 400px;
+        }
+
+        .form-title {
+            text-align: center;
+            color: #FF5733;
+        }
+
+        .form-group {
+            margin-bottom:15px;
+        }
+
+        label {
+            display: block;
+            font-weight: 500;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .form-submit {
+            background-color: #FF5733;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-submit:hover {
+            background-color: #FF4500;
+        }
+
+        .signup-image {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .signup-image-link {
+            text-decoration: none;
+            color: #333;
+        }
     </style>
 </head>
 <body>
 
     <div class="main">
-
-        <!-- Sign up form -->
         <section class="signup">
             <div class="container">
                 <div class="signup-content">
                     <div class="signup-form">
-                        <h2 style="color: red"> {{ error }}</h2>
                         <h2 class="form-title">ADMIN Sign up</h2>
                         <form method="POST" class="register-form" id="register-form">
                             {% csrf_token %}
                             <div class="form-group">
-                                <label for="first_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <label for="first_name">First Name</label>
                                 <input type="text" name="first_name" id="first_name" placeholder="First Name" required/>
                             </div>
                             <!-- Add other form fields here -->
-                            <div class="form-group form-button">
-                                <input type="submit" name="signup" id="signup" class="form-submit" value="Register"/>
+                            <div class="form-group">
+                                <label for="last_name">Last Name</label>
+                                <input type="text" name="last_name" id="last_name" placeholder="Last Name" required/>
                             </div>
                             <div class="form-group">
-                                <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="last_name" id="name" placeholder="Last Name" required/>
+                                <label for="username">User Name</label>
+                                <input type="text" name="username" id="username" placeholder="User Name" required/>
                             </div>
                             <div class="form-group">
-                                <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="username" id="name" placeholder="USER NAME" required/>
-                            </div>
-                            <div class="form-group">
-                                <label for="email"><i class="zmdi zmdi-email"></i></label>
+                                <label for="email">Email</label>
                                 <input type="email" name="email" id="email" placeholder="Your Email" required/>
                             </div>
                             <div class="form-group">
-                                <label for="pass"><i class="zmdi zmdi-lock"></i></label>
-                                <input type="password" name="secret_code" id="pass" placeholder="SECRET CODE" required/>
+                                <label for="secret_code">Secret Code</label>
+                                <input type="password" name="secret_code" id="secret_code" placeholder="Secret Code" required/>
                             </div>
                             <div class="form-group">
-                                <label for="pass"><i class="zmdi zmdi-lock"></i></label>
-                                <input type="password" name="pass" id="pass" placeholder="Password" required/>
+                                <label for="password">Password</label>
+                                <input type="password" name="password" id="password" placeholder="Password" required/>
                             </div>
                             <div class="form-group">
-                                <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
+                                <label for="re_pass">Repeat Password</label>
                                 <input type="password" name="re_pass" id="re_pass" placeholder="Repeat your password" required/>
                             </div>
                             <div class="form-group">
                                 <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" required/>
-                                <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
+                                <label for="agree-term" class="label-agree-term">I agree to all statements in <a href="#" class="term-service">Terms of Service</a></label>
                             </div>
                             <div class="form-group form-button">
                                 <input type="submit" name="signup" id="signup" class="form-submit" value="Register"/>
@@ -64,17 +128,12 @@
                         </form>
                     </div>
                     <div class="signup-image">
-                        
-                        <a href="{% url 'loginpage:login' %}" class="signup-image-link">I am already admin</a>
+                        <a href="{% url 'loginpage:login' %}" class="signup-image-link">I am already an admin</a>
                     </div>
                 </div>
             </div>
         </section>
     </div>
 
-   
-    <script>
-        /* Add your JavaScript code here */
-    </script>
 </body>
 </html>
