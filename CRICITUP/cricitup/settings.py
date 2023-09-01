@@ -55,8 +55,7 @@ INSTALLED_APPS = [
     'addplayer',
     'addground',
     'addteam',
-
-
+    'addseries',
     
 ]
 

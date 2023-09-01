@@ -1,0 +1,187 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Cricitup &mdash; L2-T2 Database</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'cricitup/fonts/icomoon/style.css' %}">
+
+    <link rel="stylesheet" href="{% static 'cricitup/css/bootstrap/bootstrap.css' %}" />
+    <link rel="stylesheet" href="{% static 'cricitup/css/jquery-ui.css' %}" />
+    <link rel="stylesheet" href="{% static 'cricitup/css/owl.carousel.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'cricitup/css/owl.theme.default.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'cricitup/css/owl.theme.default.min.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'cricitup/css/jquery.fancybox.min.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'cricitup/css/bootstrap-datepicker.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'cricitup/fonts/flaticon/font/flaticon.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'cricitup/css/aos.css' %}">
+
+    <link rel="stylesheet" href="{% static 'cricitup/css/style.css' %}" />
+
+</head>
+
+<body>
+    <style>
+        .middle-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            /* Adjust this value as needed */
+        }
+    </style>
+
+    <div class="site-wrap">
+
+        <div class="site-mobile-menu site-navbar-target">
+            <div class="site-mobile-menu-header">
+                <div class="site-mobile-menu-close">
+                    <span class="icon-close2 js-menu-toggle"></span>
+                </div>
+            </div>
+            <div class="site-mobile-menu-body"></div>
+        </div>
+
+        <header class="site-navbar py-4" role="banner">
+            <div class="container">
+                <div class="d-flex align-items-center">
+                    <div class="site-logo">
+                        <a href="index.html">
+                            <img src="{% static 'cricitup/images/logo.png' %}" alt="Logo" />
+                        </a>
+                    </div>
+                    <div class="ml-auto">
+                        <nav class="site-navigation position-relative text-right" role="navigation">
+                            <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
+                                <li><a href="{% url 'home' %}" class="nav-link"></a></li>
+                                <li class="active"><a href="{% url 'players:players' %}" class="nav-link">Players</a>
+                                </li>
+                                <li><a href="{% url 'grounds:grounds' %}" class="nav-link">Ground</a></li>
+                                <li><a href="{% url 'coaches:coaches' %}" class="nav-link">Coaches</a></li>
+                                <li><a href="{% url 'umpires:umpires' %}" class="nav-link">Umpires</a></li>
+                                <li><a href="{% url 'teams:teams' %}" class="nav-link">Teams</a></li>
+                                <li><a href="{% url 'matches:matches' %}" class="nav-link">Matches</a></li>
+                            </ul>
+                        </nav>
+                        <a href="#"
+                            class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black float-right text-white">
+                            <span class="icon-menu h3 text-white"></span>
+                        </a>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="middle-content">
+            <div class="signup-form">
+                <h2>ENTER SERIES DETAILS</h2>
+                <div class="form-row">
+                <form method="POST" class="register-form" id="register-form" enctype="multipart/form-data">
+                        {% csrf_token %}
+                    <div class="form-group">
+                        <label for="name">SERIES NAME</label>
+                        <input type="text" name="name" id="name" required />
+                    </div>
+
+                    <div class="form-input">
+                        <label for="team1_opp" class="required">Host Country :</label>
+                        <input list="team1_opp" name="team1" id="team1" required/>
+                        <datalist id="team1_opp">
+                            {% for t in team %}
+                                <option>{{ t.team_name }}</option>
+                            {% endfor %}
+                        </datalist>
+                    </div>
+                    <div class="form-input">
+                        <label for="team2_opp" class="required">Team :</label>
+                        <input list="team2_opp" name="team2" id="team2" required/>
+                        <datalist id="team2_opp">
+                            {% for t in team %}
+                                <option>{{ t.team_name }}</option>
+                            {% endfor %}
+                        </datalist>
+                    </div>
+                    <div class="form-input">
+                        <label for="team3_opp">Team :</label>
+                        <input list="team3_opp" name="team3" id="team3"/>
+                        <datalist id="team3_opp">
+                            {% for t in team %}
+                                <option>{{ t.team_name }}</option>
+                            {% endfor %}
+                        </datalist>
+                    </div>
+                    <div class="form-input">
+                        <label for="team4_opp">Team  :</label>
+                        <input list="team4_opp" name="team4" id="team4"/>
+                        <datalist id="team4_opp">
+                            {% for t in team %}
+                                <option>{{ t.team_name }}</option>
+                            {% endfor %}
+                        </datalist>
+                    </div>
+                    <div class="form-input">
+                        <label for="winner_opp">Winner :</label>
+                        <input list="winner_opp" name="winner" id="winner"/>
+                        <datalist id="winner_opp">
+                            {% for t in team %}
+                                <option>{{ t.team_name }}</option>
+                            {% endfor %}
+                        </datalist>
+                    </div>
+                    <div class="form-input">
+                        <label for="motm_lbl">Man of the Series :</label>
+                        <input list="motm_lbl" name="motm" id="motm"/>
+                        <datalist id="motm_lbl">
+                            {% for p in player %}
+                                <option>{{ p.fullname }}</option>
+                            {% endfor %}
+
+                        </datalist>
+                    </div>
+               
+
+                <div class="form-submit">
+                    <input type="submit" value="Reset All" class="submit" name="reset" id="reset" />
+                    <input type="submit" value="Submit Form" class="submit" name="submit" id="submit" />
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    </div>
+
+    <script src="{% static 'cricitup/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'cricitup/js/jquery-migrate-3.0.1.min.js' %}"></script>
+    <script src="{% static 'cricitup/js/jquery-ui.js' %}"></script>
+    <script src="{% static 'cricitup/js/popper.min.js' %}"></script>
+    <script src="{% static 'cricitup/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'cricitup/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'cricitup/js/jquery.stellar.min.js' %}"></script>
+    <script src="{% static 'cricitup/js/jquery.countdown.min.js' %}"></script>
+    <script src="{% static 'cricitup/js/bootstrap-datepicker.min.js' %}"></script>
+    <script src="{% static 'cricitup/js/jquery.easing.1.3.js' %}"></script>
+    <script src="{% static 'cricitup/js/aos.js' %}"></script>
+    <script src="{% static 'cricitup/js/jquery.fancybox.min.js' %}"></script>
+    <script src="{% static 'cricitup/js/jquery.sticky.js' %}"></script>
+    <script src="{% static 'cricitup/js/jquery.mb.YTPlayer.min.js' %}"></script>
+    <script src="{% static 'cricitup/js/jquery-3.3.1.min.js' %}"></script>
+
+
+
+</body>
+
+</html>
