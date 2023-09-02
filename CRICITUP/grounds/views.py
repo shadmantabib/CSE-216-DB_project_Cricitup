@@ -17,7 +17,8 @@ def grounds(request):
             V.VENUE_ID,
             V.ADDRESS,
             V.CITY,
-            V.STREET_NO
+            V.STREET_NO,
+			V.IMAGEURL
         FROM VENUE V
         """
         cursor.execute(query)

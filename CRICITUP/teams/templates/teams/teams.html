@@ -146,7 +146,7 @@
           <div class="ml-auto">
             <nav class="site-navigation position-relative text-right" role="navigation">
               <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-                <li class="active"><a href="{% url 'home' %}" class="nav-link">Home</a></li>
+                <li ><a href="{% url 'home' %}" class="nav-link">Home</a></li>
                 <li><a href="{% url 'players:players' %}" class="nav-link">Players</a></li>
                 <!--- <li><a href="blog.html" class="nav-link">Blog</a></li>-->
                  <!--- <li><a href="contact.html" class="nav-link">Contact</a></li>-->
@@ -181,14 +181,14 @@
                 <table class="table table-bordered custom-table mt-4">
                     <thead>
                         <tr>
-                            <th>Team ID</th>
+                            <th>Team Rank</th>
                             <th>Team Name</th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for team in teams %}
                             <tr>
-                                <td>{{ team.Team_id }}</td>
+                                <td>{{ team.Team_rank }}</td>
                                 <td class="highlight-team">
                                     <a href="{% url 'teams:team_detail' team_id=team.Team_id %}">{{ team.Team_Name }}</a>
                                 </td>

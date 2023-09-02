@@ -46,7 +46,7 @@ def addplayer(request):
         cursor.execute(
             "INSERT INTO Player (playerId, type, Team_id, statId) "
             "VALUES (%s, %s, %s, %s)",
-            (new_person_id, ROLE, team_id, new_stat_id)
+            (new_person_id, ROLE, team_id, new_person_id)
         )
 
         connection.commit()

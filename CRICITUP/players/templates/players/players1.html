@@ -26,6 +26,11 @@
   <link rel="stylesheet" href="{% static 'cricitup/css/aos.css' %}">
   
   <link rel="stylesheet" href="{% static 'cricitup/css/style.css' %}"/>
+  <style>
+    #countryInput {
+        display: none;
+    }
+</style>
 </head>
 
 <body>
@@ -46,17 +51,17 @@
         <div class="d-flex align-items-center">
           <div class="site-logo">
             <a href="index.html">
-              <img src="{% static 'cricitup/images/logo.png' %}" alt="Logo"/>
+              <img src="{% static 'cricitup/images/logo.png' %}" alt="Logo" class="small-logo round-logo"/> 
             </a>
           </div>
           <div class="ml-auto">
             <nav class="site-navigation position-relative text-right" role="navigation">
               <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
                 <li ><a href="{% url 'home' %}" class="nav-link">Home</a></li>
-                <li class="active"><a href="{% url 'players:players' %}" class="nav-link">Players</a></li>
+                <li class="active" ><a href="{% url 'players:players' %}" class="nav-link">Players</a></li>
                 <!--- <li><a href="blog.html" class="nav-link">Blog</a></li>-->
                  <!--- <li><a href="contact.html" class="nav-link">Contact</a></li>-->
-                <li><a href="{% url 'grounds:grounds' %}" class="nav-link">Ground</a></li>
+                <li ><a href="{% url 'grounds:grounds' %}" class="nav-link">Ground</a></li>
                 <li><a href="{% url 'coaches:coaches' %}" class="nav-link">Coaches</a></li>
                 <li><a href="{% url 'umpires:umpires' %}" class="nav-link">Umpires</a></li>
                 <li><a href="{% url 'teams:teams' %}" class="nav-link">Teams</a></li>
@@ -71,7 +76,16 @@
       </div>
     </header>
     <style>
+          .small-logo {
+        width: 150px; /* Adjust the value to your desired width */
+        height: 150; /* Automatically adjust the height based on the aspect ratio */
+    }
+    
+    .site-logo {
+        margin-right: 10px; /* Add some space between the logo and the navigation links */
+    }
         /* Other styles... */
+        
     
         .form-container {
             display: flex;
@@ -84,12 +98,16 @@
     </style>
     <style>
         /* Your existing styles... */
+        .content-container {
+  margin-top: 140px; /* Adjust the value as needed to move the table down */
+}
         .card-container {
           display: flex;
           flex-wrap: wrap;
           justify-content: space-between; /* Distribute cards horizontally */
           margin-top: 20px;
         }
+    
   
         .card {
           border: 1px solid #ccc;
@@ -120,32 +138,118 @@
         .card:hover {
           transform: translateY(-5px);
         }
+        .player-image-cell
+        {
+          display: block;
+          justify-content: center;
+          align-items: center;
+          height:150px;
+        }
+        .player-image-cell img
+        {
+          max-width: 100%;
+          max-height: 100%;
+        }
       </style>
-    
 
       <section>
+        
         <div class="form-container">
           <h1>Player List</h1>
-          <form action="{% url 'players:get_players_by_country' %}" method="get">
-            Please enter a country: <input type="text" name="country">
-            <button type="submit">Show Players</button>
-          </form>
-        </div>
+    <button id="showButton" onclick="toggleInput()">Show Players By Country</button>
+    <div class="toggle-container" id="countryInput">
+        <form action="{% url 'players:get_players_by_country' %}" method="get">
+            <label for="country">Please enter a country:</label>
+            <input type="text" id="country" name="country">
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    </div>
+    <script>
+        function toggleInput() {
+            const countryInput = document.getElementById('countryInput');
+            if (countryInput.style.display === 'none' || countryInput.style.display === '') {
+                countryInput.style.display = 'block';
+            } else {
+                countryInput.style.display = 'none';
+            }
+        }
+    </script>
   
         {% if players %}
-        <div class="card-container">
-          {% for player in players %}
-          <div class="card">
-            <div class="card-image">
-              <img src="{% if player.4 %}{{ player.4 }}{% else %}{% static 'cricitup/images/default.jpg' %}{% endif %}" alt="{{ player.0 }}" class="player-image">
+
+        <!-- <div class="table-container">
+          <table class="styled-table">
+              <thead>
+                  <tr>
+                      <th>Player Image</th>
+                      <th>Name</th>
+                      <th>Nationality</th>
+                      <th>Player Type</th>
+                      <th>Age</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  {% for player in players %}
+                  <tr>
+                      <td class="player-image-cell">
+                          <a href="{% url 'players:players_details' player_id=player.5 %}">
+                              <img src="{% if player.4 %}{{ player.4 }}{% else %}{% static 'cricitup/images/default.jpg' %}{% endif %}" alt="{{ player.0 }}" class="player-image">
+                          </a>
+                      </td>
+                      <td>{{ player.0 }}</td>
+                      <td>{{ player.1 }}</td>
+                      <td>{{ player.2 }}</td>
+                      <td>{{ player.3 }}</td>
+                  </tr>
+                  {% endfor %}
+              </tbody>
+          </table>
+      </div> -->
+      <section class="ftco-section">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-md-6 text-center mb-5">
+              <h2 class="heading-section">Players of {{selected_country}}</h2>
             </div>
-            <p>{{ player.0 }}</p>
-            <p>Nationality: {{ player.1 }}</p>
-            <p>Player Type: {{ player.2 }}</p>
-            <p>Age: {{ player.3 }}</p>
           </div>
-          {% endfor %}
+          <div class="row">
+            <div class="col-md-12">
+              <div class="table-wrap">
+                <table class="table table-bordered table-dark table-hover">
+                  <thead>
+                    <tr>
+                    <th>Player Image</th>
+                    <th>Name</th>
+                    <th>Nationality</th>
+                    <th>Player Type</th>
+                    <th>Age</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for player in players %}
+    
+                    <tr>
+                      <th class="player-image-cell" style="text-align: center;">
+                        <a href="{% url 'players:players_details' player_id=player.5 %}">
+                          <img src="{% if player.4 %}{% static 'cricitup/images/'|add:player.4 %}{% else %}{% static 'cricitup/images/default.jpg' %}{% endif %}" alt="{{ player.0 }}" class="player-image">
+                        </a>
+                    </th>
+                      <td><h5><b>{{ player.0 }}</b></h5></td>
+                                <td><h5>{{ player.1 }}</h5></td>
+                                <td><h5>{{ player.2 }}</h5></td>
+                              <td><h5>{{ player.3 }}</h5></td>
+                    </tr>
+                  {% endfor %}
+    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
         </div>
+      </section>
+      
         {% endif %}
       </section>
   
