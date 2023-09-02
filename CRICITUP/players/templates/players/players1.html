@@ -26,6 +26,11 @@
   <link rel="stylesheet" href="{% static 'cricitup/css/aos.css' %}">
   
   <link rel="stylesheet" href="{% static 'cricitup/css/style.css' %}"/>
+  <style>
+    #countryInput {
+        display: none;
+    }
+</style>
 </head>
 
 <body>
@@ -148,13 +153,28 @@
       </style>
 
       <section>
+        
         <div class="form-container">
           <h1>Player List</h1>
-          <form action="{% url 'players:get_players_by_country' %}" method="get">
-            Please enter a country: <input type="text" name="country">
-            <button type="submit">Show Players</button>
-          </form>
-        </div>
+    <button id="showButton" onclick="toggleInput()">Show Players By Country</button>
+    <div class="toggle-container" id="countryInput">
+        <form action="{% url 'players:get_players_by_country' %}" method="get">
+            <label for="country">Please enter a country:</label>
+            <input type="text" id="country" name="country">
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    </div>
+    <script>
+        function toggleInput() {
+            const countryInput = document.getElementById('countryInput');
+            if (countryInput.style.display === 'none' || countryInput.style.display === '') {
+                countryInput.style.display = 'block';
+            } else {
+                countryInput.style.display = 'none';
+            }
+        }
+    </script>
   
         {% if players %}
 
