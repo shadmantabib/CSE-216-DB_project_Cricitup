@@ -34,6 +34,7 @@ def grounds(request):
 
 
 def ground_details(request, venue_id):
+    matches=[]
     with connection.cursor() as cursor:
 
         # Call the STAT_OF_VENUE procedure
@@ -66,7 +67,17 @@ def ground_details(request, venue_id):
         # Retrieve additional venue information
         cursor.execute("SELECT venue_id, address, city, street_no, capacity, imageurl FROM VENUE WHERE venue_id = %s", [venue_id])
         venue_info = cursor.fetchone()
+        query="""
 
+SELECT MATCH_ID,
+           (SELECT TEAM_NAME FROM TEAM T WHERE T.TEAM_ID=M.TEAM1_ID) || ' vs ' || (SELECT TEAM_NAME FROM TEAM T WHERE T.TEAM_ID=M.TEAM2_ID) || ' -' || MATCH_ID AS NAME,
+          (SELECT TEAM_NAME FROM TEAM T WHERE T.TEAM_ID=M.WINNER) WINNER ,MAN_OF_THE_MATCH,WEATHER,WINNER,(SELECT ADDRESS FROM VENUE V WHERE V.VENUE_ID=M.VENUE_ID) GROUND
+    FROM MATCH M
+		
+    WHERE venue_id=%s
+"""
+        cursor.execute(query,[venue_id])
+        matches=cursor.fetchall()
     context = {
         'venue_id': venue_id,
         'highestrun': highestrun,
@@ -80,6 +91,7 @@ def ground_details(request, venue_id):
         'fourer': fourer,
         'catcher': catcher,
         'venue_info': venue_info,
+        'matches':matches
     }
 
     return render(request, 'grounds/ground_details.html', context)

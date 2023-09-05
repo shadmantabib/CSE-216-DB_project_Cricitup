@@ -154,6 +154,14 @@
     font-size: 16px;
     margin-bottom: 5px;
 }
+.small-logo {
+        width: 150px; /* Adjust the value to your desired width */
+        height: 150; /* Automatically adjust the height based on the aspect ratio */
+    }
+    
+    .site-logo {
+        margin-right: 10px; /* Add some space between the logo and the navigation links */
+    }
     </style>
 
 
@@ -185,7 +193,7 @@
                 <div class="d-flex align-items-center">
                     <div class="site-logo">
                         <a href="index.html">
-                            <img src="{% static 'cricitup/images/logo.png' %}" alt="Logo" />
+                            <img src="{% static 'cricitup/images/logo.png' %}" alt="Logo" class="small-logo round-logo"/> 
                         </a>
                     </div>
                     <div class="ml-auto">
@@ -241,33 +249,142 @@
                 color: black;
                 /* Change the color to black */
             }
+            .team-info-container {
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Style the player image */
+  .player-image {
+    width: 300px;
+    height: 400px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+
+  /* Style the links */
+  a {
+    color: #007BFF;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  /* Style the paragraphs */
+  p {
+    margin: 10px 0;
+    font-size: 18px;
+  }
         </style>
     <div class="site-content">
         <div class="team-info-container">
             <img src="{% static 'cricitup/images/default.jpg' %}" alt="{{ player_name }}" class="player-image" width="300" height="400">
-            
-            <!-- Convert Highest Run Scorer to a link -->
-            <p>Highest Run Scorer: <a href="{% url 'players:players_details' player_id=highestrun %}">{{ highestrunner }}</a></p>
-            
-            <!-- Convert Highest Wicket Taker to a link -->
-            <p>Highest Wicket Taker:<a href="{% url 'players:players_details' player_id=highestwicket %}"> {{ wicketer }}</a></p>
-            
-            <!-- Convert Most Six Hitter to a link -->
-            <p>Most Six Hitter:<a href="{% url 'players:players_details' player_id=highestsix %}"> {{ sixer }}</a></p>
-            
-            <!-- Convert Most four Smasher to a link -->
-            <p>Most four Smasher:<a href="{% url 'players:players_details' player_id=highestfour %}"> {{fourer}}</a></p>
+            <div class="table-container" style="width: 50%; margin: 0 auto;">
+                <table class="table table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th colspan="2" style="text-align: center;">Venue Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Address</td>
+                            <td>{{ venue_info.1 }}</td>
+                        </tr>
+                        <tr>
+                            <td>City</td>
+                            <td>{{ venue_info.2 }}</td>
+                        </tr>
+                        <tr>
+                            <td>Street No</td>
+                            <td>{{ venue_info.3 }}</td>
+                        </tr>
+                        <tr>
+                            <td>Capacity</td>
+                            <td>{{ venue_info.4 }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
     
-            <!-- Convert Most catch taker to a link -->
-            <p>Most catch taker:<a href="{% url 'players:players_details' player_id=highestcatch %}"> {{catcher}}</a></p>
+            <!-- Hall Of Fame section -->
+            <div class="hall-of-fame" style="width: 50%; margin: 0 auto; color: #000;">
+                <h2 style="color: #020000;">Hall Of Fame of {{ venue_info.1 }}</h2>
+                <table class="table table-bordered table-striped table-hover gorgeous-table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Category</th>
+                            <th>Player</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Highest Run Scorer</td>
+                            <td><a href="{% url 'players:players_details' player_id=highestrun %}">{{ highestrunner }}</a></td>
+                        </tr>
+                        <tr>
+                            <td>Highest Wicket Taker</td>
+                            <td><a href="{% url 'players:players_details' player_id=highestwicket %}">{{ wicketer }}</a></td>
+                        </tr>
+                        <tr>
+                            <td>Most Six Hitter</td>
+                            <td><a href="{% url 'players:players_details' player_id=highestsix %}">{{ sixer }}</a></td>
+                        </tr>
+                        <tr>
+                            <td>Most Four Smasher</td>
+                            <td><a href="{% url 'players:players_details' player_id=highestfour %}">{{ fourer }}</a></td>
+                        </tr>
+                        <tr>
+                            <td>Most Catch Taker</td>
+                            <td><a href="{% url 'players:players_details' player_id=highestcatch %}">{{ catcher }}</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+    
+            <!-- Prompt for matches -->
+            <h2 style="color: #020000;">All Match Played In this Ground</h2>
             
-            <!-- Convert Ground Capacity to a link (assuming venue_info.4 contains an ID) -->
-            <p>Ground Capacity: {{venue_info.4}}</a></p>
+            <!-- Wrapped table with styling -->
+            <div class="table-container" style="width: 50%; margin: 0 auto;">
+                <table class="table table-bordered table-striped table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Match Name</th>
+                            <th>Ground</th>
+                            <th>Show Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for match in matches %}
+                        <tr>
+                            <td>{{ match.1 }}</td>
+                            <td>{{ match.5 }}</td>
+                            <td>
+                                <a href="{% url 'matches:match_details' match_id=match.0 %}" class="btn btn-primary btn-sm">Show Details</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-    
-    </div>
-
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
