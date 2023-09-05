@@ -15,6 +15,7 @@ def matches_view(request):
     context = {'matches': results}
     return render(request, 'matches/matches.html', context)
 def match_details(request, match_id):
+    first_team_batting=[]
     # Define the SQL query using placeholders for parameters
     query = """
     SELECT MATCH_ID,
@@ -24,6 +25,16 @@ def match_details(request, match_id):
 		
     WHERE MATCH_ID = %s
     """
+    query2="""SELECT PLAYER_ID,(SELECT (FIRST_NAME||' '||LAST_NAME) FROM PERSON PR WHERE PR.PERSONID=S.PLAYER_ID) NAME , TOTAL_RUNS AS RUN ,TOTAL_BALLS_FACED AS BALL,TOTAL_SIXES_HIT AS SIX,TOTAL_FOURS_HIT AS FOUR  FROM SCORECARD S
+	WHERE match_id=%s
+	AND player_id IN (	SELECT PLAYERID player_id from player where team_id =(	SELECT team1_id from match
+	where match_id=%s))
+	ORDER by player_id
+"""
+    query3="""
+ SELECT (SELECT team_name from team t where t.team_id=m.team1_id) name   from match m
+	where match_id=%s
+"""
 
 
     # Execute the PL/SQL query to fetch team details
@@ -32,10 +43,18 @@ def match_details(request, match_id):
         match = cursor.fetchone()  # Fetch the result
         match_winner=cursor.callfunc('Find_Match_Winner',str,[match_id])
         highest_scorer=cursor.callfunc('Find_Highest_Scorer',str,[match_id])
+        cursor.execute(query2,[match_id,match_id])
+        first_team_batting=cursor.fetchall()
+        cursor.execute(query3, [match_id])
+        first_team_name=cursor.fetchone()[0]
+
+
 
     context = {
         'match': match,
         'match_winner':match_winner,
         'highest_scorer':highest_scorer,
+        'first_team_batting':first_team_batting,
+        'first_team_name':first_team_name,
     }
     return render(request, 'matches/match_details.html', context)

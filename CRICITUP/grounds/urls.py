@@ -11,4 +11,6 @@ urlpatterns = [
     # path('teams/', views.teams, name='teams'),
     # path('players/',views.players,name='players'),
     path('', views.grounds, name='grounds'),
+    path('grounds/<int:venue_id>/', views.ground_details, name='ground_details'),
+
 ]

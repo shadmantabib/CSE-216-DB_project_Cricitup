@@ -177,6 +177,8 @@
     
                     <tr>
                       <th class="player-image-cell" style="text-align: center;">
+                        <a href="{% url 'grounds:ground_details' venue_id=ground.0 %}">
+
                           <img src="{% if ground.4 %}{% static 'cricitup/images/'|add:ground.4 %}{% else %}{% static 'cricitup/images/default.jpg' %}{% endif %}" alt="{{ player.0 }}" class="player-image">
                         </a>
                     </th>
