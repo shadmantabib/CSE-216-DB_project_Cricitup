@@ -1,8 +1,11 @@
 from django.shortcuts import render
 from django.db import connection
+from django.db import transaction
 
 def matches_view(request):
     with connection.cursor() as cursor:
+        
+        
         query = """
         SELECT MATCH_ID,
                (SELECT TEAM_NAME FROM TEAM T WHERE T.TEAM_ID=M.TEAM1_ID) || ' vs ' ||
@@ -11,6 +14,10 @@ def matches_view(request):
         """
         cursor.execute(query)
         results = cursor.fetchall()
+     
+
+    
+
 
     context = {'matches': results}
     return render(request, 'matches/matches.html', context)
@@ -86,6 +93,7 @@ SELECT SUM(TOTAL_RUNS) AS RUN  FROM SCORECARD S
         match = cursor.fetchone()  # Fetch the result
         match_winner=cursor.callfunc('Find_Match_Winner',str,[match_id])
         highest_scorer=cursor.callfunc('Find_Highest_Scorer',str,[match_id])
+
         cursor.execute(query2,[match_id,match_id])
         first_team_batting=cursor.fetchall()
         cursor.execute(query3, [match_id])

@@ -108,7 +108,16 @@
     label, input, button {
         margin-bottom: 10px;
     }
+    .small-logo {
+        width: 150px; /* Adjust the value to your desired width */
+        height: 150; /* Automatically adjust the height based on the aspect ratio */
+    }
     
+    .site-logo {
+        margin-right: 10px; /* Add some space between the logo and the navigation links */
+    }
+  
+  
   </style>
   
   
@@ -140,7 +149,7 @@
         <div class="d-flex align-items-center">
           <div class="site-logo">
             <a href="index.html">
-              <img src="{% static 'cricitup/images/logo.png' %}" alt="Logo"/>
+              <img src="{% static 'cricitup/images/logo.png' %}" alt="Logo" class="small-logo round-logo"/> 
             </a>
           </div>
           <div class="ml-auto">
@@ -169,7 +178,31 @@
 
     <style>
         /* Other styles... */
-        
+        .gorgeous-table {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.gorgeous-table th {
+    background-color: #3498db; /* Header background color */
+    color: white; /* Header text color */
+}
+
+.gorgeous-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2; /* Even row background color */
+}
+
+.gorgeous-table tbody tr:hover {
+    background-color: #0ef959; /* Hover row background color */
+}
+
+.gorgeous-table tbody td {
+    padding: 10px;
+}
+
+.gorgeous-table tbody td:first-child {
+    font-weight: bold;
+}
         .site-content {
             padding-top: 150px; /* Adjust the value as needed */
         }
@@ -190,6 +223,7 @@
             font-style: italic;
             color: black; /* Change the color to black */
         }
+    
       </style>
     
 <head>
@@ -198,27 +232,104 @@
     <title>Team Detail</title>
 </head>
 <body>
-    <div class="site-content">
-        <div class="team-info-container">
-          <h1>Team Detail</h1>
-          <p>Team ID: {{ team.0 }}</p>
-          <p>Team Name: {{ team.1 }}</p>
-          <p>Hosted Series Count: {{ hosted_series_count }}</p>
-          <p>Win Series Count: {{ win_series_count }}</p>
-          
-            <!-- <p>Stat ID: {{ team_stats_row.0 }}</p> -->
-            <p>Wins: {{ team_stats_row.1|default_if_none:0 }}</p>
-            <p>Losses: {{ team_stats_row.2|default_if_none:0 }}</p>
-            <p>Draws: {{ team_stats_row.3|default_if_none:0 }}</p>
-            <p>Abandoned: {{ team_stats_row.4|default_if_none:0 }}</p>
-            <p>Not Played: {{ team_stats_row.5|default_if_none:0 }}</p>
-            <p>Points: {{ team_stats_row.6|default_if_none:0 }}</p>
-          
-          <!-- <p><strong>Series Count:</strong> {{ series_count }}</p> -->
-        </body>
-          <!-- Add more details about the team here -->
-        </div>
-      </div>
+  <div class="site-content">
+    <div class="team-info-container">
+        <h1>Team Detail</h1>
+        <table class="table table-bordered table-striped table-hover gorgeous-table" style="width: 50%; margin-bottom: 90px;">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Attribute</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Team ID</td>
+                    <td>{{ team.0 }}</td>
+                </tr>
+                <tr>
+                    <td>Team Name</td>
+                    <td>{{ team.1 }}</td>
+                </tr>
+                <tr>
+                    <td>Hosted Series Count</td>
+                    <td>{{ hosted_series_count }}</td>
+                </tr>
+                <tr>
+                    <td>Win Series Count</td>
+                    <td>{{ win_series_count }}</td>
+                </tr>
+                <tr>
+                    <td>Wins</td>
+                    <td>{{ team_stats_rows.1 }}</td>
+                </tr>
+                <tr>
+                    <td>Losses</td>
+                    <td>{{ team_stats_rows.2 }}</td>
+                </tr>
+                <tr>
+                    <td>Points</td>
+                    <td>{{ team_stats_rows.3 }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        
+
+        <h1>Matches Played By Team</h1>
+        <table class="table table-bordered table-striped table-hover gorgeous-table" style="width: 50%; margin-bottom: 90px;">
+          <thead class="thead-dark">
+                <tr>
+                    <th>Match Name</th>
+                    <th>Ground</th>
+                    <th>Show Details</th>
+                </tr>
+            </thead>
+            <tbody>
+            
+                {% for match in all_matches %}
+                <tr>
+                    <td>{{ match.1 }}</td>
+                    <td>{{ match.5 }}</td>
+                    <td>
+                      <a href="{% url 'matches:match_details' match_id=match.0 %}" class="btn btn-primary btn-sm">Show Details</a>
+                  </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <h1>All Players</h1>
+            <table class="table table-bordered table-striped table-hover gorgeous-table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Player Image</th>
+                        <th>Name</th>
+                        <th>Nationality</th>
+                        <th>Player Type</th>
+                        <th>Age</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for player in players %}
+                    <tr>
+                        <td class="player-image-cell" style="text-align: center; margin-bottom: 90px;">
+                            <a href="{% url 'players:players_details' player_id=player.5 %}">
+                                <img src="{% if player.4 %}{% static 'cricitup/images/'|add:player.4 %}{% else %}{% static 'cricitup/images/default.jpg' %}{% endif %}" alt="{{ player.0 }}" class="player-image">
+                            </a>
+                        </td>
+                        <td><h5 style="color: black;"><b>{{ player.0 }}</b></h5></td>
+                        <td><h5 style="color: black;">{{ player.1 }}</h5></td>
+                        <td><h5 style="color: black;">{{ player.2 }}</h5></td>
+                        <td><h5 style="color: black;">{{ player.3 }}</h5></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+    </div>
+</div>
+
 </body>
 <script src="{% static 'cricitup/js/jquery-3.3.1.min.js' %}"></script>
       <script src="{% static 'cricitup/js/jquery-migrate-3.0.1.min.js' %}"></script>
