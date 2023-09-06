@@ -1,0 +1,218 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Cricitup &mdash; L2-T2 Database</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'cricitup/fonts/icomoon/style.css' %}">
+
+    <link rel="stylesheet" href="{% static 'cricitup/css/bootstrap/bootstrap.css' %}" />
+    <link rel="stylesheet" href="{% static 'cricitup/css/jquery-ui.css' %}" />
+    <link rel="stylesheet" href="{% static 'cricitup/css/owl.carousel.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'cricitup/css/owl.theme.default.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'cricitup/css/owl.theme.default.min.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'cricitup/css/jquery.fancybox.min.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'cricitup/css/bootstrap-datepicker.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'cricitup/fonts/flaticon/font/flaticon.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'cricitup/css/aos.css' %}">
+
+    <link rel="stylesheet" href="{% static 'cricitup/css/style.css' %}" />
+
+</head>
+
+<body>
+    <style>
+        .middle-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            /* Adjust this value as needed */
+        }
+    </style>
+
+    <div class="site-wrap">
+
+        <div class="site-mobile-menu site-navbar-target">
+            <div class="site-mobile-menu-header">
+                <div class="site-mobile-menu-close">
+                    <span class="icon-close2 js-menu-toggle"></span>
+                </div>
+            </div>
+            <div class="site-mobile-menu-body"></div>
+        </div>
+
+        <header class="site-navbar py-4" role="banner">
+            <div class="container">
+                <div class="d-flex align-items-center">
+                    <div class="site-logo">
+                        <a href="index.html">
+                            <img src="{% static 'cricitup/images/logo.png' %}" alt="Logo" />
+                        </a>
+                    </div>
+                    <div class="ml-auto">
+                        <nav class="site-navigation position-relative text-right" role="navigation">
+                            <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
+                                <li><a href="{% url 'home' %}" class="nav-link"></a></li>
+                                <li class="active"><a href="{% url 'players:players' %}" class="nav-link">Players</a>
+                                </li>
+                                <li><a href="{% url 'grounds:grounds' %}" class="nav-link">Ground</a></li>
+                                <li><a href="{% url 'coaches:coaches' %}" class="nav-link">Coaches</a></li>
+                                <li><a href="{% url 'umpires:umpires' %}" class="nav-link">Umpires</a></li>
+                                <li><a href="{% url 'teams:teams' %}" class="nav-link">Teams</a></li>
+                                <li><a href="{% url 'matches:matches' %}" class="nav-link">Matches</a></li>
+                            </ul>
+                        </nav>
+                        <a href="#"
+                            class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black float-right text-white">
+                            <span class="icon-menu h3 text-white"></span>
+                        </a>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="middle-content">
+            <div class="signup-form">
+                <h2>ENTER SERIES DETAILS</h2>
+                <div class="form-row">
+                <form method="POST" class="register-form" id="register-form" enctype="multipart/form-data">
+                        {% csrf_token %}    
+                    <div class="form-input">
+                        <label for="team1_opp" class="required">Select First Team:</label>
+                        <input list="team1_opp" name="team1" id="team1" required/>
+                        <datalist id="team1_opp">
+                            {% for t in team %}
+                                <option>{{ t.team_name }}</option>
+                            {% endfor %}
+                        </datalist>
+                    </div>
+                    <div class="form-input">
+                        <label for="team2_opp" class="required">Select Second Team</label>
+                        <input list="team2_opp" name="team2" id="team2" required/>
+                        <datalist id="team2_opp">
+                            {% for t in team %}
+                                <option>{{ t.team_name }}</option>
+                            {% endfor %}
+                        </datalist>
+                    </div>
+                    <div class="form-input">
+                        <label for="series_name_in" class="required">Select Series</label>
+                        <input list="series_name_in" name="s_name_in" id="s_name_in" required/>
+                        <datalist id="series_name_in">
+                            {% for s in series %}
+                                <option>{{ s.series_name }}</option>
+                            {% endfor %}
+
+
+                        </datalist>
+                    </div>
+
+                </div>
+                <div class="form-input">
+                    <label for="ground_add_opp" class="required">Select Ground</label>
+                    <input list="ground_add_opp" name="in_ground" id="in_ground" required/>
+                    <datalist id="ground_add_opp">
+                        {% for g in ground %}
+                            <option>{{ g.ground_name }}</option>
+                        {% endfor %}
+
+
+                    </datalist>
+                </div>
+                <div class="form-input">
+                    <label for="weather" class="required">Weather</label>
+                    <input type="text" name="weather" id="weather" />
+                </div>
+               
+               
+                <div class="form-input">
+                    <label for="ump_1">Select Umpire 1 </label>
+                    <input list="ump_1" name="ump1" id="ump1"/>
+                    <datalist id="ump_1">
+                        {% for u in umpire %}
+                            <option>{{ u.fullname }}</option>
+                        {% endfor %}
+
+
+                    </datalist>
+                </div>
+                <div class="form-input">
+                    <label for="ump_2">Select Umpire 2 </label>
+                    <input list="ump_2" name="ump2" id="ump2"/>
+                    <datalist id="ump_2">
+                        {% for u in umpire %}
+                            <option>{{ u.fullname }}</option>
+                        {% endfor %}
+
+
+                    </datalist>
+                </div>
+                <div class="form-input">
+                    <label for="ump_3">Select Umpire 3 </label>
+                    <input list="ump_3" name="ump3" id="ump3"/>
+                    <datalist id="ump_3">
+                        {% for u in umpire %}
+                            <option>{{ u.fullname }}</option>
+                        {% endfor %}
+
+                    </datalist>
+                </div>
+                <div class="form-input">
+                    <label for="match_date" class="required">MATCH_DATE</label>
+                    <input type="date" name="match_date" id="match_date" placeholder="DD-MON-YYYY"/>
+               </div>
+                <div class="form-input">
+                    <label for="player_score" class="required">PLAYER SCORE</label>
+                    <input type="file" name="player_score" id="player_score" required/>
+                </div>
+
+                
+
+               
+
+                <div class="form-submit">
+                    <input type="submit" value="Reset All" class="submit" name="reset" id="reset" />
+                    <input type="submit" value="Submit Form" class="submit" name="submit" id="submit" />
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    
+    
+
+    <script src="{% static 'cricitup/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'cricitup/js/jquery-migrate-3.0.1.min.js' %}"></script>
+    <script src="{% static 'cricitup/js/jquery-ui.js' %}"></script>
+    <script src="{% static 'cricitup/js/popper.min.js' %}"></script>
+    <script src="{% static 'cricitup/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'cricitup/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'cricitup/js/jquery.stellar.min.js' %}"></script>
+    <script src="{% static 'cricitup/js/jquery.countdown.min.js' %}"></script>
+    <script src="{% static 'cricitup/js/bootstrap-datepicker.min.js' %}"></script>
+    <script src="{% static 'cricitup/js/jquery.easing.1.3.js' %}"></script>
+    <script src="{% static 'cricitup/js/aos.js' %}"></script>
+    <script src="{% static 'cricitup/js/jquery.fancybox.min.js' %}"></script>
+    <script src="{% static 'cricitup/js/jquery.sticky.js' %}"></script>
+    <script src="{% static 'cricitup/js/jquery.mb.YTPlayer.min.js' %}"></script>
+    <script src="{% static 'cricitup/js/jquery-3.3.1.min.js' %}"></script>
+
+
+
+</body>
+
+</html>
