@@ -71,10 +71,25 @@
       </div>
     </header>
     <style>
-          .small-logo {
+          
+      .blur-background {
+        background-image: url('https://www.cricketworld.com/media/img/a/d/125564.jpg');
+        background-size: cover;
+        backdrop-filter: blur(50px); /* Adjust the blur level as needed */
+      }
+      .small-logo {
         width: 150px; /* Adjust the value to your desired width */
         height: 150; /* Automatically adjust the height based on the aspect ratio */
     }
+    .table.table-bordered.table-dark.table-hover {
+      background-color: transparent;
+      border-color: transparent; /* Optional: Make borders transparent as well */
+  }
+  
+  /* Make the text inside the table cells white for better readability */
+  .table.table-bordered.table-dark.table-hover tbody tr td {
+      color: white;
+  }
     
     .site-logo {
         margin-right: 10px; /* Add some space between the logo and the navigation links */
@@ -150,7 +165,7 @@
       <h1>Grounds</h1>
 
     </section> -->
-
+    <div class="site-wrap blur-background">
       <section class="ftco-section">
         <div class="container">
           <div class="row justify-content-center">
@@ -196,6 +211,7 @@
         </div>
         </div>
       </div>
+    </div>
       </section>
       
       </section>

@@ -153,6 +153,19 @@
     
       setInterval(showNextImage, 1500); // Change image every 5 seconds
     </script>
+    <script>
+      // Your JavaScript code here
+      document.getElementById('openVideo').addEventListener('click', function (event) {
+        event.preventDefault();
+        document.getElementById('videoBox').classList.remove('hidden');
+      });
+  
+      document.addEventListener('click', function (event) {
+        if (event.target !== document.getElementById('videoBox')) {
+          document.getElementById('videoBox').classList.add('hidden');
+        }
+      });
+    </script>
 
     
     <!--<div class="container">
@@ -192,7 +205,23 @@
       </div>
     </div>
   -->
-
+    <style>
+      #videoBox {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        z-index: 9999; /* Ensure it's above other content */
+        padding: 20px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+      }
+      
+      .hidden {
+        display: none;
+      }
+      </style>
+      
     <<div class="latest-news">
       <div class="container">
         <div class="row">
@@ -203,12 +232,34 @@
         <div class="row no-gutters">
           <div class="col-md-4">
             <div class="post-entry">
-              <a href="#">
-                <img src="{%static 'cricitup/images/img_1.jpg'%}" alt="Image" class="img-fluid">
+              <a href="https://www.hindustantimes.com/cricket/pakistan-vs-bangladesh-live-score-asia-cup-2023-super-four-pak-vs-ban-match-scorecard-gaddafi-stadium-lahore-101693979151937.html">
+                <img src="{%static 'cricitup/images/pakbdresized.jpg'%}" alt="Image" class="img-fluid">
               </a>
               <div class="caption">
                 <div class="caption-inner">
-                  <h3 class="mb-3">Romolu to stay at Real Nadrid?</h3>
+                  <h3 class="mb-3">Pakistan world class bowling attack smashes bd</h3>
+                  <div class="author d-flex align-items-center">
+                    <div class="img mb-2 mr-3">
+                      <img src="{%static 'cricitup/images/person_1.jpg'%}"  alt="">
+                    </div>
+                    <div class="text">
+                      <h4>Mellissa Allison</h4>
+                      <span>May 19, 2020 &bullet; Sports</span>
+                    </div>
+                  </div>
+                </div>
+              </div> 
+            </div>
+          </div>
+          
+          <div class="col-md-4">
+            <div class="post-entry">
+              <a href="https://www.cricbuzz.com/cricket-series/4905/india-tour-of-bangladesh-2022">
+                <img src="{%static 'cricitup/images/indbd.jpg'%}" alt="Image" class="img-fluid">
+              </a>
+              <div class="caption">
+                <div class="caption-inner">
+                  <h3 class="mb-3">bd vs ind?another upset or uprise?</h3>
                   <div class="author d-flex align-items-center">
                     <div class="img mb-2 mr-3">
                       <img src="{%static 'cricitup/images/person_1.jpg'%}"  alt="">
@@ -224,33 +275,12 @@
           </div>
           <div class="col-md-4">
             <div class="post-entry">
-              <a href="#">
-                <img src="{%static 'cricitup/images/img_3.jpg'%}" alt="Image" class="img-fluid">
+              <a href="https://www.aljazeera.com/sports/liveblog/2023/9/2/live-pakistan-vs-india-asia-cup-2023">
+                <img src="{%static 'cricitup/images/indpakr.jpg'%}"  alt="Image" class="img-fluid">
               </a>
               <div class="caption">
                 <div class="caption-inner">
-                  <h3 class="mb-3">Kai Nets Double To Secure Comfortable Away Win</h3>
-                  <div class="author d-flex align-items-center">
-                    <div class="img mb-2 mr-3">
-                      <img src="{%static 'cricitup/images/person_1.jpg'%}"  alt="">
-                    </div>
-                    <div class="text">
-                      <h4>Mellissa Allison</h4>
-                      <span>May 19, 2020 &bullet; Sports</span>
-                    </div>
-                  </div>
-                </div>
-              </div> 
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="post-entry">
-              <a href="#">
-                <img src="{%static 'cricitup/images/img_2.jpg'%}"  alt="Image" class="img-fluid">
-              </a>
-              <div class="caption">
-                <div class="caption-inner">
-                  <h3 class="mb-3">Dogba set for Juvendu return?</h3>
+                  <h3 class="mb-3">Indo Pak rivalry reached another level</h3>
                   <div class="author d-flex align-items-center">
                     <div class="img mb-2 mr-3">
                       <img src="{%static 'cricitup/images/person_1.jpg'%}"  alt="">
@@ -281,26 +311,26 @@
                 <div class="widget-vs">
                   <div class="d-flex align-items-center justify-content-around justify-content-between w-100">
                     <div class="team-1 text-center">
-                      <img src="{%static 'cricitup/images/logo_1.png'%}"  alt="Image">
-                      <h3>Football League</h3>
+                      <img src="{%static 'cricitup/images/bd.png'%}"  alt="Image">
+                      <h3>BANGLADESH</h3>
                     </div>
                     <div>
                       <span class="vs"><span>VS</span></span>
                     </div>
                     <div class="team-2 text-center">
-                      <img src="{%static 'cricitup/images/logo_2.png'%}"  alt="Image">
-                      <h3>Soccer</h3>
+                      <img src="{%static 'cricitup/images/SL.png'%}"  alt="Image">
+                      <h3>SRI LANKA</h3>
                     </div>
                   </div>
                 </div>
               </div>
 
               <div class="text-center widget-vs-contents mb-4">
-                <h4>World Cup League</h4>
+                <h4>ASIA CUP</h4>
                 <p class="mb-5">
-                  <span class="d-block">December 20th, 2020</span>
+                  <span class="d-block">SEPTEMBER 9, 2023</span>
                   <span class="d-block">9:30 AM GMT+0</span>
-                  <strong class="text-primary">New Euro Arena</strong>
+                  <strong class="text-primary">COLOMBO</strong>
                 </p>
 
                 <div id="date-countdown2" class="pb-1"></div>
@@ -308,87 +338,27 @@
             </div>
           </div>
           <div class="col-lg-6">
-            
             <div class="widget-next-match">
               <table class="table custom-table">
-                <thead>
-                  <tr>
-                    <th>P</th>
-                    <th>Team</th>
-                    <th>W</th>
-                    <th>D</th>
-                    <th>L</th>
-                    <th>PTS</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td><strong class="text-white">Football League</strong></td>
-                    <td>22</td>
-                    <td>3</td>
-                    <td>2</td>
-                    <td>140</td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td><strong class="text-white">Soccer</strong></td>
-                    <td>22</td>
-                    <td>3</td>
-                    <td>2</td>
-                    <td>140</td>
-                  </tr>
-                  <tr>
-                    <td>3</td>
-                    <td><strong class="text-white">Juvendo</strong></td>
-                    <td>22</td>
-                    <td>3</td>
-                    <td>2</td>
-                    <td>140</td>
-                  </tr>
-                  <tr>
-                    <td>4</td>
-                    <td><strong class="text-white">French Football League</strong></td>
-                    <td>22</td>
-                    <td>3</td>
-                    <td>2</td>
-                    <td>140</td>
-                  </tr>
-                  <tr>
-                    <td>5</td>
-                    <td><strong class="text-white">Legia Abante</strong></td>
-                    <td>22</td>
-                    <td>3</td>
-                    <td>2</td>
-                    <td>140</td>
-                  </tr>
-                  <tr>
-                    <td>6</td>
-                    <td><strong class="text-white">Gliwice League</strong></td>
-                    <td>22</td>
-                    <td>3</td>
-                    <td>2</td>
-                    <td>140</td>
-                  </tr>
-                  <tr>
-                    <td>7</td>
-                    <td><strong class="text-white">Cornika</strong></td>
-                    <td>22</td>
-                    <td>3</td>
-                    <td>2</td>
-                    <td>140</td>
-                  </tr>
-                  <tr>
-                    <td>8</td>
-                    <td><strong class="text-white">Gravity Smash</strong></td>
-                    <td>22</td>
-                    <td>3</td>
-                    <td>2</td>
-                    <td>140</td>
-                  </tr>
-                </tbody>
+                  <thead>
+                      <tr>
+                          <th>Team Rank</th>
+                          <th>Team Name</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      {% for team in teams %}
+                      <tr>
+                          <td>{{ team.Team_rank }}</td>
+                          <td class="highlight-team">
+                              <a href="{% url 'teams:team_detail' team_id=team.Team_id %}">{{ team.Team_Name }}</a>
+                          </td>
+                      </tr>
+                      {% endfor %}
+                  </tbody>
               </table>
-            </div>
+          </div>
+          
 
           </div>
         </div>
@@ -414,39 +384,39 @@
           <div class="owl-4-slider owl-carousel">
             <div class="item">
               <div class="video-media">
-                <img src="{%static 'cricitup/images/img_1.jpg'%}"  alt="Image" class="img-fluid">
-                <a href="https://vimeo.com/139714818" class="d-flex play-button align-items-center" data-fancybox>
+                <img src="{%static 'cricitup/images/pakbdresized.jpg'%}"  alt="Image" class="img-fluid">
+                <a href="https://www.youtube.com/watch?v=tStfqP3gc54" class="d-flex play-button align-items-center" data-fancybox>
                   <span class="icon mr-3">
                     <span class="icon-play"></span>
                   </span>
                   <div class="caption">
-                    <h3 class="m-0">Dogba set for Juvendu return?</h3>
+                    <h3 class="m-0">Ban vs Pak </h3>
                   </div>
                 </a>
               </div>
             </div>
             <div class="item">
               <div class="video-media">
-                <img src="{%static 'cricitup/images/img_2.jpg'%}" alt="Image" class="img-fluid">
-                <a href="https://vimeo.com/139714818" class="d-flex play-button align-items-center" data-fancybox>
+                <img src="{%static 'cricitup/images/indbd.jpg'%}" alt="Image" class="img-fluid">
+                <a href="https://www.youtube.com/watch?v=T7BMndEDYLc" class="d-flex play-button align-items-center" data-fancybox>
                   <span class="icon mr-3">
                     <span class="icon-play"></span>
                   </span>
                   <div class="caption">
-                    <h3 class="m-0">Kai Nets Double To Secure Comfortable Away Win</h3>
+                    <h3 class="m-0">Ban vs Ind </h3>
                   </div>
                 </a>
               </div>
             </div>
             <div class="item">
               <div class="video-media">
-                <img src="{%static 'cricitup/images/img_3.jpg'%}" alt="Image" class="img-fluid">
-                <a href="https://vimeo.com/139714818" class="d-flex play-button align-items-center" data-fancybox>
+                <img src="{%static 'cricitup/images/indpakr.jpg'%}" alt="Image" class="img-fluid">
+                <a href="https://www.youtube.com/watch?v=0H51GDlLZQY" class="d-flex play-button align-items-center" data-fancybox>
                   <span class="icon mr-3">
                     <span class="icon-play"></span>
                   </span>
                   <div class="caption">
-                    <h3 class="m-0">Romolu to stay at Real Nadrid?</h3>
+                    <h3 class="m-0">India vs Pakistan</h3>
                   </div>
                 </a>
               </div>
@@ -454,50 +424,38 @@
   
             <div class="item">
               <div class="video-media">
-                <img src="{%static 'cricitup/images/img_1.jpg'%}" alt="Image" class="img-fluid">
-                <a href="https://vimeo.com/139714818" class="d-flex play-button align-items-center" data-fancybox>
+                <img src="{%static 'cricitup/images/themer.jpg'%}" alt="Image" class="img-fluid">
+                <a href="https://www.youtube.com/watch?v=SUjjby1X5_s" class="d-flex play-button align-items-center" data-fancybox>
                   <span class="icon mr-3">
                     <span class="icon-play"></span>
                   </span>
                   <div class="caption">
-                    <h3 class="m-0">Dogba set for Juvendu return?</h3>
+                    <h3 class="m-0">Theme Song</h3>
                   </div>
                 </a>
               </div>
             </div>
             <div class="item">
               <div class="video-media">
-                <img src="{%static 'cricitup/images/img_2.jpg'%}" alt="Image" class="img-fluid">
-                <a href="https://vimeo.com/139714818" class="d-flex play-button align-items-center" data-fancybox>
+                <img src="{%static 'cricitup/images/pakslr.jpg'%}" alt="Image" class="img-fluid">
+                <a href="https://www.youtube.com/watch?v=jmi946vEL38" class="d-flex play-button align-items-center" data-fancybox>
                   <span class="icon mr-3">
                     <span class="icon-play"></span>
                   </span>
                   <div class="caption">
-                    <h3 class="m-0">Kai Nets Double To Secure Comfortable Away Win</h3>
+                    <h3 class="m-0">pak vs SL</h3>
                   </div>
                 </a>
               </div>
             </div>
-            <div class="item">
-              <div class="video-media">
-                <img src="{%static 'cricitup/images/img_3.jpg'%}" alt="Image" class="img-fluid">
-                <a href="https://vimeo.com/139714818" class="d-flex play-button align-items-center" data-fancybox>
-                  <span class="icon mr-3">
-                    <span class="icon-play"></span>
-                  </span>
-                  <div class="caption">
-                    <h3 class="m-0">Romolu to stay at Real Nadrid?</h3>
-                  </div>
-                </a>
-              </div>
-            </div>
+            
   
           </div>
   
         </div>
       </div>
   
-      <div class="container site-section">
+      <!-- <div class="container site-section">
         <div class="row">
           <div class="col-6 title-section">
             <h2 class="heading">Our Blog</h2>
@@ -531,7 +489,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
   
   
   
@@ -592,15 +550,7 @@
           <div class="row text-center">
             <div class="col-md-12">
               <div class=" pt-5">
-                <p>
-                  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                  Copyright &copy;
-                  <script>
-                    document.write(new Date().getFullYear());
-                  </script> All rights reserved | This template is made with <i class="icon-heart"
-                    aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                </p>
+              
               </div>
             </div>
   

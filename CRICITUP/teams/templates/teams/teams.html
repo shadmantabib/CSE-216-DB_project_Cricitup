@@ -115,7 +115,11 @@
     label, input, button {
         margin-bottom: 10px;
     }
-    
+      .blur-background {
+          background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6QfdKBPFyQv2W73nueXLPdJ-nzrgoUnS8L1mbYqfq5_IxaF2oWP5URtqqhSwGno0tlmE&usqp=CAU');
+          background-size: cover;
+          backdrop-filter: blur(50px); /* Adjust the blur level as needed */
+        }
   </style>
   
   
@@ -191,11 +195,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {% for team in teams %}
+                        {% for teamp in teams %}
                             <tr>
-                                <td>{{ team.Team_rank }}</td>
+                                <td>{{ teamp.Team_rank }}</td>
                                 <td class="highlight-team">
-                                    <a href="{% url 'teams:team_detail' team_id=team.Team_id %}">{{ team.Team_Name }}</a>
+                                    <a href="{% url 'teams:team_detail' team_id=teamp.Team_id %}">{{ teamp.Team_Name }}</a>
                                 </td>
                               
                             </tr>

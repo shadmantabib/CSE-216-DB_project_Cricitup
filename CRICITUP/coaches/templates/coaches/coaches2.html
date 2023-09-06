@@ -93,6 +93,11 @@
     </style>
     <style>
         /* Your existing styles... */
+        .blur-background {
+          background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6QfdKBPFyQv2W73nueXLPdJ-nzrgoUnS8L1mbYqfq5_IxaF2oWP5URtqqhSwGno0tlmE&usqp=CAU');
+          background-size: cover;
+          backdrop-filter: blur(50px); /* Adjust the blur level as needed */
+        }
         .content-container {
   margin-top: 140px; /* Adjust the value as needed to move the table down */
 }
@@ -102,6 +107,15 @@
           justify-content: space-between; /* Distribute cards horizontally */
           margin-top: 20px;
         }
+        .table.table-bordered.table-dark.table-hover {
+          background-color: transparent;
+          border-color: transparent; /* Optional: Make borders transparent as well */
+      }
+      
+      /* Make the text inside the table cells white for better readability */
+      .table.table-bordered.table-dark.table-hover tbody tr td {
+          color: white;
+      }
     
   
         .card {
@@ -150,7 +164,7 @@
       <h1>Grounds</h1>
 
     </section> -->
-
+    <div class="site-wrap blur-background">
       <section class="ftco-section">
         <div class="container">
           <div class="row justify-content-center">
@@ -200,7 +214,9 @@
   
       <!-- ... (Your script section remains unchanged) ... -->
   
+      </div>
     </div>
+    </body>
   
     </section>
     

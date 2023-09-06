@@ -35,11 +35,39 @@
       margin: 0;
       padding: 0;
     }
+    .bg-image {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1; /* Place it behind other content */
+      filter: blur(10px); /* Add the blur effect */
+      background-image: url('https://img.freepik.com/premium-vector/concept-batsman-playing-cricket-raises-his-bat-after-scoring-full-century-championship_460848-4001.jpg'); /* Replace with your image URL */
+      background-size: cover; /* Cover the entire viewport */
+      background-repeat: no-repeat; /* Prevent image repetition */
+      background-attachment: fixed; /* Fixed background */
+      opacity: 0.7; /* Adjust opacity as needed */
+  }
+  
+  /* Adjust other styles as needed */
+  body {
+      margin: 0;
+      padding: 0;
+  }
+  
+  .site-wrap {
+      position: relative; /* Ensure content appears above the background image */
+      z-index: 1; /* Place content above the background image */
+      /* Add any other styles for your site content */
+  }
     /* Add any other custom styles here */
   </style>
 </head>
 
 <body>
+  <div class="bg-image"></div>
+
 
   <div class="site-wrap">
 
@@ -123,6 +151,17 @@
           max-width: 100%;
           max-height: 100%;
         }
+        .table.table-bordered.table-dark.table-hover {
+          background-color: transparent;
+          border-color: transparent; /* Optional: Make borders transparent as well */
+      }
+      
+      /* Make the text inside the table cells white for better readability */
+      .table.table-bordered.table-dark.table-hover tbody tr td {
+          color: white;
+      }
+      
+      
       </style>
 
       <section>
