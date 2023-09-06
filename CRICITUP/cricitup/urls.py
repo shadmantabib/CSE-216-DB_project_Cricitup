@@ -35,7 +35,7 @@ urlpatterns = [
     path('addground/', include('addground.urls', namespace='addground')),
     path('addteam/', include('addteam.urls', namespace='addteam')),
     path('addseries/', include('addseries.urls', namespace='addseries')),
-
+    path('addmatch/', include('addmatch.urls', namespace='addmatch')),
     # ...
     path('admin/', admin.site.urls),
 
