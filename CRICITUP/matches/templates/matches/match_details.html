@@ -33,8 +33,39 @@
     .site-content {
         padding-top: 150px; /* Adjust the value as needed */
     }
+ 
 </style>
+<style>
+  /* Add CSS styles for the scorecard table */
+  .scorecard-table {
+      width: 50%;
+      border-collapse: collapse;
+      border: 1px solid #000;
+  }
 
+  .scorecard-table th,
+  .scorecard-table td {
+      padding: 8px;
+      text-align: center;
+      border-bottom: 1px solid #000;
+  }
+
+  .scorecard-table thead {
+      background-color: #3498db; /* Header background color */
+      color: #fff; /* Header text color */
+  }
+
+  .scorecard-table tbody tr:nth-child(even) {
+      background-color: #f2f2f2; /* Even row background color */
+  }
+
+  .scorecard-table tbody tr:hover {
+      background-color: #3498db; /* Hovered row background color */
+      color: #fff; /* Hovered row text color */
+  }
+
+  /* Customize the colors and fonts to your liking */
+</style>
   <style>
     /* Adjust the font size for the navigation menu items */
     .nav-link {
@@ -198,8 +229,7 @@
     <title>Team Detail</title>
 </head>
 <body>
-    <div class="site-content">
-        <div class="team-info-container">
+    <div class="site-content" align="center">
           <h1>Match Detail</h1>
           <p>Match ID: {{ match.0 }}</p>
           <p>Match Name: {{ match.1 }}</p>
@@ -207,11 +237,130 @@
           <p>Weather:{{match.3}} </p>
           <p>Winner:<strong>{{match_winner}}</strong> </p>
           <p>Ground:{{match.5}} </p>
+          <div class="match-details">
+            <h2>Match Details</h2>
+        
+            <!-- Bangladesh Batting Scorecard -->
+            <h3>{{ first_team_name }} Batting Scorecard</h3>
+            <table class="scorecard-table" style="margin-bottom: 50px;">
+              <thead>
+                  <tr>
+                      <th>Player Name</th>
+                      <th>Runs</th>
+                      <th>Balls</th>
+                      <th>4s</th>
+                      <th>6s</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  {% for player in first_team_batting %}
+                  <tr>
+                      <td>{{ player.1 }}</td>
+                      <td>{{ player.2 }}</td>
+                      <td>{{ player.3 }}</td>
+                      <td>{{ player.4 }}</td>
+                      <td>{{ player.5 }}</td>
+                  </tr>
+                  {% endfor %}
+              </tbody>
+          </table>
+            <div>
+              <section></section>
+            </div>
+            <!-- Bangladesh Bowling Scorecard -->
+            <h3>{{ first_team_name }} Bowling Scorecard</h3>
+            <table class="scorecard-table" style="margin-bottom: 50px;">
+                <thead>
+                    <tr>
+                        <th>Player Name</th>
+                        <th>Given Runs</th>
+                        <th>Overs</th>
+                        <th>Wickets</th>
+                        <th>Maidens</th>
+                        <!-- Add more columns for additional bowling stats as needed -->
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for player in first_team_bowling %}
+                    <tr>
+                        <td>{{ player.1 }}</td>
+                        <td>{{ player.4 }}</td>
+                        <td>{{ player.2 }}</td>
+                        <td>{{ player.3 }}</td>
+                        <td>{{ player.5 }}</td>
+                        <!-- Add more columns for additional bowling stats as needed -->
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
 
+            <h3>{{ second_team_name }} Batting Scorecard</h3>
+            <table class="scorecard-table" style="margin-bottom: 50px;">
+              <thead>
+                  <tr>
+                      <th>Player Name</th>
+                      <th>Runs</th>
+                      <th>Balls</th>
+                      <th>4s</th>
+                      <th>6s</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  {% for player in second_team_batting %}
+                  <tr>
+                      <td>{{ player.1 }}</td>
+                      <td>{{ player.2 }}</td>
+                      <td>{{ player.3 }}</td>
+                      <td>{{ player.4 }}</td>
+                      <td>{{ player.5 }}</td>
+                  </tr>
+                  {% endfor %}
+              </tbody>
+          </table>
+            <div>
+              <section></section>
+            </div>
+            <!-- Bangladesh Bowling Scorecard -->
+            <h3>{{ second_team_name }} Bowling Scorecard</h3>
+            <table class="scorecard-table" style="margin-bottom: 50px;">
+                <thead>
+                    <tr>
+                        <th>Player Name</th>
+                        <th>Given Runs</th>
+                        <th>Overs</th>
+                        <th>Wickets</th>
+                        <th>Maidens</th>
+                        <!-- Add more columns for additional bowling stats as needed -->
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for player in second_team_bowling %}
+                    <tr>
+                        <td>{{ player.1 }}</td>
+                        <td>{{ player.4 }}</td>
+                        <td>{{ player.2 }}</td>
+                        <td>{{ player.3 }}</td>
+                        <td>{{ player.5 }}</td>
+                        <!-- Add more columns for additional bowling stats as needed -->
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        
+            <!-- India Batting Scorecard -->
+            <!-- Repeat the same structure as above for India's batting and bowling scorecards -->
+        
+            <!-- Total Scores and Winning Team -->
+            <h3>Total Scores and Winning Team</h3>
+            <p>{{ first_team_name }} Total: {{ first_team_score }}</p>
+            <p>{{ second_team_name }} Total: {{ second_team_score }}</p>
+            <p>Winning Team: {{ match_winner }}</p>
+        </div>
+        
 
 
           <!-- Add more details about the team here -->
-        </div>
       </div>
+      
 </body>
 </html>

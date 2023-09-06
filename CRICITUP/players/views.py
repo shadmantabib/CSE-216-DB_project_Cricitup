@@ -3,7 +3,19 @@ from django.db import connection
 
 
 def players(request):
-    return render(request, 'players/players1.html')
+    players = []
+
+    with connection.cursor() as cursor:
+            sql_query = "SELECT (FIRST_NAME ||' '||LAST_NAME) FULL_NAME, NATIONALITY, TYPE, EXTRACT(YEAR FROM SYSDATE) - EXTRACT(YEAR FROM DATE_OF_BIRTH) AGE,IMAGE_URL,PLAYERID FROM PLAYER PL JOIN PERSON PR ON PL.PLAYERID = PR.PERSONID"
+            cursor.execute(sql_query)
+            players = cursor.fetchall()
+
+    context = {
+        'players': players
+    }
+
+    return render(request, 'players/players1.html', context)
+
 
 def get_players_by_country(request):
 
