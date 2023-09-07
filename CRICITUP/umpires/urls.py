@@ -10,5 +10,6 @@ urlpatterns = [
     # path('', views.home, name='home'),
     # path('teams/', views.teams, name='teams'),
     # path('players/',views.players,name='players'),
+     path('umpires/<int:player_id>/', views.umpires_details, name='umpires_details'),
     path('', views.umpires_list, name='umpires'),
 ]

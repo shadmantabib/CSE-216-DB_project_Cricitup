@@ -191,7 +191,7 @@ def addmatch(request):
         )
         for r in umpire_id:
             cursor.execute(
-                "INSERT INTO MATCH_umpire VALUES(:M_ID,:U_ID,)",
+                "INSERT INTO MATCH_umpire VALUES(:M_ID,:U_ID)",
                 {
                     'M_ID': in_match_id,
                     'U_ID': r['um_id'],
@@ -249,7 +249,7 @@ def addmatch(request):
                 
                 except Exception as e:
                     print("Error processing Excel file:", str(e))
-                    # Handle the error or provide a user-friendly error message.
+                  
 
         cursor.close()
 
