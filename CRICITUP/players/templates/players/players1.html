@@ -160,23 +160,54 @@
       .table.table-bordered.table-dark.table-hover tbody tr td {
           color: white;
       }
-      
+      .styled-button {
+    background-color: #3498db;
+    border: none;
+    color: #ffffff;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  /* Style for the button container */
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+
+  /* Hover effect */
+  .styled-button:hover {
+    background-color: #2980b9;
+  }
       
       </style>
 
       <section>
-        
         <div class="form-container">
-          <h1>Player List</h1>
-    <button id="showButton" onclick="toggleInput()">Show Players By Country</button>
-    <div class="toggle-container" id="countryInput">
-        <form action="{% url 'players:get_players_by_country' %}" method="get">
-            <label for="country">Please enter a country:</label>
-            <input type="text" id="country" name="country">
-            <button type="submit">Submit</button>
-        </form>
-    </div>
-    </div>
+          <button id="showButton" onclick="toggleInput()" class="styled-button">Show Players By Country</button>
+          <div class="toggle-container" id="countryInput">
+            <form action="{% url 'players:get_players_by_country' %}" method="get">
+              <label for="country">Please enter a country:</label>
+              <input type="text" id="country" name="country">
+              <button type="submit" class="styled-button">Submit</button>
+            </form>
+          </div>
+        
+          <!-- Button container with cards and hover effects -->
+          <div class="button-container">
+            <div class="card">
+              <button onclick="showPlayersByBattingRank()" class="styled-button">Show Players By Batting Rank</button>
+            </div>
+            <div class="card">
+              <button onclick="showPlayersByBowlingRank()" class="styled-button">Show Players By Bowling Rank</button>
+            </div>
+          </div>
+        </div>
     <script>
         function toggleInput() {
             const countryInput = document.getElementById('countryInput');
@@ -186,6 +217,20 @@
                 countryInput.style.display = 'none';
             }
         }
+        function showPlayersByBattingRank() {
+        // Specify the URL to "player1.html"
+        const battingRankURL = "{% url 'players:get_players_by_batting_rank' %}";
+
+        // Redirect to the new page
+        window.location.href = battingRankURL;
+    }
+    function showPlayersByBowlingRank() {
+        // Specify the URL to "player1.html"
+        const bowlingRankURL = "{% url 'players:get_players_by_bowling_rank' %}";
+
+        // Redirect to the new page
+        window.location.href = bowlingRankURL;
+    }
     </script>
   
         {% if players %}
@@ -238,8 +283,103 @@
         </div>
       </section>
       
-        {% endif %}
       </section>
+      {% endif %}
+      
+      {% if players_batting_rank %}
+          
+      <section class="ftco-section">
+        <div class="container">
+          <div class="row justify-content-center">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="table-wrap">
+                <table class="table table-bordered table-dark table-hover">
+                  <thead>
+                    <tr>
+                    <th>Rank</th>
+                    <th>Player Image</th>
+                    <th>Name</th>
+                    <th>Nationality</th>
+                    <th>Player Type</th>
+                    <th>Age</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for player in players_batting_rank %}
+    
+                    <tr>
+                      <td><h3>{{player.5}}</h3></td>
+                      <th class="player-image-cell" style="text-align: center;">
+                        <a href="{% url 'players:players_details' player_id=player.6 %}">
+                          <img src="{% if player.4 %}{% static 'cricitup/images/'|add:player.4 %}{% else %}{% static 'cricitup/images/default.jpg' %}{% endif %}" alt="{{ player.0 }}" class="player-image">
+                        </a>
+                    </th>
+                      <td><h5><b>{{ player.0 }}</b></h5></td>
+                                <td><h5>{{ player.1 }}</h5></td>
+                                <td><h5>{{ player.2 }}</h5></td>
+                              <td><h5>{{ player.3 }}</h5></td>
+                    </tr>
+                  {% endfor %}
+    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      </section>
+      {% endif %}
+      {% if players_bowling_rank %}
+          
+      <section class="ftco-section">
+        <div class="container">
+          <div class="row justify-content-center">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="table-wrap">
+                <table class="table table-bordered table-dark table-hover">
+                  <thead>
+                    <tr>
+                    <th>Rank</th>
+                    <th>Player Image</th>
+                    <th>Name</th>
+                    <th>Nationality</th>
+                    <th>Player Type</th>
+                    <th>Age</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for player in players_bowling_rank %}
+    
+                    <tr>
+                      <td><h3>{{player.5}}</h3></td>
+                      <th class="player-image-cell" style="text-align: center;">
+                        <a href="{% url 'players:players_details' player_id=player.6 %}">
+                          <img src="{% if player.4 %}{% static 'cricitup/images/'|add:player.4 %}{% else %}{% static 'cricitup/images/default.jpg' %}{% endif %}" alt="{{ player.0 }}" class="player-image">
+                        </a>
+                    </th>
+                      <td><h5><b>{{ player.0 }}</b></h5></td>
+                                <td><h5>{{ player.1 }}</h5></td>
+                                <td><h5>{{ player.2 }}</h5></td>
+                              <td><h5>{{ player.3 }}</h5></td>
+                    </tr>
+                  {% endfor %}
+    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      </section>
+      {% endif %}
+
+
   
       <!-- ... (Your script section remains unchanged) ... -->
   
