@@ -9,16 +9,16 @@ def addmatch(request):
         if request.session['loginstatus']:
 
             cursor = connection.cursor()
-            sql = "SELECT * FROM PLAYER PR, PERSON P WHERE P.PERSONID=PR.PLAYERID"
+            sql = "SELECT P.PERSONID,P.FIRST_NAME,P.LAST_NAME FROM PLAYER PR, PERSON P WHERE P.personId=PR. playerId"
             cursor.execute(sql)
             result = cursor.fetchall()
             cursor.close()
             fullname=""
             player = []
             for r in result:
-                player_id=r[4]
-                first_name = r[5]
-                second_name = r[6]
+                player_id=r[0]
+                first_name = r[1]
+                second_name = r[2]
                 fullname=first_name+" "+second_name
 
                 row = {'player_id': player_id, 'fullname': fullname}

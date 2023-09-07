@@ -21,16 +21,16 @@ def addseries(request):
                 team.append(row)
 
             cursor = connection.cursor()
-            sql = "SELECT * FROM PLAYER PR, PERSON P WHERE P.personId=PR. playerId"
+            sql = "SELECT P.PERSONID,P.FIRST_NAME,P.LAST_NAME FROM PLAYER PR, PERSON P WHERE P.personId=PR. playerId"
             cursor.execute(sql)
             result = cursor.fetchall()
             cursor.close()
             fullname = ""
             player = []
             for r in result:
-                player_id = r[4]
-                first_name = r[5]
-                second_name = r[6]
+                player_id = r[0]
+                first_name = r[1]
+                second_name = r[2]
                 fullname = first_name + " " + second_name
 
                 row = {'player_id': player_id, 'fullname': fullname}
@@ -47,9 +47,12 @@ def addseries(request):
         team2 = request.POST['team2']
         team3 = request.POST['team3']
         team4 = request.POST['team4']
-        part = mots.split(" ")
-        first_name = part[0]
-        last_name = part[1]
+        first_name=""
+        last_name=""
+        if mots:
+            part = mots.split(" ")
+            first_name = part[0]
+            last_name = part[1]
         cursor = connection.cursor()
         cursor.execute("SELECT MAX(Series_ID) FROM Series")
         max_series_id = cursor.fetchone()[0]

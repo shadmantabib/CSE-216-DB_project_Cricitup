@@ -9,7 +9,7 @@ workbook = openpyxl.Workbook()
 sheet = workbook.active
 
 # Define the starting scorecard_id
-start_scorecard_id = 1022
+start_scorecard_id = 700
 
 # Define the column headings
 headings = [
@@ -39,7 +39,7 @@ for person_id in range(1, 7):
     demerit_points = 0
     penalized = 0  # Represent penalized as 0 for False and 1 for True
     tot_catches_taken = random.randint(0, 3)
-    match_id = 16  # Set match ID to 16
+    match_id = 18# Set match ID to 16
 
     # Write data to the sheet
     sheet.append([
@@ -65,7 +65,7 @@ for person_id in range(7, 12):
     demerit_points = random.randint(0, 2)  # Represent demerit_points as integers
     penalized = random.randint(0, 1)  # Represent penalized as 0 for False and 1 for True
     tot_catches_taken = random.randint(0, 2)
-    match_id = 16  # Set match ID to 16
+    match_id = 17 # Set match ID to 16
 
     # Write data to the sheet
     sheet.append([
@@ -78,13 +78,13 @@ for person_id in range(7, 12):
     current_scorecard_id += 1
 
 # Save the workbook to a file
-file_name = 'cricket_data_match_16_with_integer_data2.xlsx'
+file_name = 'cricket_data_match_18_with_integer_data.xlsx'
 workbook.save(file_name)
 
 print(f'Excel file created and populated with integer data: {file_name}')
 
 # Specify the new file path in your working directory
-new_file_path = './copy_of_cricket_data_match_16_with_integer_data2.xlsx'
+new_file_path = './copy_of_cricket_data_match_18_with_integer_data.xlsx'
 
 # Use shutil to make a copy of the file
 shutil.copy(file_name, new_file_path)

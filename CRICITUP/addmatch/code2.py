@@ -2,7 +2,7 @@ import openpyxl
 import random
 
 # Load the existing Excel file
-existing_file_name = 'cricket_data_match_16_with_integer_data2.xlsx'
+existing_file_name = 'cricket_data_match_18_with_integer_data.xlsx'
 workbook = openpyxl.load_workbook(existing_file_name)
 sheet = workbook.active
 
@@ -10,7 +10,7 @@ sheet = workbook.active
 last_row = sheet.max_row
 
 # Initialize scorecard_id for the new players
-start_scorecard_id = 1000 + last_row
+start_scorecard_id = 700 + last_row
 
 # Generate sample data for 6 new batsmen (player_id from 23 to 28)
 for person_id in range(23, 29):
@@ -26,7 +26,7 @@ for person_id in range(23, 29):
     demerit_points = 0
     penalized = 0  # Represent penalized as 0 for False and 1 for True
     tot_catches_taken = random.randint(0, 3)
-    match_id = 16  # Set match ID to 16
+    match_id = 18  # Set match ID to 16
 
     # Append data to the sheet
     sheet.append([
@@ -52,7 +52,7 @@ for person_id in range(29, 34):
     demerit_points = random.randint(0, 2)  # Represent demerit_points as integers
     penalized = random.randint(0, 1)  # Represent penalized as 0 for False and 1 for True
     tot_catches_taken = random.randint(0, 2)
-    match_id = 17  # Set match ID to 16
+    match_id = 18 # Set match ID to 16
 
     # Append data to the sheet
     sheet.append([

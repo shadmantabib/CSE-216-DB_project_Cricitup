@@ -99,16 +99,22 @@
             gap: 20px;
             max-width: 800px;
             margin-top: 20px;
+            margin-bottom: 90px; /* Add margin at the bottom */
+
         }
 
         .player-stats-box {
-            background-color: rgba(45, 22, 123, 0.9); /* RGB color with alpha (0.9 for 90% opacity) */
-            border: 1px solid #0e0000;
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-        }
+    background-color: rgba(45, 22, 123, 0.9); /* RGB color with alpha (0.9 for 90% opacity) */
+    border: 1px solid #0e0000;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    
+    /* Set fixed width and height */
+    width: 200px; /* Adjust the width as needed */
+    height: 150px; /* Adjust the height as needed */
+}
         .player-stat-label {
             font-weight: bold;
             color: #e5bebe;
@@ -128,6 +134,25 @@
             margin: 20px auto;
             max-width: 400px;
         }
+        .batting-stats-container {
+    margin-top: 20px; /* Add some spacing from the content above */
+    text-align: center; /* Center the content horizontally */
+}
+
+/* CSS for the stats-box */
+.stats-box {
+    background-color: #007BFF; /* Background color */
+    color: #fff; /* Text color */
+    border-radius: 8px; /* Rounded corners */
+    padding: 20px; /* Spacing inside the box */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Box shadow for depth */
+}
+
+/* CSS for the batting-stats-label */
+.batting-stats-label {
+    margin: 0;
+    font-size: 1.5rem;
+}
     </style>
 
 
@@ -152,6 +177,14 @@
                 <p>Nationality: {{ player_nationality }}</p>
                 <p>Player Type: {{ player_type }}</p>
                 <p>Age: {{ player_age }}</p>
+            </div>
+
+            <!-- New Batting Stats Grid -->
+            <div class="batting-stats-container">
+                <div class="stats-box">
+                    <h2 class="batting-stats-label">Batting Stats</h2>
+                    <!-- Your batting stats can go here -->
+                </div>
             </div>
             
             <div class="player-stats-container">
@@ -192,6 +225,50 @@
                     <p class="player-stat-value">{{ player_stat.8 }}</p>
                 </div>
             </div>
+            {% if bowling_stat.0 != 0 %}
+
+            <div class="batting-stats-container">
+                <div class="stats-box">
+                    <h2 class="batting-stats-label">Bowling Stats</h2>
+                    <!-- Your batting stats can go here -->
+                </div>
+            </div>
+            
+            <div class="player-stats-container">
+                <div class="player-stats-box">
+                    <p class="player-stat-label">Wicket</p>
+                    <p class="player-stat-value">{{ bowling_stat.0 }}</p>
+                </div>
+                <div class="player-stats-box">
+                    <p class="player-stat-label">Five Wickets</p>
+                    <p class="player-stat-value">{{ bowling_stat.1 }}</p>
+                </div>
+                <div class="player-stats-box">
+                    <p class="player-stat-label">Total Over</p>
+                    <p class="player-stat-value">{{ bowling_stat.2 }}</p>
+                </div>
+                <div class="player-stats-box">
+                    <p class="player-stat-label">Total Run Given</p>
+                    <p class="player-stat-value">{{ bowling_stat.6 }}</p>
+                </div>
+                <div class="player-stats-box">
+                    <p class="player-stat-label">Hattricks</p>
+                    <p class="player-stat-value">{{ bowling_stat.5 }}</p>
+                </div>
+                <div class="player-stats-box">
+                    <p class="player-stat-label">Average</p>
+                    <p class="player-stat-value">{{ bowling_stat.3 }}</p>
+                </div>
+                <div class="player-stats-box">
+                    <p class="player-stat-label">Bowling Strike Rate</p>
+                    <p class="player-stat-value">{{ bowling_stat.4 }}</p>
+                </div>
+              
+              
+                
+            </div>
+            {% endif %}
+
         </div>
     </div>
 </body>
