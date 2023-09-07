@@ -15,6 +15,7 @@ def team_records(request):
     team_records = [{'Team_id': team[0], 'Team_Name': team[1],'Team_rank':team[3]} for team in teams]
 
     return render(request, 'teams/teams.html', {'teams': team_records})
+    return render(request, 'cricitup/index.html', {'teams': team_records})
 
 def team_detail(request, team_id):
     # Execute the SQL query to fetch team details
@@ -74,4 +75,5 @@ SELECT MATCH_ID,
         }
         
     return render(request, 'teams/team_detail.html', context)
+
 

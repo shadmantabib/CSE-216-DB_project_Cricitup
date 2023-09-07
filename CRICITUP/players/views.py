@@ -79,7 +79,7 @@ def players_details(request, player_id):
 
     }
     
-    return render(request, 'players/players_details.html', context)
+    return render(request, 'players/pd.html', context)
 
 
 def show_all_players(request):

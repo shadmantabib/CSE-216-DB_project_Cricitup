@@ -354,7 +354,7 @@
                     <thead class="thead-dark">
                         <tr>
                             <th>Match Name</th>
-                            <th>Ground</th>
+                            
                             <th>Show Details</th>
                         </tr>
                     </thead>
@@ -362,7 +362,7 @@
                         {% for match in matches %}
                         <tr>
                             <td>{{ match.1 }}</td>
-                            <td>{{ match.5 }}</td>
+                            
                             <td>
                                 <a href="{% url 'matches:match_details' match_id=match.0 %}" class="btn btn-primary btn-sm">Show Details</a>
                             </td>

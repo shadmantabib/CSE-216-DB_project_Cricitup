@@ -9,7 +9,11 @@ workbook = openpyxl.Workbook()
 sheet = workbook.active
 
 # Define the starting scorecard_id
+<<<<<<< HEAD
 start_scorecard_id = 700
+=======
+start_scorecard_id = 1022
+>>>>>>> 6a831770a3ec40cda03060ef7fe30c1c39e80cec
 
 # Define the column headings
 headings = [
@@ -78,13 +82,21 @@ for person_id in range(7, 12):
     current_scorecard_id += 1
 
 # Save the workbook to a file
+<<<<<<< HEAD
 file_name = 'cricket_data_match_18_with_integer_data.xlsx'
+=======
+file_name = 'cricket_data_match_16_with_integer_data2.xlsx'
+>>>>>>> 6a831770a3ec40cda03060ef7fe30c1c39e80cec
 workbook.save(file_name)
 
 print(f'Excel file created and populated with integer data: {file_name}')
 
 # Specify the new file path in your working directory
+<<<<<<< HEAD
 new_file_path = './copy_of_cricket_data_match_18_with_integer_data.xlsx'
+=======
+new_file_path = './copy_of_cricket_data_match_16_with_integer_data2.xlsx'
+>>>>>>> 6a831770a3ec40cda03060ef7fe30c1c39e80cec
 
 # Use shutil to make a copy of the file
 shutil.copy(file_name, new_file_path)
