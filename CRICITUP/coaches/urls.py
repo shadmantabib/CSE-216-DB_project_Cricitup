@@ -7,5 +7,6 @@ urlpatterns = [
     # path('', views.home, name='home'),
     # path('teams/', views.teams, name='teams'),
     # path('players/',views.players,name='players'),
+    path('coaches/<int:player_id>/', views.coaches_details, name='coaches_details'),
     path('', views.coaches_list, name='coaches'),
 ]

@@ -120,6 +120,36 @@
           background-size: cover;
           backdrop-filter: blur(50px); /* Adjust the blur level as needed */
         }
+        .custom-table {
+          width: 100%;
+          border-collapse: collapse;
+          border: 5px solid #fc0505; /* Golden border */
+          margin-top: 20px;
+          font-size: 32px; /* Adjust the font size as needed */
+          background-color: #291B2C; /* Dark purple background */
+          color: #f4f2f2; /* Golden text color */
+          border-radius: 10px;
+        }
+    
+        /* Style the table header */
+        .custom-table th {
+          background-color: #091D35; /* Dark blue header background */
+          color: #7c0404; /* Golden header text color */
+          font-size: 36px; /* Adjust the font size as needed */
+          border: 2px solid #ff0000; /* Golden border for header cells */
+        }
+    
+        /* Style the table rows */
+        .custom-table td {
+          text-align: center;
+          padding: 10px;
+          border: 2px solid #ff0400; /* Golden border for data cells */
+        }
+    
+        /* Add hover effect */
+        .custom-table tr:hover {
+          background-color: #172B49; /* Darker background on hover */
+        }
   </style>
   
   
@@ -183,7 +213,7 @@
     </style>
 
 
-    <div class="container mt-5">
+    <div class="container mt-5 mb-5">
         <div class="row justify-content-center">
             <div class="col-lg-8 text-center" style="margin-top: 300px;">
                 <h2>Team Records</h2>

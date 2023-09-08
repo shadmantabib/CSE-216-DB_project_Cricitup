@@ -37,10 +37,14 @@
 
     <style>
         /* Adjust the font size for the navigation menu items */
+        .nav-link {
+            font-size: 36px;
+            /* You can adjust the value as needed */
+        }
         .site-content {
             padding-top: 50px;
         }
-    
+
         /* Team information container */
         .team-info-container {
             margin-top: 150px;
@@ -52,13 +56,13 @@
             text-align: center;
             color: #020000;
         }
-    
+
         .team-info-container h1 {
             font-weight: bold;
             font-style: italic;
             color: black;
         }
-    
+
         /* Player image */
         .player-image {
             max-width: 300px;
@@ -66,13 +70,13 @@
             border-radius: 10px;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
         }
-    
+
         /* Player information */
         .player-info {
             margin-top: 20px;
             font-size: 18px;
         }
-    
+
         /* Royal look for additional info */
         .royal-info {
             background-color: #220000;
@@ -81,30 +85,6 @@
             margin-top: 10px;
             border-radius: 10px;
             font-size: 24px;
-        }
-    
-        /* Table styles */
-        .gorgeous-table {
-            background-color: #461717; /* Royal red background color */
-            color: gold; /* Text color */
-            font-weight: bold; /* Bold font */
-        }
-    
-        .gorgeous-table th,
-        .gorgeous-table td {
-            border-color: gold; /* Table cell border color */
-        }
-    
-        .gorgeous-table thead th {
-            background-color: #220000; /* Header background color */
-        }
-    
-        .gorgeous-table tbody tr:nth-child(even) {
-            background-color: #551d1d; /* Even row background color */
-        }
-    
-        .gorgeous-table tbody tr:nth-child(odd) {
-            background-color: #461717; /* Odd row background color */
         }
     </style>
 
@@ -147,12 +127,13 @@
                                 <li class="active"><a href="{% url 'players:players' %}" class="nav-link">Players</a></li>
                                 <!--- <li><a href="blog.html" class="nav-link">Blog</a></li>-->
                                  <!--- <li><a href="contact.html" class="nav-link">Contact</a></li>-->
-                               
+                                
                                 <li><a href="{% url 'coaches:coaches' %}" class="nav-link">Coaches</a></li>
                                 <li><a href="{% url 'umpires:umpires' %}" class="nav-link">Umpires</a></li>
-                                <li><a href="{% url 'teams:teams' %}" class="nav-link">Teams</a></li>
                                 <li ><a href="{% url 'grounds:grounds' %}" class="nav-link">Ground</a></li>
+                                <li><a href="{% url 'teams:teams' %}" class="nav-link">Teams</a></li>      
                                 <li><a href="{% url 'matches:matches' %}" class="nav-link">Matches</a></li>
+                                
 
                             </ul>
                         </nav>
@@ -166,42 +147,28 @@
 
         </header>
 
-    
-    <div class="site-content">
-        <div class="team-info-container">
-            {% if player_image_url %}
-            <img src="{% static 'cricitup/images/'|add:player_image_url %}" alt="{{ player_name }}" class="player-image" width="300" height="400">
-            {% else %}
-            <img src="{% static 'cricitup/images/default.jpg' %}" alt="{{ player_name }}" class="player-image" width="300" height="400">
-            {% endif %}
-            <h1>{{ player_name }}</h1>
-            <div class="royal-info">Nationality: {{ player_nationality }}</div>
-            <div class="royal-info">Age: {{ player_age }}</div>
-            <div class="royal-info">Total Match conducted: {{player_stat.0}}</div>
-            <h1>Matches Conducted By the Umpire</h1>
-            <table class="table table-bordered table-striped table-hover gorgeous-table" style="width: 50%; margin-bottom: 90px;margin-left: 500px">
-            <thead class="thead-dark">
-                  <tr>
-                      <th>Match Name</th>
-                      <th>Ground</th>
-                      <th>Show Details</th>
-                  </tr>
-              </thead>
-              <tbody>
-              
-                  {% for match in all_matches %}
-                  <tr>
-                      <td>{{ match.1 }}</td>
-                      <td>{{ match.2 }}</td>
-                      <td>
-                        <a href="{% url 'matches:match_details' match_id=match.0 %}" class="btn btn-primary btn-sm">Show Details</a>
-                    </td>
-                  </tr>
-                  {% endfor %}
-              </tbody>
-          </table>
-    
+        <style>
+            /* Other styles... */
+
+      
+        </style>
+        <div class="site-content">
+            <div class="team-info-container">
+                {% if player_image_url %}
+                <img src="{% static 'cricitup/images/'|add:player_image_url %}" alt="{{ player_name }}" class="player-image" width="300" height="400">
+                {% else %}
+                <img src="{% static 'cricitup/images/default.jpg' %}" alt="{{ player_name }}" class="player-image" width="300" height="400">
+                {% endif %}
+                <h1>{{ player_name }}</h1>
+                <div class="royal-info">Nationality: {{ player_nationality }}</div>
+                <div class="royal-info">Age: {{ player_age }}</div>
+                
+                <!-- Royal look for additional info -->
+                <div class="royal-info">Teams Coached: {{ player_coach }}</div>
+                <div class="royal-info">Starting Career: {{ player_career }}</div>
+            </div>
         </div>
+    
         
     </div>
   

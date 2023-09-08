@@ -40,75 +40,103 @@
     .nav-link {
       font-size: 36px; /* You can adjust the value as needed */
     }
-    
-      .hero {
-        position: relative;
-        height: 1235px;
-        overflow: hidden;
-      }
-    
-      .hero img {
-        position: absolute;
-        width:1920px;
-        height:1235px;
-        opacity: 0;
-        transition: opacity 1s ease-in-out;
-      }
-      .form-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100vh; /* Adjust the height as needed */
+
+    .hero {
+      position: relative;
+      height: 1235px;
+      overflow: hidden;
     }
+
+    .hero img {
+      position: absolute;
+      width: 1920px;
+      height: 1235px;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .form-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh; /* Adjust the height as needed */
+    }
+
     .card-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    margin-top: 20px;
-}
-.player-image {
-        max-width: 100px; /* Adjust the maximum width as needed */
-        height: auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .player-image {
+      max-width: 100px; /* Adjust the maximum width as needed */
+      height: auto;
     }
 
     .card {
-    border: 1px solid #ccc;
-    padding: 15px;
-    border-radius: 5px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    width: calc(33.33% - 20px); /* Adjust the width as needed */
-    background-color: white;
-    transition: transform 0.3s ease-in-out;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
+      border: 1px solid #ccc;
+      padding: 15px;
+      border-radius: 5px;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+      width: calc(33.33% - 20px); /* Adjust the width as needed */
+      background-color: white;
+      transition: transform 0.3s ease-in-out;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
 
-.card-image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 150px; /* Adjust the height as needed */
-}
+    .card-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 150px; /* Adjust the height as needed */
+    }
 
-.card-image img {
-    max-width: 100%;
-    max-height: 100%;
-}
+    .card-image img {
+      max-width: 100%;
+      max-height: 100%;
+    }
 
-.card:hover {
-    transform: translateY(-5px);
-}
+    .card:hover {
+      transform: translateY(-5px);
+    }
 
     /* Additional styling for the form elements if desired */
     form {
-        text-align: center;
+      text-align: center;
     }
-    label, input, button {
-        margin-bottom: 10px;
+
+    label,
+    input,
+    button {
+      margin-bottom: 10px;
     }
-    
+
+    /* Custom table styles */
+    .custom-table {
+      font-size: 24px; /* Larger font size */
+      color: gold; /* Text color */
+      background-color: black; /* Background color */
+    }
+
+    .custom-table thead th {
+      background-color: black; /* Header background color */
+    }
+
+    .custom-table tbody tr:nth-child(even) {
+      background-color: black; /* Even row background color */
+    }
+
+    .custom-table tbody tr:nth-child(odd) {
+      background-color: black; /* Odd row background color */
+    }
+
+    .highlight-team a {
+      color: gold; /* Highlighted link color */
+    }
   </style>
   
   
@@ -175,7 +203,7 @@
     </style>
 
 
-    <div class="container mt-5">
+    <div class="container mt-5 mb-5">
         <div class="row justify-content-center">
             <div class="col-lg-8 text-center" style="margin-top: 300px;">
                 <h2>Match  Records</h2>
