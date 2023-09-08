@@ -26,6 +26,8 @@
   <link rel="stylesheet" href="{% static 'cricitup/css/aos.css' %}">
   
   <link rel="stylesheet" href="{% static 'cricitup/css/style.css' %}"/>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 </head>
 
 <body>
@@ -169,12 +171,24 @@
             background-color: #3498db;
             color: #fff;
         }
+        .scrollable-box {
+            max-height: 200px; /* Adjust the maximum height as needed */
+            overflow-y: auto;
+            border: 1px solid #ccc;
+        }
+        #showStatsBtn {
+  background-color: #007bff; /* Change the background color */
+  color: white; /* Change the text color */
+  border: none; /* Remove the border */
+  padding: 10px 20px; /* Add padding to make the button larger */
+  border-radius: 5px; /* Add rounded corners */
+}
+
       </style>
     <!-- <section>
       <h1>Grounds</h1>
 
     </section> -->
-
       <section class="ftco-section">
         <div class="container">
           <div class="row justify-content-center">
@@ -182,206 +196,162 @@
               <div class ="content-container">
 
               <h2 class="heading-section">Welcome To Dream11</h2>
-              <h1>Select Your Dream11 Team</h1>
-    <p>Click on players to select them:</p>
-    <input type="text" id="playerSearch" placeholder="Search by name">
-
-    <div class="player-selection">
-        <!-- Player items will be dynamically added here -->
-
-
-
-        <script>
-          document.addEventListener("DOMContentLoaded", function() {
-            const selectedPlayers = [];
-
-// Get the list of players from Django context
-const players = [
-    {% for player in players %}
-        "{{ player.0 }}",
-    {% endfor %}
-];
-const playerSelectionContainer = document.querySelector(".player-selection");
-const selectedPlayersTable = document.getElementById("selectedPlayersTable").getElementsByTagName('tbody')[0];
-
-// Function to create player items and add click event
-function createPlayerItem(player) {
-    const playerItem = document.createElement("div");
-    playerItem.textContent = player;
-    playerItem.className = "player-item";
-    // Add a click event listener to toggle selection
-    playerItem.addEventListener("click", () => {
-        playerItem.classList.toggle("selected-player");
-        const playerName = playerItem.textContent;
-        const playerId = getPlayerIdByName(playerName);
-
-        if (selectedPlayers.includes(playerName)) {
-            selectedPlayers.splice(selectedPlayers.indexOf(playerName), 1);
-            removeFromDream11(playerId);
-        } else {
-            selectedPlayers.push(playerName);
-            addToDream11(playerId);
-        }
-
-        // Update the selected players table
-        updateSelectedPlayersTable();
-    });
-
-    playerSelectionContainer.appendChild(playerItem);
-}
-
-// Function to add a player to the dream11 table
-function addToDream11(playerId) {
-      alert(playerId)
-    fetch('/add_player_to_dream11/', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRFToken': getCookie('csrftoken'), // Make sure to include the CSRF token
-        },
-        body: JSON.stringify({ playerId }),
-    })
-    .then(response => {
-        if (response.ok) {
-            // Player added successfully
-        } else {
-           alert('Failed to add player to dream11');
-        }
-    })
-    .catch(error => {
-      alert("error: "+error)
-        console.error('Error:', error);
-    });
-}
-
-// Function to remove a player from the dream11 table
-function removeFromDream11(playerId) {
-    fetch('/remove_player_from_dream11/', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRFToken': getCookie('csrftoken'), // Make sure to include the CSRF token
-        },
-        body: JSON.stringify({ playerId }),
-    })
-    .then(response => {
-        if (response.ok) {
-            // Player removed successfully
-        } else {
-            console.error('Failed to remove player from dream11');
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
-}
-
-// Function to get the player ID by name
-function getPlayerIdByName(playerName) {
-    // Implement logic to find the player ID based on the player's name.
-    // You can loop through your player data to find the player ID.
-    // Replace this with your actual implementation.
-    fetch('/get_player_id_by_name/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRFToken': getCookie('csrftoken'), // Include CSRF token
-            },
-            body: JSON.stringify({ playerName }),
-            
-        })
-        .then(response => response.json())
-        .then(data => {
-            // Handle the response data, which should contain the player ID
-            const playerId = data;
-            alert('playerid: '+playerId)
-            return playerId;
-        })
-        .catch(error => {
-          alert(error)
-            console.error('Error:', error);
-        });
-}
-
-// Function to update the selected players table
-function updateSelectedPlayersTable() {
-    // Clear the existing table rows
-    selectedPlayersTable.innerHTML = '';
-
-    // Add the selected players to the table
-    selectedPlayers.forEach((player) => {
-        const row = selectedPlayersTable.insertRow();
-        const cell = row.insertCell(0);
-        cell.textContent = player;
-    });
-}
-
-// Function to get the CSRF token from cookies
-function getCookie(name) {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) 
-    {
-      const csrfToken = parts.pop().split(';').shift();
-        return csrfToken;
-    }
+              <input type="text" id="playerSearch" placeholder="Search players">
     
-}
-
-// Populate the player selection box
-players.forEach((player) => {
-    createPlayerItem(player);
-});
-
-// Get the search input element
-const playerSearchInput = document.getElementById("playerSearch");
-
-// Function to filter players based on search input
-function filterPlayers() {
-    const searchText = playerSearchInput.value.toLowerCase();
-    const playerItems = document.querySelectorAll(".player-item");
-
-    playerItems.forEach((playerItem) => {
-        const playerName = playerItem.textContent;
-        if (playerName.includes(searchText)) {
-            playerItem.style.display = "block";
-        } else {
-            playerItem.style.display = "none";
-        }
-    });
-}
-
-// Add a keyup event listener to the search input
-playerSearchInput.addEventListener("keyup", filterPlayers);
-    // Your JavaScript code here
-});
-          // Define an array to store selected players
-          
-      </script>
-
-          </div>
-      </div>
-      </section>
-      
-      </section>
-      
-    <div>
-      <h1>Selected Players</h1>
-      <table id="selectedPlayersTable">
-        <thead>
-            <tr>
-                <th>Selected Players</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Selected players will be added here -->
-        </tbody>
-    </table>
-      
+              <form id="playerForm" method="POST" action="{% url 'dream11:add_player_to_dream11' %}">
+                {% csrf_token %}
+                <!-- Loop through the players dictionary and generate checkboxes -->
+                <div class="scrollable-box">
+                    {% for player in players %}
+                        <label>
+                            <input type="checkbox" name="playerName" value="{{ player.5 }}"> {{ player.0 }}
+                        </label><br>
+                    {% endfor %}
+                </div>
+                <input type="submit" value="Add Selected Players">
+            </form>
+            {% if message %}
+<div class="alert alert-danger">
+    {{ message }}
+</div>
+{% endif %}
+              {% if dream11players %}
+              <div class="site-section">
+                <div class="container">
+                  <div class="row justify-content-center">
+                    <div class="col-md-12">
+                      <div align="center">
+                      <h2 class="heading-section" >Dream11 Player Table</h2></div>
+                      {%if counts %}
+                      <h4 align="center">Current Player Count: {{counts}}</h4>
+                      {%endif%}
+                      <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Player Image</th>
+                                    <th>Name</th>
+                                    <th>Nationality</th>
+                                    <th>Player Type</th>
+                                    <th>Age</th>
+                                    <th>Actions</th> <!-- Add a new column for actions -->
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for player in dream11players %}
+                                <tr>
+                                    <th class="player-image-cell" style="text-align: center;">
+                                        <a href="{% url 'players:players_details' player_id=player.5 %}">
+                                            <img src="{% if player.4 %}{% static 'cricitup/images/'|add:player.4 %}{% else %}{% static 'cricitup/images/default.jpg' %}{% endif %}" alt="{{ player.0 }}" class="player-image">
+                                        </a>
+                                    </th>
+                                    <td><h5><b>{{ player.0 }}</b></h5></td>
+                                    <td><h5>{{ player.1 }}</h5></td>
+                                    <td><h5>{{ player.2 }}</h5></td>
+                                    <td><h5>{{ player.3 }}</h5></td>
+                                    <td>
+                                        <button class="btn btn-danger" onclick="removePlayer('{{ player.5 }}')">Remove</button>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div align="center">
+                      <button id="resetTableBtn" onclick="restTable()" class="btn btn-primary" >Reset Table</button>
+                    </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-  
+             
+            {% if counts == 11 %}
+            <div align="center" style="margin-top: 20px;"> <!-- Add margin-top to create space between buttons -->
+              <button id="showStatsBtn" onclick="showStats()" class="btn btn-secondary">Get The Stats</button>
+            </div>
+            {% endif %}
+
+
+            <div>
+              {% if position%}
+              <h1>Your Teams Virtual Rank is : {{position}}</h1>
+              <h2>Batting Rating: {{dream11stats.0}}</h2>
+              <h2>Bowling Rating: {{dream11stats.1}}</h2>
+              <h2>Total Rating: {{dream11stats.2}}</h2>
+
+              {%endif%}
+            </div>
+
+
+
+            </div>
+            
+
+
+              {%endif%}
+      
       <!-- ... (Your script section remains unchanged) ... -->
-  
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const playerForm = document.getElementById('playerForm');
+        
+            playerForm.addEventListener('submit', function (event) {
+                event.preventDefault(); // Prevent form submission
+        
+                // Get all selected checkboxes
+                const selectedCheckboxes = document.querySelectorAll('input[name="playerName"]:checked');
+        
+                // Create an array to store selected player names
+                const selectedPlayerIds = [];
+        
+                // Iterate through selected players and add to the list
+                selectedCheckboxes.forEach(function (checkbox) {
+                    const playerId = checkbox.value;
+                    selectedPlayerIds.push(playerId);
+                });
+        
+                // Submit the form with selected player IDs
+                playerForm.submit();
+            });
+        
+            $(document).ready(function() {
+                $("#playerSearch").on("keyup", function() {
+                    var searchText = $(this).val().toLowerCase();
+                    $(".scrollable-box label").each(function() {
+                        var playerName = $(this).text().toLowerCase();
+                        var checkbox = $(this).find("input[type=checkbox]");
+                        
+                        if (playerName.includes(searchText)) {
+                            $(this).show();
+                            checkbox.prop("disabled", false);
+                        } else {
+                            $(this).hide();
+                            checkbox.prop("disabled", true);
+                        }
+                    });
+                });
+            });
+        });
+
+        function restTable()
+        {
+          const resetUrl="{% url 'dream11:reset_dream11' %}";
+          window.location.href = resetUrl;
+
+        }
+        function removePlayer(playerId) {
+    const resultUrl = `{% url 'dream11:removePlayer' playerId=0 %}`.replace('0', playerId);
+    window.location.href = resultUrl;
+}
+    function showStats()
+    {
+      const resetUrl="{% url 'dream11:showStats' %}";
+      window.location.href = resetUrl;
+
+
+    }
+    </script>
+    
     </div>
   
     </section>

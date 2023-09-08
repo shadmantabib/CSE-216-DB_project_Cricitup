@@ -1162,3 +1162,210 @@ VALUES (329, 65, 0, 0, 0, 28, 30, 0, 0, 0, 3, 0, 0, 0, 15);
 -- Player 22
 INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
 VALUES (330, 66, 0, 0, 0, 30, 35, 0, 0, 2, 4, 0, 0, 0, 15);
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (133, 45, 0, 0, 0, 75, 85, 0, 0, 1, 12, 0, 0, 0, 7);
+
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (134, 46, 0, 0, 0, 32, 40, 0, 0, 1, 3, 0, 0, 0, 7);
+
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (135, 47, 0, 0, 0, 48, 60, 0, 0, 2, 5, 0, 0, 0, 7);
+
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (136, 48, 0, 0, 0, 60, 50, 0, 0, 1, 8, 0, 0, 0, 7);
+
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (137, 49, 0, 0, 0, 42, 30, 0, 0, 0, 6, 0, 0, 0, 7);
+
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (138, 50, 0, 0, 0, 18, 20, 0, 0, 0, 2, 0, 0, 0, 7);
+
+-- England Bowlers
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (139, 51, 10.0, 1, 45, 4, 8, 2, 0, 0, 0, 0, 0, 0, 7);
+
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (140, 52, 10.0, 3, 40, 18, 16, 0, 0, 0, 3, 0, 0, 0, 7);
+
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (141, 53, 10.0, 2, 38, 12, 8, 2, 0, 0, 1, 0, 0, 0, 7);
+
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (142, 54, 10.0, 1, 50, 14, 12, 2, 0, 0, 2, 0, 0, 0, 7);
+
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (143, 55, 10.0, 1, 60, 6, 8, 2, 0, 0, 0, 0, 0, 0, 7);
+-- Australia Batsmen
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (144, 34, 0, 0, 0, 85, 90, 0, 0, 1, 13, 0, 0, 0, 7);
+
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (145, 35, 0, 0, 0, 42, 60, 0, 0, 1, 5, 0, 0, 0, 7);
+
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (146, 36, 0, 0, 0, 58, 70, 0, 0, 2, 6, 0, 0, 0, 7);
+
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (147, 37, 0, 0, 0, 62, 55, 0, 0, 1, 7, 0, 0, 0, 7);
+
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (148, 38, 0, 0, 0, 40, 30, 0, 0, 0, 4, 0, 0, 0, 7);
+
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (149, 39, 0, 0, 0, 22, 18, 0, 0, 0, 3, 0, 0, 0, 7);
+
+-- Australia Bowlers
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (150, 40, 10.0, 2, 48, 5, 10, 3, 0, 0, 0, 0, 0, 0, 7);
+
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (151, 41, 10.0, 0, 32, 8, 12, 2, 0, 0, 1, 0, 0, 0, 7);
+
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (152, 42, 10.0, 1, 40, 12, 10, 0, 0, 0, 2, 0, 0, 0, 7);
+
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (153, 43, 10.0, 0, 52, 6, 10, 1, 0, 0, 1, 0, 0, 0, 7);
+
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (154, 44, 10.0, 2, 56, 7, 8, 2, 0, 0, 0, 0, 0, 0, 7);
+-- England Batsmen
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (155, 45, 0, 0, 0, 78, 85, 0, 0, 1, 9, 0, 0, 0, 8);
+
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (156, 46, 0, 0, 0, 62, 70, 0, 0, 2, 5, 0, 0, 0, 8);
+
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (157, 47, 0, 0, 0, 42, 45, 0, 0, 0, 5, 0, 0, 0, 8);
+
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (158, 48, 0, 0, 0, 60, 55, 0, 0, 1, 7, 0, 0, 0, 8);
+
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (159, 49, 0, 0, 0, 35, 30, 0, 0, 0, 3, 0, 0, 0, 8);
+
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (160, 50, 0, 0, 0, 40, 25, 0, 0, 1, 5, 0, 0, 0, 8);
+
+-- England Bowlers
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (161, 51, 10.0, 1, 36, 9, 10, 2, 0, 0, 1, 0, 0, 0, 8);
+
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (162, 52, 10.0, 2, 48, 7, 8, 2, 0, 0, 0, 0, 0, 0, 8);
+
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (163, 53, 10.0, 0, 30, 10, 10, 0, 0, 0, 2, 0, 0, 0, 8);
+
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (164, 54, 10.0, 2, 50, 5, 8, 2, 0, 0, 0, 0, 0, 0, 8);
+
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (165, 55, 10.0, 0, 32, 6, 12, 1, 0, 0, 0, 0, 0, 0, 8);
+
+
+-- Australia Batsmen
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (166, 34, 0, 0, 0, 72, 80, 0, 0, 1, 8, 0, 0, 0, 8);
+
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (167, 35, 0, 0, 0, 68, 70, 0, 0, 2, 6, 0, 0, 0, 8);
+
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (168, 36, 0, 0, 0, 45, 55, 0, 0, 0, 4, 0, 0, 0, 8);
+
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (169, 37, 0, 0, 0, 50, 40, 0, 0, 1, 5, 0, 0, 0, 8);
+
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (170, 38, 0, 0, 0, 60, 50, 0, 0, 0, 7, 0, 0, 0, 8);
+
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (171, 39, 0, 0, 0, 40, 30, 0, 0, 1, 4, 0, 0, 0, 8);
+
+-- Australia Bowlers
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (172, 40, 10.0, 1, 45, 9, 10, 2, 0, 0, 1, 0, 0, 0, 8);
+
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (173, 41, 10.0, 2, 55, 8, 10, 1, 0, 0, 0, 0, 0, 0, 8);
+
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (174, 42, 10.0, 0, 38, 12, 10, 0, 0, 0, 2, 0, 0, 0, 8);
+
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (175, 43, 10.0, 1, 42, 7, 5, 0, 0, 0, 1, 0, 0, 0, 8);
+
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (176, 44, 10.0, 2, 40, 6, 8, 0, 0, 0, 0, 0, 0, 0, 8);
+-- England Batsmen
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (177, 45, 0, 0, 0, 85, 80, 0, 0, 0, 12, 0, 0, 0, 9);
+
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (178, 46, 0, 0, 0, 68, 75, 0, 0, 2, 8, 0, 0, 0, 9);
+
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (179, 47, 0, 0, 0, 42, 50, 0, 0, 1, 5, 0, 0, 0, 9);
+
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (180, 48, 0, 0, 0, 55, 60, 0, 0, 0, 6, 0, 0, 0, 9);
+
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (181, 49, 0, 0, 0, 62, 55, 0, 0, 1, 7, 0, 0, 0, 9);
+
+-- England Bowlers
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (182, 50, 10.0, 1, 55, 12, 15, 1, 0, 0, 1, 0, 0, 0, 9);
+
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (183, 51, 10.0, 2, 40, 8, 12, 0, 0, 0, 0, 0, 0, 0, 9);
+
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (184, 52, 10.0, 0, 50, 10, 10, 1, 0, 0, 2, 0, 0, 0, 9);
+
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (185, 53, 10.0, 1, 55, 7, 10, 0, 0, 0, 1, 0, 0, 0, 9);
+
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (186, 54, 10.0, 1, 40, 5, 8, 0, 0, 0, 0, 0, 0, 0, 9);
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (187, 55, 0, 0, 0, 18, 20, 0, 0, 0, 3, 0, 0, 0, 9);
+
+-- Australia Batsmen
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (188, 34, 0, 0, 0, 42, 50, 0, 0, 1, 5, 0, 0, 0, 9);
+
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (189, 35, 0, 0, 0, 28, 35, 0, 0, 0, 3, 0, 0, 0, 9);
+
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (190, 36, 0, 0, 0, 18, 25, 0, 0, 0, 2, 0, 0, 0, 9);
+
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (191, 37, 0, 0, 0, 32, 40, 0, 0, 0, 3, 0, 0, 0, 9);
+
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (192, 38, 0, 0, 0, 14, 20, 0, 0, 0, 1, 0, 0, 0, 9);
+
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (193, 39, 0, 0, 0, 7, 10, 0, 0, 0, 1, 0, 0, 0, 9);
+
+-- Australia Bowlers
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (194, 40, 4.0, 1, 28, 2, 3, 0, 1, 0, 0, 0, 0, 0, 9);
+
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (195, 41, 5.0, 2, 35, 1, 2, 1, 0, 0, 0, 0, 0, 0, 9);
+-- Australia Batsmen (Continued)
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (196, 42, 0, 0, 0, 12, 15, 0, 0, 0, 0, 0, 0, 0, 9);
+
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (197, 43, 0, 0, 0, 18, 25, 0, 0, 0, 3, 0, 0, 0, 9);
+
+INSERT INTO Scorecard (Scorecard_id, Player_id, Overs_Bowled, Taken_Wickets, Given_Total_Runs, Total_Runs, Total_Balls_Faced, Given_Extras, Maiden_Overs_Given, Total_Sixes_Hit, Total_Fours_Hit, Demerit_Points, Penalized, Total_Catches_Taken, Match_id)
+VALUES (198, 44, 0, 0, 0, 10, 15, 0, 0, 0, 2, 0, 0, 0, 9);
+
+
