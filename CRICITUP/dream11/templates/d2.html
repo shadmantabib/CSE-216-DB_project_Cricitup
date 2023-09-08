@@ -62,10 +62,10 @@
                  <!--- <li><a href="contact.html" class="nav-link">Contact</a></li>-->
                 <li ><a href="{% url 'grounds:grounds' %}" class="nav-link">Ground</a></li>
                 <li ><a href="{% url 'coaches:coaches' %}" class="nav-link">Coaches</a></li>
-                <li class="active"><a href="{% url 'umpires:umpires' %}" class="nav-link">Umpires</a></li>
+                <li ><a href="{% url 'umpires:umpires' %}" class="nav-link">Umpires</a></li>
                 <li><a href="{% url 'teams:teams' %}" class="nav-link">Teams</a></li>
                 <li><a href="{% url 'matches:matches' %}" class="nav-link">Matches</a></li>
-                <li><a href="{% url 'dream11:make_your_dream11' %}" class="nav-link">Dream11</a></li>
+                <li class="active"><a href="{% url 'dream11:make_your_dream11' %}" class="nav-link">Dream11</a></li>
 
               </ul>
             </nav>
@@ -101,7 +101,7 @@
     <style>
         /* Your existing styles... */
         .content-container {
-  margin-top: 140px; /* Adjust the value as needed to move the table down */
+  margin-top: 0px; /* Adjust the value as needed to move the table down */
 }
         .card-container {
           display: flex;
@@ -173,20 +173,7 @@
             background-color: #3498db;
             color: #fff;
         }
-        .scrollable-box {
-            max-height: 200px; /* Adjust the maximum height as needed */
-            overflow-y: auto;
-            border: 1px solid #ccc;
-        }
-        #showStatsBtn {
-  background-color: #007bff; /* Change the background color */
-  color: white; /* Change the text color */
-  border: none; /* Remove the border */
-  padding: 10px 20px; /* Add padding to make the button larger */
-  border-radius: 5px; /* Add rounded corners */
-  
-}
-.center-container {
+        .center-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -196,6 +183,63 @@
 .chart-container {
   width: 400px; /* Adjust the width as needed */
   height: 400px; /* Adjust the height as needed */
+}
+        #showStatsBtn {
+  background-color: #007bff; /* Change the background color */
+  color: white; /* Change the text color */
+  border: none; /* Remove the border */
+  padding: 10px 20px; /* Add padding to make the button larger */
+  border-radius: 5px; /* Add rounded corners */
+  .scrollable-box {
+    max-height: 200px; /* Adjust the maximum height as needed */
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #333; /* Dark background color */
+    color: white; /* Text color */
+    border-radius: 5px;
+  }
+
+}
+.scrollable-box {
+    max-height: 300px; /* Adjust the maximum height as needed */
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #333; /* Dark background color */
+    color: white; /* Text color */
+    border-radius: 5px;
+}
+
+.scrollable-box .player-list {
+    list-style: none;
+    padding: 0;
+}
+
+.scrollable-box .player-item {
+    margin: 5px 0;
+    padding: 5px;
+    border: 1px solid #555; /* Border color */
+    background-color: #444; /* Background color */
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+
+.scrollable-box label {
+    display: block;
+    margin: 5px 0;
+    padding: 5px;
+    border: none;
+}
+
+.scrollable-box input[type="checkbox"] {
+    margin-right: 5px;
+    vertical-align: middle;
+}
+.scrollable-box .player-item:hover {
+    background-color: #555; /* Hover background color */
+    color: white; /* Text color on hover */
 }
 
       </style>
@@ -208,13 +252,17 @@
           <div class="row justify-content-center">
             <!-- <div class="col-md-6 text-center mb-5"> -->
               <div class ="content-container">
-
-              <h2 class="heading-section">Welcome To Dream11</h2>
-              <input type="text" id="playerSearch" placeholder="Search players">
-    
+                <div align="center">
+                  <h2 class="heading-section">Welcome To Dream11</h2>
+                </div>
+              <div align="center" style="margin-top: 20px;">
+                <h2>Pick Your Players </h2>
+              </div>
               <form id="playerForm" method="POST" action="{% url 'dream11:add_player_to_dream11' %}">
                 {% csrf_token %}
                 <!-- Loop through the players dictionary and generate checkboxes -->
+                <div class="center-container">
+
                 <div class="scrollable-box">
                     {% for player in players %}
                         <label>
@@ -222,7 +270,14 @@
                         </label><br>
                     {% endfor %}
                 </div>
-                <input type="submit" value="Add Selected Players">
+                  
+              </div>
+              <div align="center">
+              <input type="submit" value="Add Selected Players">
+
+              </div>
+
+               
             </form>
             {% if message %}
 <div class="alert alert-danger">
@@ -303,37 +358,8 @@
                 </div>
               </div>
 
-            </div>
-            
-            <div align="center"  style="margin-top: 20px;">
-              <h2>Your Dream11 Team is Better Than These Teams</h2>
-              <div class="table-wrap">
-                <table class="table table-bordered table-dark table-hover">
-                  <thead>
-                    <tr>
-                    <th>Image</th>
-                    <th>Team Name</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                  {% for team in worseteams %}
-    
-                    <tr>
-                      <th class="player-image-cell" style="text-align: center;">
-                        <a href="{% url 'teams:team_detail' team_id=team.0 %}">
-                        <img src="{% if team.3 %}{% static 'cricitup/images/'|add:team.3 %}{% else %}{% static 'cricitup/images/default.jpg' %}{% endif %}" alt="{{ team.0 }}" class="player-image">
-                        </a>
-                    </th>
-                      <td><h5><b>{{ team.1}}</b></h5></td>
-                    </tr>
-                  {% endfor %}
-    
-                  </tbody>
-                </table>
-              </div>
-
               <div align="center"  style="margin-top: 20px;">
-                <h2>Your Dream11 Team is Worse Than These Teams</h2>
+                <h2>Your Dream11 Team is Better Than These Teams</h2>
                 <div class="table-wrap">
                   <table class="table table-bordered table-dark table-hover">
                     <thead>
@@ -343,7 +369,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                    {% for team in betterteams %}
+                    {% for team in worseteams %}
       
                       <tr>
                         <th class="player-image-cell" style="text-align: center;">
@@ -359,33 +385,55 @@
                   </table>
                 </div>
 
-            {%endif%}
+                <div align="center"  style="margin-top: 20px;">
+                  <h2>Your Dream11 Team is Worse Than These Teams</h2>
+                  <div class="table-wrap">
+                    <table class="table table-bordered table-dark table-hover">
+                      <thead>
+                        <tr>
+                        <th>Image</th>
+                        <th>Team Name</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      {% for team in betterteams %}
+        
+                        <tr>
+                          <th class="player-image-cell" style="text-align: center;">
+                            <a href="{% url 'teams:team_detail' team_id=team.0 %}">
+                            <img src="{% if team.3 %}{% static 'cricitup/images/'|add:team.3 %}{% else %}{% static 'cricitup/images/default.jpg' %}{% endif %}" alt="{{ team.0 }}" class="player-image">
+                            </a>
+                        </th>
+                          <td><h5><b>{{ team.1}}</b></h5></td>
+                        </tr>
+                      {% endfor %}
+        
+                      </tbody>
+                    </table>
+                  </div>
+
+
+
+
+
+
+              </div>
+  
+
+              {%endif%}
+            </div>
+
+
+
+            </div>
+            
+
 
               {%endif%}
       
       <!-- ... (Your script section remains unchanged) ... -->
       <script>
-
-        var ctx = document.getElementById('ratingPieChart').getContext('2d');
-
-// Calculate percentages
-var battingRating = {{ dream11stats.0 }};
-var bowlingRating = {{ dream11stats.1 }};
-var totalRating = battingRating + bowlingRating;
-var bowlingPercentage = parseInt((battingRating / totalRating) * 100);
-var battingPercentage = 100-bowlingPercentage
-
-// Define data for the pie chart
-var data = {
-labels: ['Batting', 'Bowling'],
-datasets: [{
- data: [battingPercentage, bowlingPercentage],
- backgroundColor: ['blue', 'green'],
-}]
-};
- </script>
- 
-      <script>
+        
         document.addEventListener('DOMContentLoaded', function () {
             const playerForm = document.getElementById('playerForm');
         
@@ -427,25 +475,32 @@ datasets: [{
             });
         });
 
-      
-
-function restTable()
-        {
-          const resetUrl="{% url 'dream11:reset_dream11' %}";
-          window.location.href = resetUrl;
-
-        }
-        function removePlayer(playerId) {
-    const resultUrl = `{% url 'dream11:removePlayer' playerId=0 %}`.replace('0', playerId);
-    window.location.href = resultUrl;
-}
-function showStats()
-    {
-      const resetUrl="{% url 'dream11:showStats' %}";
-      window.location.href = resetUrl;
+        
 
 
-    }
+
+
+
+
+
+       
+    var ctx = document.getElementById('ratingPieChart').getContext('2d');
+
+// Calculate percentages
+var battingRating = {{ dream11stats.0 }};
+var bowlingRating = {{ dream11stats.1 }};
+var totalRating = battingRating + bowlingRating;
+var bowlingPercentage = parseInt((battingRating / totalRating) * 100);
+var battingPercentage = 100-bowlingPercentage
+
+// Define data for the pie chart
+var data = {
+  labels: ['Batting', 'Bowling'],
+  datasets: [{
+    data: [battingPercentage, bowlingPercentage],
+    backgroundColor: ['blue', 'green'],
+  }]
+};
 
 // Create the pie chart
 var ratingPieChart = new Chart(ctx, {
@@ -453,7 +508,7 @@ var ratingPieChart = new Chart(ctx, {
   data: data,
 });
     </script>
-
+    
     </div>
   
     </section>
