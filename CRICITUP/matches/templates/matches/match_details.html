@@ -35,112 +35,127 @@
     }
  
 </style>
+
 <style>
-  /* Add CSS styles for the scorecard table */
+  /* Customize the font for the entire page */
+  body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    background-color: #0A2C4E;
+    color: #fff;
+  }
+
+  /* Style the header and navigation menu */
+  .site-navbar {
+    background-color: #091D35;
+    color: #fff;
+    padding: 20px 0;
+  }
+
+  .site-menu .nav-link {
+    font-size: 28px;
+  }
+
+  /* Style the match details section */
+  .site-content {
+    padding-top: 150px;
+  }
+
+  .match-details {
+    background-color: #172B49;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    color: #fff;
+  }
+
+  .match-details h1 {
+    font-weight: bold;
+    font-size: 36px;
+    font-style: italic;
+  }
+
+  .match-details p {
+    font-size: 28px;
+  }
+
+  /* Style the scorecard tables */
   .scorecard-table {
-      width: 50%;
-      border-collapse: collapse;
-      border: 1px solid #000;
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #fff;
+    margin-top: 20px;
   }
 
   .scorecard-table th,
   .scorecard-table td {
-      padding: 8px;
-      text-align: center;
-      border-bottom: 1px solid #000;
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #fff;
   }
 
   .scorecard-table thead {
-      background-color: #3498db; /* Header background color */
-      color: #fff; /* Header text color */
+    background-color: #091D35;
+    color: #fff;
+    font-size: 28px;
   }
 
   .scorecard-table tbody tr:nth-child(even) {
-      background-color: #f2f2f2; /* Even row background color */
+    background-color: #0A2C4E;
   }
 
+  /* Add hover effect */
   .scorecard-table tbody tr:hover {
-      background-color: #3498db; /* Hovered row background color */
-      color: #fff; /* Hovered row text color */
+    background-color: #172B49;
+    color: #fff;
   }
 
-  /* Customize the colors and fonts to your liking */
-</style>
-  <style>
-    /* Adjust the font size for the navigation menu items */
-    .nav-link {
-      font-size: 36px; /* You can adjust the value as needed */
-    }
-    
-      .hero {
-        position: relative;
-        height: 1235px;
-        overflow: hidden;
-      }
-    
-      .hero img {
-        position: absolute;
-        width:1920px;
-        height:1235px;
-        opacity: 0;
-        transition: opacity 1s ease-in-out;
-      }
-      .form-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100vh; /* Adjust the height as needed */
-    }
-    .card-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+  /* Customize the appearance of the total scores and winning team section */
+  .total-scores {
     margin-top: 20px;
-}
-.player-image {
-        max-width: 100px; /* Adjust the maximum width as needed */
-        height: auto;
-    }
+  }
 
-    .card {
-    border: 1px solid #ccc;
-    padding: 15px;
-    border-radius: 5px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    width: calc(33.33% - 20px); /* Adjust the width as needed */
-    background-color: white;
-    transition: transform 0.3s ease-in-out;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
+  .total-scores h3 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #fff;
+  }
 
-.card-image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 150px; /* Adjust the height as needed */
-}
+  .total-scores p {
+    font-size: 28px;
+  }
+  .royal-container {
+    background-color: #291B2C; /* Dark purple background */
+    padding: 20px; /* Add padding for spacing */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    margin-bottom: 20px; /* Spacing between the container and other content */
+    position: relative; /* Required for the glossy effect */
+  }
 
-.card-image img {
-    max-width: 100%;
-    max-height: 100%;
-}
+  /* Style the royal paragraphs within the container */
+  .royal-paragraph {
+    font-size: 24px; /* Font size */
+    color: #FFD700; /* Gold text color */
+    margin-bottom: 10px; /* Spacing between paragraphs */
+  }
 
-.card:hover {
-    transform: translateY(-5px);
-}
+  /* Glossy effect */
+  .royal-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 50%;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, #291B2C 100%);
+    z-index: -1;
+  }
+</style>
 
-    /* Additional styling for the form elements if desired */
-    form {
-        text-align: center;
-    }
-    label, input, button {
-        margin-bottom: 10px;
-    }
-    
-  </style>
+
+
+  
   
   
   
@@ -201,26 +216,7 @@
     <style>
         /* Other styles... */
         
-        .site-content {
-            padding-top: 150px; /* Adjust the value as needed */
-        }
-        
-        /* Center the team information */
-        .team-info-container {
-            margin-top: 150px; /* Adjust the value to center the container vertically */
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            background-color: #f5f5f5;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            color: #020000; /* Change the font color to a darker color */
-        }
-        .team-info-container h1 {
-            font-weight: bold;
-            font-style: italic;
-            color: black; /* Change the color to black */
-        }
+     
       </style>
     
 <head>
@@ -231,12 +227,24 @@
 <body>
     <div class="site-content" align="center">
           <h1>Match Detail</h1>
-          <p>Match ID: {{ match.0 }}</p>
-          <p>Match Name: {{ match.1 }}</p>
-          <p>Highest Scorer:{{highest_scorer}} </p>
-          <p>Weather:{{match.3}} </p>
-          <p>Winner:<strong>{{match_winner}}</strong> </p>
-          <p>Ground:{{match.5}} </p>
+          
+          <div class="royal-container">
+            <div class="royal-paragraph">
+              <p>Match Name: {{ match.1 }}</p>
+            </div>
+            <div class="royal-paragraph">
+              <p>Highest Scorer: {{ highest_scorer }}</p>
+            </div>
+            <div class="royal-paragraph">
+              <p>Weather: {{ match.3 }}</p>
+            </div>
+            <div class="royal-paragraph">
+              <p>Winner: <strong>{{ match_winner }}</strong></p>
+            </div>
+            <div class="royal-paragraph">
+              <p>Ground: {{ match.5 }}</p>
+            </div>
+          </div>
           <div class="match-details">
             <h2>Match Details</h2>
         

@@ -188,9 +188,10 @@
                   </thead>
                   <tbody>
                   {% for coach in coaches %}
-    
+                 
                     <tr>
                       <th class="player-image-cell" style="text-align: center;">
+                        <a href="{% url 'coaches:coaches_details'  player_id=coach.4 %}">
                           <img src="{% if coach.3 %}{% static 'cricitup/images/'|add:coach.3 %}{% else %}{% static 'cricitup/images/default.jpg' %}{% endif %}" alt="{{ coach.0 }}" class="player-image">
                         </a>
                     </th>
