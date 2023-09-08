@@ -182,6 +182,8 @@ def showStats(request):
     players=[]
     dream11players=[]
     counts=[]
+    betterteams=[]
+    worseteams=[]
     cursor = connection.cursor()
     sql_query = "SELECT (FIRST_NAME ||' '||LAST_NAME) FULL_NAME, NATIONALITY, TYPE, EXTRACT(YEAR FROM SYSDATE) - EXTRACT(YEAR FROM DATE_OF_BIRTH) AGE,IMAGE_URL,PLAYERID FROM PLAYER PL JOIN PERSON PR ON PL.PLAYERID = PR.PERSONID"
     cursor.execute(sql_query)
@@ -216,14 +218,36 @@ SELECT COUNT(*) + 1
 FROM team_strength
 WHERE total <%s
 """
+    query4="""
+    SELECT TEAMID,TEAM_NAME,IMAGE_URL
+FROM team_strength TS
+JOIN TEAM T 
+ON T.TEAM_ID=TS.TEAMID
+WHERE total <%s
+    
+    """
+    query5="""
+    SELECT TEAMID,TEAM_NAME,IMAGE_URL
+FROM team_strength TS
+JOIN TEAM T 
+ON T.TEAM_ID=TS.TEAMID
+WHERE total >%s
+    
+    """
     cursor.execute(query2,[values[2]])
     position=cursor.fetchone()[0]
+    cursor.execute(query4,[values[2]])
+    betterteams=cursor.fetchall()
+    cursor.execute(query5,[values[2]])
+    worseteams=cursor.fetchall()
     context={
         'players': players,
         'dream11players':dream11players,
         'counts':counts,
         'position':position,
-         'dream11stats':values
+         'dream11stats':values,
+         'betterteams':betterteams,
+         'worseteams':worseteams
     }
     return render(request, 'dream11/dream11.html', context)
 
