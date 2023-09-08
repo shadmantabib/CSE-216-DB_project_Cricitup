@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.db import connection
 import pandas as pd
-import csv, io
+
 
 
 def addmatch(request):
@@ -249,7 +249,7 @@ def addmatch(request):
                 
                 except Exception as e:
                     print("Error processing Excel file:", str(e))
-                    # Handle the error or provide a user-friendly error message.
+                  
 
         cursor.close()
 

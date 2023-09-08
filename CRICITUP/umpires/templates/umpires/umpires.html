@@ -177,7 +177,8 @@
     
                     <tr>
                       <th class="player-image-cell" style="text-align: center;">
-                          <img src="{% if coach.3 %}{% static 'cricitup/images/'|add:coach.3 %}{% else %}{% static 'cricitup/images/default.jpg' %}{% endif %}" alt="{{ coach.0 }}" class="player-image">
+                        <a href="{% url 'umpires:umpires_details'  player_id=coach.4 %}">  
+                        <img src="{% if coach.3 %}{% static 'cricitup/images/'|add:coach.3 %}{% else %}{% static 'cricitup/images/default.jpg' %}{% endif %}" alt="{{ coach.0 }}" class="player-image">
                         </a>
                     </th>
                       <td><h5><b>{{ coach.0 }}</b></h5></td>

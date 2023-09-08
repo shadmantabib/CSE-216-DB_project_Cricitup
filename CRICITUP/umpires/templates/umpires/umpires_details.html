@@ -1,0 +1,213 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Cricitup &mdash; L2-T2 Database</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'cricitup/fonts/icomoon/style.css' %}">
+
+    <link rel="stylesheet" href="{% static 'cricitup/css/bootstrap/bootstrap.css' %}" />
+    <link rel="stylesheet" href="{% static 'cricitup/css/jquery-ui.css' %}" />
+    <link rel="stylesheet" href="{% static 'cricitup/css/owl.carousel.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'cricitup/css/owl.theme.default.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'cricitup/css/owl.theme.default.min.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'cricitup/css/jquery.fancybox.min.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'cricitup/css/bootstrap-datepicker.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'cricitup/fonts/flaticon/font/flaticon.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'cricitup/css/aos.css' %}">
+
+    <link rel="stylesheet" href="{% static 'cricitup/css/style.css' %}" />
+    <style>
+        /* Other styles... */
+
+        .site-content {
+            padding-top: 50px;
+            /* Adjust the value as needed */
+        }
+    </style>
+
+    <style>
+        /* Adjust the font size for the navigation menu items */
+        .site-content {
+            padding-top: 50px;
+        }
+    
+        /* Team information container */
+        .team-info-container {
+            margin-top: 150px;
+            padding: 20px;
+            border: 1px solid #276397;
+            border-radius: 10px;
+            background-color: #6c8284;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            color: #020000;
+        }
+    
+        .team-info-container h1 {
+            font-weight: bold;
+            font-style: italic;
+            color: black;
+        }
+    
+        /* Player image */
+        .player-image {
+            max-width: 300px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    
+        /* Player information */
+        .player-info {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    
+        /* Royal look for additional info */
+        .royal-info {
+            background-color: #220000;
+            color: gold;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 10px;
+            font-size: 24px;
+        }
+    
+        /* Table styles */
+        .gorgeous-table {
+            background-color: #461717; /* Royal red background color */
+            color: gold; /* Text color */
+            font-weight: bold; /* Bold font */
+        }
+    
+        .gorgeous-table th,
+        .gorgeous-table td {
+            border-color: gold; /* Table cell border color */
+        }
+    
+        .gorgeous-table thead th {
+            background-color: #220000; /* Header background color */
+        }
+    
+        .gorgeous-table tbody tr:nth-child(even) {
+            background-color: #551d1d; /* Even row background color */
+        }
+    
+        .gorgeous-table tbody tr:nth-child(odd) {
+            background-color: #461717; /* Odd row background color */
+        }
+    </style>
+
+
+
+
+
+
+
+
+</head>
+
+<body>
+
+    <div class="site-wrap">
+
+        <div class="site-mobile-menu site-navbar-target">
+            <div class="site-mobile-menu-header">
+                <div class="site-mobile-menu-close">
+                    <span class="icon-close2 js-menu-toggle"></span>
+                </div>
+            </div>
+            <div class="site-mobile-menu-body"></div>
+        </div>
+
+
+        <header class="site-navbar py-4" role="banner">
+
+            <div class="container">
+                <div class="d-flex align-items-center">
+                    <div class="site-logo">
+                        <a href="index.html">
+                            <img src="{% static 'cricitup/images/logo.png' %}" alt="Logo" />
+                        </a>
+                    </div>
+                    <div class="ml-auto">
+                        <nav class="site-navigation position-relative text-right" role="navigation">
+                            <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
+                                <li><a href="{% url 'home' %}" class="nav-link">Home</a></li>
+                                <li class="active"><a href="{% url 'players:players' %}" class="nav-link">Players</a></li>
+                                <!--- <li><a href="blog.html" class="nav-link">Blog</a></li>-->
+                                 <!--- <li><a href="contact.html" class="nav-link">Contact</a></li>-->
+                               
+                                <li><a href="{% url 'coaches:coaches' %}" class="nav-link">Coaches</a></li>
+                                <li><a href="{% url 'umpires:umpires' %}" class="nav-link">Umpires</a></li>
+                                <li><a href="{% url 'teams:teams' %}" class="nav-link">Teams</a></li>
+                                <li ><a href="{% url 'grounds:grounds' %}" class="nav-link">Ground</a></li>
+                                <li><a href="{% url 'matches:matches' %}" class="nav-link">Matches</a></li>
+
+                            </ul>
+                        </nav>
+
+                        <a href="#"
+                            class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black float-right text-white"><span
+                                class="icon-menu h3 text-white"></span></a>
+                    </div>
+                </div>
+            </div>
+
+        </header>
+
+    
+    <div class="site-content">
+        <div class="team-info-container">
+            {% if player_image_url %}
+            <img src="{% static 'cricitup/images/'|add:player_image_url %}" alt="{{ player_name }}" class="player-image" width="300" height="400">
+            {% else %}
+            <img src="{% static 'cricitup/images/default.jpg' %}" alt="{{ player_name }}" class="player-image" width="300" height="400">
+            {% endif %}
+            <h1>{{ player_name }}</h1>
+            <div class="royal-info">Nationality: {{ player_nationality }}</div>
+            <div class="royal-info">Age: {{ player_age }}</div>
+            <div class="royal-info">Total Match conducted: {{player_stat.0}}</div>
+            <h1>Matches Conducted By the Umpire</h1>
+            <table class="table table-bordered table-striped table-hover gorgeous-table" style="width: 50%; margin-bottom: 90px;margin-left: 500px">
+            <thead class="thead-dark">
+                  <tr>
+                      <th>Match Name</th>
+                      <th>Ground</th>
+                      <th>Show Details</th>
+                  </tr>
+              </thead>
+              <tbody>
+              
+                  {% for match in all_matches %}
+                  <tr>
+                      <td>{{ match.1 }}</td>
+                      <td>{{ match.2 }}</td>
+                      <td>
+                        <a href="{% url 'matches:match_details' match_id=match.0 %}" class="btn btn-primary btn-sm">Show Details</a>
+                    </td>
+                  </tr>
+                  {% endfor %}
+              </tbody>
+          </table>
+    
+        </div>
+        
+    </div>
+  
+    
+    
+
+</body>
+
+</html>
