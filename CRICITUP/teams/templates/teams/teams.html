@@ -150,6 +150,30 @@
         .custom-table tr:hover {
           background-color: #172B49; /* Darker background on hover */
         }
+        .site-content {
+          padding-top: 100px; /* Adjust the value as needed */
+      }
+      .blur-background {
+        background-image: url('https://i.guim.co.uk/img/media/1822c74b4754a4824e22c22ab8b135ef3e318437/132_340_5171_3103/master/5171.jpg?width=620&dpr=2&s=none');
+        background-size: cover;
+        backdrop-filter: blur(50px); /* Adjust the blur level as needed */
+      }
+      .small-logo {
+        width: 150px; /* Adjust the value to your desired width */
+        height: 150; /* Automatically adjust the height based on the aspect ratio */
+    }
+    .table.table-bordered.table-dark.table-hover {
+      background-color: transparent;
+      border-color: transparent; /* Optional: Make borders transparent as well */
+  }
+  .table.table-bordered.table-dark.table-hover tbody tr td {
+    color: white;
+}
+  
+  .site-logo {
+      margin-right: 10px; /* Add some space between the logo and the navigation links */
+  }
+  
   </style>
   
   
@@ -162,7 +186,7 @@
 </head>
 
 <body>
-
+ 
   <div class="site-wrap">
 
     <div class="site-mobile-menu site-navbar-target">
@@ -212,7 +236,7 @@
        
     </style>
 
-
+    <div class="site-wrap blur-background">
     <div class="container mt-5 mb-5">
         <div class="row justify-content-center">
             <div class="col-lg-8 text-center" style="margin-top: 300px;">
@@ -238,6 +262,7 @@
                 </table>
             </div>
         </div>
+    </div>
     </div>
    
 

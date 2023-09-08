@@ -281,7 +281,11 @@
         </style>
     <div class="site-content">
         <div class="team-info-container">
+            {% if venue_info.5 %}
+            <img src="{% static 'cricitup/images/'|add:venue_info.5 %}" alt="{{ player_name }}" class="player-image" width="300" height="400">
+            {% else %}
             <img src="{% static 'cricitup/images/default.jpg' %}" alt="{{ player_name }}" class="player-image" width="300" height="400">
+            {% endif %}
             <div class="table-container" style="width: 50%; margin: 0 auto;">
                 <table class="table table-bordered">
                     <thead class="thead-dark">
