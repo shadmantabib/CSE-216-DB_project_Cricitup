@@ -55,7 +55,10 @@
                 <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
                   
                   <li><a href="{% url 'adminlog:adminlog' %}" class="nav-link">AdminLog</a></li>
-                  <li><a href="{% url 'home' %}" class="nav-link">LOGOUT</a></li>
+                  <li><a href="{% url 'adminpage:logoutuser' %}" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">LOGOUT</a></li>
+<form id="logout-form" action="{% url 'adminpage:logoutuser' %}" method="post" style="display: none;">
+  {% csrf_token %}
+</form>
                   <li><a href="{% url 'signup:signup' %}" class="nav-link admin-link">Add Admin</a></li>
                 </ul>
                 

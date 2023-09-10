@@ -12,3 +12,11 @@ def adminpage(request):
         return redirect('login')
 
 # Create your views here.
+from django.shortcuts import render, redirect
+from django.contrib.auth import logout
+
+def logoutuser(request):
+    logout(request)
+    # Specify the URL to which you want to redirect after logging out
+    return redirect('home')  # Change 'loginuser' to your desired URL
+

@@ -88,7 +88,6 @@ WHERE MU.UMPIRE_ID  =%s
         'player_nationality': player_nationality,
         'player_age': player_age,
         'player_image_url': player_image_url,
-        'player_stat': player_stat,
         'player_coach':player_coach,
         'player_career':player_career
        
