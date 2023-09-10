@@ -93,6 +93,7 @@ SELECT SUM(TOTAL_RUNS) AS RUN  FROM SCORECARD S
         match = cursor.fetchone()  # Fetch the result
         match_winner=cursor.callfunc('Find_Match_Winner',str,[match_id])
         highest_scorer=cursor.callfunc('Find_Highest_Scorer',str,[match_id])
+        higest_wicket_taker=cursor.callfunc('Find_Highest_Wicket_Taker',str,[match_id])
 
         cursor.execute(query2,[match_id,match_id])
         first_team_batting=cursor.fetchall()
@@ -128,6 +129,7 @@ SELECT SUM(TOTAL_RUNS) AS RUN  FROM SCORECARD S
         'second_team_batting':second_team_batting,
         'second_team_bowling':second_team_bowling,
         'first_team_score':first_team_score,
-        'second_team_score':second_team_score
+        'second_team_score':second_team_score,
+        'highest_wicket_taker':higest_wicket_taker
     }
     return render(request, 'matches/match_details.html', context)

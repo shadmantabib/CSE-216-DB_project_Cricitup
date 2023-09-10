@@ -59,6 +59,8 @@ INSTALLED_APPS = [
     'addmatch',
     'dream11',
     'adminlog',
+    'series',
+   
     
 ]
 
