@@ -81,11 +81,31 @@
           align-items: center; /* Align items vertically within the container */
           gap: 50px; /* Adjust the gap between images */
         }
+     
+          body {
+              /* Set the background image URL and control its properties */
+              background-image: url('https://t3.ftcdn.net/jpg/01/22/71/96/240_F_122719641_V0yw2cAOrfxsON3HeWi2Sf4iVxhv27QO.jpg');
+              background-size: cover; /* Cover the entire viewport */
+              background-repeat: no-repeat; /* Do not repeat the image */
+              background-attachment: fixed; /* Fixed background */
+              /* You can also adjust other background properties like position, color, etc. */
+          }
+          
+          /* Add any additional CSS styles here */
+    
         .small-image {
           display: block; /* Ensure the image behaves as a block element */
           max-width:250px; /* Make sure the image doesn't exceed the column width */
           height: 250px; /* Maintain the image's aspect ratio */
         }
+        .highlighted-box {
+          background-color: #1e3249; /* Background color */
+          color: #fff; /* Text color */
+          padding: 10px 15px; /* Padding to create the box */
+          border-radius: 20px; /* Rounded corners */
+          display: inline-block; /* Inline block to contain the text */
+          text-decoration: none; /* Remove underlines for links */
+      }
         .admin-link {
           background-color: #007bff; /* Change the background color to blue (you can use your preferred color) */
           color: #fff; /* Change the text color to white or your preferred color */
@@ -100,31 +120,31 @@
         <article class="item">
           <a href="{% url 'addplayer:addplayer' %}" class="image fit"><img src="{% static 'cricitup/images/insertplayer.jpg' %}" alt="" class="small-image" /></a>
           <header>
-            <a href="{% url 'addplayer:addplayer' %}"> <h2>Player Add</h2></a>
+            <a href="{% url 'addplayer:addplayer' %}"class="highlighted-box"> <h2>Player Add</h2></a>
           </header>
         </article>
         <article class="item">
           <a href="{% url 'addground:addground' %}" class="image fit"><img src="{% static 'cricitup/images/insertground.jpg' %}" alt="" class="small-image" /></a>
           <header>
-            <a href="{% url 'addground:addground' %}"> <h2>Ground Add</h2></a>
+            <a href="{% url 'addground:addground' %}"class="highlighted-box"> <h2>Ground Add</h2></a>
           </header>
         </article>
         <article class="item">
           <a href="{% url 'addteam:addteam' %}" class="image fit"><img src="{% static 'cricitup/images/teams.jpg' %}" alt="" class="small-image" /></a>
           <header>
-            <a href="{% url 'addteam:addteam' %}"> <h2>Team Add</h2></a>
+            <a href="{% url 'addteam:addteam' %}"class="highlighted-box"> <h2>Team Add</h2></a>
           </header>
         </article>
         <article class="item">
           <a href="{% url 'addseries:addseries' %}" class="image fit"><img src="{% static 'cricitup/images/insertseries.jpg' %}" alt="" class="small-image" /></a>
           <header>
-            <a href="{% url 'addseries:addseries' %}"> <h2>Series Add</h2></a>
+            <a href="{% url 'addseries:addseries' %}"class="highlighted-box"> <h2>Series Add</h2></a>
           </header>
         </article>
         <article class="item">
           <a href="{% url 'addmatch:addmatch' %}" class="image fit"><img src="{% static 'cricitup/images/Bangladesh.jpg' %}" alt="" class="small-image" /></a>
           <header>
-            <a href="{% url 'addmatch:addmatch' %}"> <h2>Match Add</h2></a>
+            <a href="{% url 'addmatch:addmatch' %}"class="highlighted-box"> <h2>Match Add</h2></a>
           </header>
         </article>
         <!-- Add more similar columns for other options -->
