@@ -38,6 +38,9 @@ urlpatterns = [
     path('addmatch/', include('addmatch.urls', namespace='addmatch')),
     path('adminlog/', include('adminlog.urls', namespace='adminlog')),
     path('dream11/', include('dream11.urls', namespace='dream11')),
+    path('series/', include('series.urls', namespace='series')),
+
+    
     # ...
     path('admin/', admin.site.urls),
 

@@ -42,27 +42,40 @@ def ground_details(request, venue_id):
         result = cursor.callfunc('GET_STATS_OF_VENUE', str, [venue_id])
 
             # Split the result string into a list of values
-        values = result.split(',')
-        values = [int(val) for val in values]
+        if result:
+            values = result.split(',')
+
+            values = [int(val) for val in values]
 
             # Convert the values to integers if needed
-        highestrun, highestwicket, highestsix, highestfour, highestcatch = values
+            highestrun, highestwicket, highestsix, highestfour, highestcatch = values
 
         # Retrieve names based on IDs
-        cursor.execute("SELECT (FIRST_NAME||' '||LAST_NAME) FROM PERSON WHERE PERSONID = %s", [highestrun])
-        highestrunner = cursor.fetchone()[0]
+            cursor.execute("SELECT (FIRST_NAME||' '||LAST_NAME) FROM PERSON WHERE PERSONID = %s", [highestrun])
+            highestrunner = cursor.fetchone()[0]
 
-        cursor.execute("SELECT (FIRST_NAME||' '||LAST_NAME) FROM PERSON WHERE PERSONID = %s", [highestwicket])
-        wicketer = cursor.fetchone()[0] 
+            cursor.execute("SELECT (FIRST_NAME||' '||LAST_NAME) FROM PERSON WHERE PERSONID = %s", [highestwicket])
+            wicketer = cursor.fetchone()[0] 
 
-        cursor.execute("SELECT (FIRST_NAME||' '||LAST_NAME) FROM PERSON WHERE PERSONID = %s", [highestsix])
-        sixer = cursor.fetchone()[0] 
+            cursor.execute("SELECT (FIRST_NAME||' '||LAST_NAME) FROM PERSON WHERE PERSONID = %s", [highestsix])
+            sixer = cursor.fetchone()[0] 
 
-        cursor.execute("SELECT (FIRST_NAME||' '||LAST_NAME) FROM PERSON WHERE PERSONID = %s", [highestfour])
-        fourer = cursor.fetchone()[0] 
+            cursor.execute("SELECT (FIRST_NAME||' '||LAST_NAME) FROM PERSON WHERE PERSONID = %s", [highestfour])
+            fourer = cursor.fetchone()[0] 
 
-        cursor.execute("SELECT (FIRST_NAME||' '||LAST_NAME) FROM PERSON WHERE PERSONID = %s", [highestcatch])
-        catcher = cursor.fetchone()[0] 
+            cursor.execute("SELECT (FIRST_NAME||' '||LAST_NAME) FROM PERSON WHERE PERSONID = %s", [highestcatch])
+            catcher = cursor.fetchone()[0] 
+        else:
+            highestrun='Unknown'
+            highestwicket='Unknown'
+            highestsix='Unknown'
+            highestfour='Unknown'
+            highestcatch='Unknown'
+            highestrunner='Unknown'
+            wicketer='Unknown'
+            sixer='Unknown'
+            fourer='Unknown'
+            catcher='Unknown'
 
         # Retrieve additional venue information
         cursor.execute("SELECT venue_id, address, city, street_no, capacity, imageurl FROM VENUE WHERE venue_id = %s", [venue_id])

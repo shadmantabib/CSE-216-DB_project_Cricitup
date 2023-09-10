@@ -327,23 +327,47 @@
                     <tbody>
                         <tr>
                             <td>Highest Run Scorer</td>
+                            {% if highestrunner != "Unknown" %}
                             <td><a href="{% url 'players:players_details' player_id=highestrun %}">{{ highestrunner }}</a></td>
+                            {%else%}
+                            <td>{{ highestrunner }}</a></td>
+                        {% endif %}
                         </tr>
                         <tr>
                             <td>Highest Wicket Taker</td>
+                            {% if wicketer != "Unknown" %}
                             <td><a href="{% url 'players:players_details' player_id=highestwicket %}">{{ wicketer }}</a></td>
+                            {%else%}
+                            <td>{{ wicketer }}</a></td>
+                            {% endif %}
+
                         </tr>
                         <tr>
                             <td>Most Six Hitter</td>
+                            {% if sixer != "Unknown" %}
                             <td><a href="{% url 'players:players_details' player_id=highestsix %}">{{ sixer }}</a></td>
+                            {%else%}
+                            <td>{{ sixer }}</a></td>
+                            {% endif %}
+
                         </tr>
                         <tr>
                             <td>Most Four Smasher</td>
+                            {% if fourer != "Unknown" %}
                             <td><a href="{% url 'players:players_details' player_id=highestfour %}">{{ fourer }}</a></td>
+                            {%else%}
+                            <td>{{ fourer }}</a></td>
+                            {% endif %}
+
                         </tr>
                         <tr>
                             <td>Most Catch Taker</td>
+                            {% if catcher != "Unknown" %}
                             <td><a href="{% url 'players:players_details' player_id=highestcatch %}">{{ catcher }}</a></td>
+                            {%else%}
+                            <td>{{ catcher }}</a></td>
+                            {% endif %}
+
                         </tr>
                     </tbody>
                 </table>

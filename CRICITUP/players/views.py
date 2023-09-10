@@ -5,6 +5,7 @@ from django.db import connection
 def players(request):
     players = []
     players_batting_rank=[]
+    allplayers=1
 
     with connection.cursor() as cursor:
             sql_query = "SELECT (FIRST_NAME ||' '||LAST_NAME) FULL_NAME, NATIONALITY, TYPE, EXTRACT(YEAR FROM SYSDATE) - EXTRACT(YEAR FROM DATE_OF_BIRTH) AGE,IMAGE_URL,PLAYERID FROM PLAYER PL JOIN PERSON PR ON PL.PLAYERID = PR.PERSONID"
@@ -13,7 +14,8 @@ def players(request):
 
     context = {
         'players': players,
-        'players_batting_rank':players_batting_rank
+        'players_batting_rank':players_batting_rank,
+        'allplayers':allplayers
     }
 
     return render(request, 'players/players1.html', context)
@@ -98,13 +100,15 @@ def show_all_players(request):
     players = []
     players_batting_rank=[]
     players_bowling_rank=[]
+    allplayers=1
     with connection.cursor() as cursor:
             sql_query = "SELECT (FIRST_NAME ||' '||LAST_NAME) FULL_NAME, NATIONALITY, TYPE, EXTRACT(YEAR FROM SYSDATE) - EXTRACT(YEAR FROM DATE_OF_BIRTH) AGE,IMAGE_URL,PLAYERID FROM PLAYER PL JOIN PERSON PR ON PL.PLAYERID = PR.PERSONID"
             cursor.execute(sql_query)
             players = cursor.fetchall()
 
     context = {
-        'players': players
+        'players': players,
+        'allplayers':allplayers
     }
 
     return render(request, 'players/players1.html', context)
@@ -165,3 +169,21 @@ IMAGE_URL,DENSE_RANK() OVER (ORDER BY  NVL(NVL(BOWLING_AVG,0)/NVL(BS.WICKETS,0),
      }
     return render(request, 'players/players1.html', context)
 
+def searchPlayer(request):
+    name = request.GET.get('name')
+    players = []
+
+    if name:
+        with connection.cursor() as cursor:
+            sql_query = """
+                SELECT (FIRST_NAME ||' '||LAST_NAME) FULL_NAME, NATIONALITY, TYPE, EXTRACT(YEAR FROM SYSDATE) - EXTRACT(YEAR FROM DATE_OF_BIRTH) AGE, IMAGE_URL, PLAYERID 
+                FROM PLAYER PL JOIN PERSON PR ON PL.PLAYERID = PR.PERSONID  
+                WHERE LOWER((FIRST_NAME ||' '||LAST_NAME)) LIKE %s
+            """
+            cursor.execute(sql_query, ('{}%'.format(name.lower()),))
+            players = cursor.fetchall()
+
+    context = {
+        'players': players,
+    }
+    return render(request, 'players/players1.html', context)

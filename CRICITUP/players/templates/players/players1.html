@@ -171,7 +171,10 @@
     font-size: 16px;
     border-radius: 5px;
     cursor: pointer;
-  }
+    width: 200px; /* Set a fixed width for all buttons */
+}
+
+
 
   /* Style for the button container */
   .button-container {
@@ -187,9 +190,17 @@
       
       </style>
 
+
+
+
+
+
+
+
+
       <section>
         <div class="form-container">
-          <button id="showButton" onclick="toggleInput()" class="styled-button">Show Players By Country</button>
+          <button id="showButton" onclick="toggleInput()" class="styled-button" style="margin-bottom: 10px;">Show Players By Country</button>
           <div class="toggle-container" id="countryInput">
             <form action="{% url 'players:get_players_by_country' %}" method="get">
               <label for="country">Please enter a country:</label>
@@ -197,6 +208,14 @@
               <button type="submit" class="styled-button">Submit</button>
             </form>
           </div>
+          <button id="showButton" onclick="toggleInput2()" class="styled-button">Search By Name</button>
+    <div class="toggle-container" id="nameInput" style="display: none;">
+        <form action="{% url 'players:searchPlayer' %}" method="get">
+            <label for="name">Search by First Name:</label>
+            <input type="text" id="name" name="name" value="{{ name }}">
+            <button type="submit">Search</button>
+        </form>
+    </div>
         
           <!-- Button container with cards and hover effects -->
           <div class="button-container">
@@ -215,6 +234,14 @@
                 countryInput.style.display = 'block';
             } else {
                 countryInput.style.display = 'none';
+            }
+        }
+        function toggleInput2() {
+            const nameInput = document.getElementById('nameInput');
+            if (nameInput.style.display === 'none' || nameInput.style.display === '') {
+              nameInput.style.display = 'block';
+            } else {
+              nameInput.style.display = 'none';
             }
         }
         function showPlayersByBattingRank() {
@@ -243,7 +270,10 @@
               {% if selected_country %}
               <h2 class="heading-section">Players of {{selected_country}}</h2>
               {% else %}
+              {% if allplayers %}
               <h2> All Country Players</h2>
+              {% endif %}            </div>
+
               {% endif %}            </div>
           </div>
           <div class="row">
