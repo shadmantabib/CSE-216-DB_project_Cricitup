@@ -1,16 +1,19 @@
 from django.shortcuts import render, redirect, HttpResponse
 from django.db import connection
 
-def adminpage(request):
-    print(str(request.session['loginstatus']))
-    if request.session['loginstatus']:
-        #name=request.user.first_name
-        name = request.session['username']
-        print(name)
-        return render(request, 'adminpage/index.html', {'name': name})
-    else:
-        return redirect('login')
 
+
+def adminpage(request):
+    try:
+        if request.session['loginstatus']:
+            # User is authenticated, allow access to the admin page
+            name = request.user.username  # Get the username of the authenticated user
+            return render(request, 'adminpage/index.html', {'name': name})
+    except KeyError:
+        # 'loginstatus' key is not present in the session, display a message or redirect to the login page
+        pass
+    
+    return render(request, 'adminpage/login_required.html', {'message': 'Please login first.'})
 # Create your views here.
 from django.shortcuts import render, redirect
 from django.contrib.auth import logout
