@@ -16,6 +16,7 @@ def series_records(request):
     return render(request, 'series/series.html', {'series_records': serieses})
 
 def series_detail(request, series_id):
+    series_detail=[]
     cursor = connection.cursor()
 
     # Execute the PL/SQL query to fetch series details
@@ -39,8 +40,12 @@ def series_detail(request, series_id):
         return person_name[0] if person_name else None
 
 
-    man_of_the_series = fetch_person_name(series_detail[3])
-    highest_wicket_taker = fetch_person_name(series_detail[7])
+    if series_detail is not None:
+        man_of_the_series = fetch_person_name(series_detail[3])
+        highest_wicket_taker = fetch_person_name(series_detail[7])
+    else:
+        man_of_the_series = None
+        highest_wicket_taker = None
     
     team_query="""
 SELECT TEAM_NAME FROM team WHERE TEAM_ID=%s
@@ -57,10 +62,16 @@ SELECT MATCH_ID,
     cursor.execute(match_query,[series_id])
     all_matches=cursor.fetchall()
     cursor.execute(team_query,[series_detail[4]])
-    
-    winners=cursor.fetchone()[0]
+    def fetch_team_name(team_id):
+        cursor = connection.cursor()
+        cursor.execute("SELECT TEAM_NAME FROM TEAM WHERE TEAM_ID = %s", [team_id])
+        team_name = cursor.fetchone()
+        return team_name[0] if team_name else 'N/A'
+    winners = 'No Data' if series_detail[4] is None else fetch_team_name(series_detail[4])
     cursor.execute("SELECT (first_name || ' ' || last_name) FROM PERSON WHERE PERSONID=%s", [series_detail[8]])
-    highest_run_scorer=cursor.fetchone()[0]
+    result = cursor.fetchone()
+    highest_run_scorer = result[0] if result is not None else None
+
 
     context = {
         'series_detail': series_detail,
