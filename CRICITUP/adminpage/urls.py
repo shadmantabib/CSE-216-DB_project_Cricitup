@@ -10,5 +10,5 @@ urlpatterns = [
 #     path('addmatch/', include('addmatch.urls')),
 #     path('addumpire/', include('addumpire.urls')),
 #     path('addseries/', include('addseries.urls')),
-# 
+     path('logout/', views.logoutuser, name='logoutuser'),  
 ]
