@@ -39,7 +39,7 @@ def umpires_details(request, player_id):
                IMAGE_URL
         FROM PERSON PR
         JOIN UMPIRE PL ON PL.PERSONID = PR.PERSONID
-        WHERE PL.PERSONID = %s
+        WHERE PL.PERSONID = %s 
     """
     sql_query_2="""SELECT DISTINCT COUNT(MATCH_ID) FROM MATCH_UMPIRE WHERE UMPIRE_ID = %s
 """
