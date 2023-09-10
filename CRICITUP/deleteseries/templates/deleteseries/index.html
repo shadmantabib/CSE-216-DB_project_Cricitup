@@ -338,7 +338,10 @@
                                         </th>
                                       
                                         <td class="highlight-team">
-                                          <a href="{% url 'series:series_detail' series_id=series.0 %}">{{ series.1 }}</a>
+                                            
+                                             <a href="{% url 'deleteseries:delete_series' series_id=series.0 %}" onclick="return confirm('Are you sure you want to delete this series?')">{{ series.1 }}</a>
+                                            
+                                            
                                       </td>
                                         <td>{{ series.2 }}</td>
                                       
