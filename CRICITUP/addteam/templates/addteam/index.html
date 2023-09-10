@@ -38,6 +38,14 @@
             height: 100vh;
             /* Adjust this value as needed */
         }
+        .small-logo {
+        width: 150px; /* Adjust the value to your desired width */
+        height: 150; /* Automatically adjust the height based on the aspect ratio */
+    }
+    
+    .site-logo {
+        margin-right: 10px; /* Add some space between the logo and the navigation links */
+    }
     </style>
 
     <div class="site-wrap">
@@ -56,7 +64,7 @@
                 <div class="d-flex align-items-center">
                     <div class="site-logo">
                         <a href="index.html">
-                            <img src="{% static 'cricitup/images/logo.png' %}" alt="Logo" />
+                            <img src="{% static 'cricitup/images/logo.png' %}" alt="Logo" class="small-logo round-logo"/> 
                         </a>
                     </div>
                     <div class="ml-auto">

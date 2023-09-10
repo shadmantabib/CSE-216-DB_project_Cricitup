@@ -46,7 +46,7 @@
         <div class="d-flex align-items-center">
           <div class="site-logo">
             <a href="index.html">
-              <img src="{% static 'cricitup/images/logo.png' %}" alt="Logo"/>
+              <img src="{% static 'cricitup/images/logo.png' %}" alt="Logo" class="small-logo round-logo"/> 
             </a>
           </div>
           <div class="ml-auto">
@@ -81,6 +81,14 @@
           align-items: center; /* Align items vertically within the container */
           gap: 50px; /* Adjust the gap between images */
         }
+        .small-logo {
+        width: 150px; /* Adjust the value to your desired width */
+        height: 150; /* Automatically adjust the height based on the aspect ratio */
+    }
+    
+    .site-logo {
+        margin-right: 10px; /* Add some space between the logo and the navigation links */
+    }
      
           body {
               /* Set the background image URL and control its properties */

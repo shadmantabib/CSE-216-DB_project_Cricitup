@@ -137,6 +137,14 @@
     .highlight-team a {
       color: gold; /* Highlighted link color */
     }
+    .small-logo {
+        width: 150px; /* Adjust the value to your desired width */
+        height: 150; /* Automatically adjust the height based on the aspect ratio */
+    }
+    
+    .site-logo {
+        margin-right: 10px; /* Add some space between the logo and the navigation links */
+    }
   </style>
   
   
@@ -168,7 +176,7 @@
         <div class="d-flex align-items-center">
           <div class="site-logo">
             <a href="index.html">
-              <img src="{% static 'cricitup/images/logo.png' %}" alt="Logo"/>
+              <img src="{% static 'cricitup/images/logo.png' %}" alt="Logo" class="small-logo round-logo"/> 
             </a>
           </div>
           <div class="ml-auto">
