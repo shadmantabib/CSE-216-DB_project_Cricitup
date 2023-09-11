@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'adminlog',
     'series',
     'deleteseries',
+    'deletematch',
    
     
 ]
