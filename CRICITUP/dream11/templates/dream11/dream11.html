@@ -85,6 +85,39 @@
       </div>
     </header>
     <style>
+      /* CSS for the label */
+      abel {
+    font-weight: bold;
+}
+label {
+    font-weight: bold;
+}
+
+/* CSS for the form container */
+.form-container {
+    background-color: lightblue; /* Change the background color of the form container to light blue */
+    padding: 20px; /* Add padding for spacing */
+}
+
+/* CSS for the select element */
+select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: black; /* Set the font color to black */
+    border: 1px solid #ccc; /* Add a border for better visibility */
+}
+/* CSS for the select element */
+select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: black; /* Set the font color to black */
+    background-color: #f2f2f2; /* Set a suitable background color */
+    border: 1px solid #ccc; /* Add a border for better visibility */
+}
       
           .small-logo {
         width: 150px; /* Adjust the value to your desired width */
@@ -290,6 +323,40 @@
             font-size: 18px; /* Adjust the font size as needed */
             font-weight: bold; /* Make the text bold */
         }
+        .chance-row:hover {
+  background-color: #f5f5f5; /* Background color on hover */
+}
+/* Add these styles to target only the winning chances table */
+.winning-chances-table {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 800px; /* Adjust the maximum width as needed */
+  margin: 0 auto; /* Center the table */
+}
+
+.winning-chances-table th, .winning-chances-table td {
+  padding: 8px;
+  text-align: center;
+}
+
+.winning-chances-table thead {
+  background-color: #007bff; /* Header background color */
+  color: white; /* Header text color */
+}
+
+.winning-chances-table tbody tr:nth-child(odd) {
+  background-color: #f9f9f9; /* Odd row background color */
+}
+
+.winning-chances-table tbody tr:nth-child(even) {
+  background-color: #ffffff; /* Even row background color */
+}
+
+/* Add hover effect for the specific table */
+.winning-chances-table .chance-row:hover {
+  background-color: #f5f5f5; /* Background color on hover */
+}
+
 
 
       </style>
@@ -460,7 +527,42 @@
                   </table>
                 </div>
 
+                <div class="site-section">
+                  <div class="container">
+                    <div class="row justify-content-center">
+                      <div class="col-md-12">
+                        <h2 class="heading-section">Winning Chances</h2>
+                        <div class="table-responsive">
+                          <table class="table table-bordered table-hover winning-chances-table">
+                            <thead>
+                              <tr>
+                                <th>Team Name</th>
+                                <th>Winning Chance</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {% for chance in chances %}
+                                <tr class="chance-row">
+                                  <td>{{ chance.1 }}</td> <!-- Display the team name -->
+                                  <td>{{ chance.2 }}%</td> <!-- Display the winning chance -->
+                                </tr>
+                              {% endfor %}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+               
             {%endif%}
+
+           
+          
+
+
+
 
               {%endif%}
       
@@ -529,7 +631,13 @@ datasets: [{
         });
 
       
+        function   calculateWinningChance()
+ {
+  const resetUrl="{% url 'dream11:showStats' %}";
+      window.location.href = resetUrl;
 
+
+ }
 function restTable()
         {
           const resetUrl="{% url 'dream11:reset_dream11' %}";
@@ -547,6 +655,8 @@ function showStats()
 
 
     }
+
+
 
 // Create the pie chart
 var ratingPieChart = new Chart(ctx, {
