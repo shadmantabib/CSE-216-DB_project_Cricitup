@@ -41,6 +41,7 @@ urlpatterns = [
     path('series/', include('series.urls', namespace='series')),
     path('deleteseries/', include('deleteseries.urls', namespace='deleteseries')),
      path('deletematch/', include('deletematch.urls', namespace='deletematch')),
+     path('deleteground/', include('deleteground.urls', namespace='deleteground')),
 
     
     # ...

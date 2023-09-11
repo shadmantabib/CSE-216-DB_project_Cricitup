@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     'series',
     'deleteseries',
     'deletematch',
+    'deleteground',
    
     
 ]

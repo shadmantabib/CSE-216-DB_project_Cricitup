@@ -158,6 +158,7 @@ def addmatch(request):
         in_match_id=  max_series_id  + 1
         cursor = connection.cursor()
         cursor.execute(
+            
             "INSERT INTO MATCH VALUES(:mID,:mmotm_id,:mweather,:mwinner,:mteam1id,:mteam2id,:gID,:sID,:six,:four)",
             {
                 'mID': in_match_id,
@@ -168,8 +169,8 @@ def addmatch(request):
                 'mteam2id': team2_id,
                 'gID': ground_id,
                 'sID': series_id,
-                'six':None,
-                'four':None
+                'six': None,
+                'four': None,
             }
         )
         connection.commit()
