@@ -95,8 +95,12 @@ WHERE MATCH_ID=%s"""
         cursor.execute(query, [match_id])
         match = cursor.fetchone()  # Fetch the result
         match_winner=cursor.callfunc('Find_Match_Winner',str,[match_id])
+
         highest_scorer=cursor.callfunc('Find_Highest_Scorer',str,[match_id])
+        # highest_scorer_id=cursor.callfunc('GET_ID_FROM_NAME',int,highest_scorer)
         higest_wicket_taker=cursor.callfunc('Find_Highest_Wicket_Taker',str,[match_id])
+        # highest_wicket_id=cursor.callfunc('GET_ID_FROM_NAME',int,higest_wicket_taker)
+
 
         cursor.execute(query2,[match_id,match_id])
         first_team_batting=cursor.fetchall()
@@ -138,5 +142,7 @@ WHERE MATCH_ID=%s"""
         'second_team_score':second_team_score,
         'highest_wicket_taker':higest_wicket_taker,
         'match_umpires':match_umpires
+        # 'highest_scorer_id':highest_scorer_id,
+        # 'highest_wicket_id':highest_wicket_id
     }
     return render(request, 'matches/match_details.html', context)
