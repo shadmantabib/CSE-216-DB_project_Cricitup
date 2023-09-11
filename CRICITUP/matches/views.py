@@ -86,6 +86,9 @@ SELECT SUM(TOTAL_RUNS) AS RUN  FROM SCORECARD S
 	where match_id=%s))
 	ORDER by player_id
 """
+    query10="""SELECT UMPIRE_ID,(FIRST_NAME||' '||LAST_NAME) NAME FROM MATCH_UMPIRE M JOIN PERSON P
+ON M.UMPIRE_ID=P.PERSONID
+WHERE MATCH_ID=%s"""
 
     # Execute the PL/SQL query to fetch team details
     with connection.cursor() as cursor:
@@ -111,6 +114,9 @@ SELECT SUM(TOTAL_RUNS) AS RUN  FROM SCORECARD S
         first_team_score=cursor.fetchone()[0]
         cursor.execute(query9,[match_id,match_id])
         second_team_score=cursor.fetchone()[0]
+        cursor.execute(query10,[match_id])
+        match_umpires=cursor.fetchone()
+
 
 
 
@@ -130,6 +136,7 @@ SELECT SUM(TOTAL_RUNS) AS RUN  FROM SCORECARD S
         'second_team_bowling':second_team_bowling,
         'first_team_score':first_team_score,
         'second_team_score':second_team_score,
-        'highest_wicket_taker':higest_wicket_taker
+        'highest_wicket_taker':higest_wicket_taker,
+        'match_umpires':match_umpires
     }
     return render(request, 'matches/match_details.html', context)

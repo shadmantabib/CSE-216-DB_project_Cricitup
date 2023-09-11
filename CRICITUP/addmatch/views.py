@@ -159,6 +159,7 @@ def addmatch(request):
         cursor = connection.cursor()
         cursor.execute(
             "INSERT INTO MATCH VALUES(:mID,:mmotm_id,:mweather,:mwinner,:mteam1id,:mteam2id,:gID,:sID,:six,:four)",
+            "INSERT INTO MATCH VALUES(:mID,:mmotm_id,:mweather,:mwinner,:mteam1id,:mteam2id,:gID,:sID,:six,:four)",
             {
                 'mID': in_match_id,
                 'mmotm_id': None,
