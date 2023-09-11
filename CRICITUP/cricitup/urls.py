@@ -39,6 +39,8 @@ urlpatterns = [
     path('adminlog/', include('adminlog.urls', namespace='adminlog')),
     path('dream11/', include('dream11.urls', namespace='dream11')),
     path('series/', include('series.urls', namespace='series')),
+    path('deleteseries/', include('deleteseries.urls', namespace='deleteseries')),
+     path('deletematch/', include('deletematch.urls', namespace='deletematch')),
 
     
     # ...
