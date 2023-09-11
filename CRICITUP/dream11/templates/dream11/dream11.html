@@ -55,24 +55,32 @@
           </div>
           <div class="ml-auto">
             <nav class="site-navigation position-relative text-right" role="navigation">
-              <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-                <li ><a href="{% url 'home' %}" class="nav-link">Home</a></li>
-                <li ><a href="{% url 'players:players' %}" class="nav-link">Players</a></li>
-                <!--- <li><a href="blog.html" class="nav-link">Blog</a></li>-->
-                 <!--- <li><a href="contact.html" class="nav-link">Contact</a></li>-->
-                <li ><a href="{% url 'grounds:grounds' %}" class="nav-link">Ground</a></li>
-                <li ><a href="{% url 'coaches:coaches' %}" class="nav-link">Coaches</a></li>
-                <li class="active"><a href="{% url 'umpires:umpires' %}" class="nav-link">Umpires</a></li>
-                <li><a href="{% url 'teams:teams' %}" class="nav-link">Teams</a></li>
-                <li><a href="{% url 'matches:matches' %}" class="nav-link">Matches</a></li>
-                <li><a href="{% url 'dream11:make_your_dream11' %}" class="nav-link">Dream11</a></li>
-
-              </ul>
+                <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
+                    <li><a href="{% url 'home' %}" class="nav-link">Home</a></li>
+                    <li><a href="{% url 'players:players' %}" class="nav-link">Players</a></li>
+                  
+                    <li><a href="{% url 'series:series' %}" class="nav-link">Series</a></li>
+                    <li><a href="{% url 'teams:teams' %}" class="nav-link">Teams</a></li>
+                    <li><a href="{% url 'matches:matches' %}" class="nav-link">Matches</a></li>
+                    <li><a href="{% url 'dream11:make_your_dream11' %}" class="nav-link">Dream11</a></li>
+                    <li><a href="{% url 'loginpage:login' %}" class="nav-link">Login</a></li>
+                    <li class="dropdown">
+                      <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                          Others <span class="caret"></span>
+                      </a>
+                      <ul class="dropdown-menu">
+                          <li><a href="{% url 'grounds:grounds' %}">Grounds</a></li>
+                          <li><a href="{% url 'coaches:coaches' %}">Coaches</a></li>
+                          <li><a href="{% url 'umpires:umpires' %}">Umpires</a></li>
+                      </ul>
+                  </li>
+                </ul>
             </nav>
             <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black float-right text-white">
-              <span class="icon-menu h3 text-white"></span>
+                <span class="icon-menu h3 text-white"></span>
             </a>
-          </div>
+        </div>
+
         </div>
       </div>
     </header>
@@ -173,11 +181,29 @@
             background-color: #3498db;
             color: #fff;
         }
-        .scrollable-box {
-            max-height: 200px; /* Adjust the maximum height as needed */
-            overflow-y: auto;
-            border: 1px solid #ccc;
-        }
+        .dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+  }
+
+  .dropdown-menu a {
+    display: block;
+    padding: 5px 15px;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.2s;
+  }
+
+  .dropdown-menu a:hover {
+    background-color: #f0f0f0;
+  }
+
+
+      
         #showStatsBtn {
   background-color: #007bff; /* Change the background color */
   color: white; /* Change the text color */
@@ -197,6 +223,74 @@
   width: 400px; /* Adjust the width as needed */
   height: 400px; /* Adjust the height as needed */
 }
+.scrollable-box {
+            max-height: 300px; /* Adjust the maximum height as needed */
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        /* Style the player name within the specific box */
+        .scrollable-box .player-list li {
+            list-style: none;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .scrollable-box .player-label {
+            display: flex;
+            align-items: center;
+            width: 100%; /* Make the label take up the full width */
+        }
+
+        .scrollable-box .player-label .checkbox-container {
+            margin-right: 10px;
+            width: 20px; /* Adjust the checkbox size */
+            height: 20px; /* Adjust the checkbox size */
+        }
+
+        .scrollable-box .player-label .checkbox-container input[type="checkbox"] {
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            position: absolute;
+        }
+
+        .scrollable-box .player-label .checkbox-container .checkmark {
+            width: 100%;
+            height: 100%;
+            border: 1px solid #ccc;
+            background-color: white;
+            display: inline-block;
+            position: relative;
+        }
+
+        .scrollable-box .player-label .checkbox-container .checkmark::after {
+            content: "";
+            position: absolute;
+            display: none;
+            left: 6px;
+            top: 2px;
+            width: 5px;
+            height: 10px;
+            border: solid #007BFF;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+
+        .scrollable-box .player-label img {
+            max-width: 50px; /* Adjust the maximum width of images as needed */
+            height: auto; /* Maintain the aspect ratio of images */
+            margin-right: 10px; /* Add space between the image and player name */
+        }
+
+        .scrollable-box .player-label span {
+            font-size: 18px; /* Adjust the font size as needed */
+            font-weight: bold; /* Make the text bold */
+        }
+
 
       </style>
     <!-- <section>
@@ -216,12 +310,19 @@
                 {% csrf_token %}
                 <!-- Loop through the players dictionary and generate checkboxes -->
                 <div class="scrollable-box">
-                    {% for player in players %}
-                        <label>
-                            <input type="checkbox" name="playerName" value="{{ player.5 }}"> {{ player.0 }}
-                        </label><br>
-                    {% endfor %}
-                </div>
+                  <ul class="player-list">
+                      {% for player in players %}
+                          <li>
+                              <label class="player-label">
+                                  <input type="checkbox" name="playerName" value="{{ player.5 }}">
+                                  <span class="checkmark"></span>
+                                  <img src="{% static 'cricitup/images/'|add:player.4 %}" alt="{{ player.0 }}" class="player-image">
+                                  {{ player.0 }}
+                              </label>
+                          </li>
+                      {% endfor %}
+                  </ul>
+              </div>
                 <input type="submit" value="Add Selected Players">
             </form>
             {% if message %}

@@ -51,22 +51,32 @@
           </div>
           <div class="ml-auto">
             <nav class="site-navigation position-relative text-right" role="navigation">
-              <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-                <li ><a href="{% url 'home' %}" class="nav-link">Home</a></li>
-                <li ><a href="{% url 'players:players' %}" class="nav-link">Players</a></li>
-                <!--- <li><a href="blog.html" class="nav-link">Blog</a></li>-->
-                 <!--- <li><a href="contact.html" class="nav-link">Contact</a></li>-->
-                <li class="active"><a href="{% url 'grounds:grounds' %}" class="nav-link">Ground</a></li>
-                <li><a href="{% url 'coaches:coaches' %}" class="nav-link">Coaches</a></li>
-                <li><a href="{% url 'umpires:umpires' %}" class="nav-link">Umpires</a></li>
-                <li><a href="{% url 'teams:teams' %}" class="nav-link">Teams</a></li>
-                <li><a href="{% url 'matches:matches' %}" class="nav-link">Matches</a></li>
-              </ul>
+                <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
+                    <li><a href="{% url 'home' %}" class="nav-link">Home</a></li>
+                    <li><a href="{% url 'players:players' %}" class="nav-link">Players</a></li>
+                  
+                    <li><a href="{% url 'series:series' %}" class="nav-link">Series</a></li>
+                    <li><a href="{% url 'teams:teams' %}" class="nav-link">Teams</a></li>
+                    <li><a href="{% url 'matches:matches' %}" class="nav-link">Matches</a></li>
+                    <li><a href="{% url 'dream11:make_your_dream11' %}" class="nav-link">Dream11</a></li>
+                    <li><a href="{% url 'loginpage:login' %}" class="nav-link">Login</a></li>
+                    <li class="dropdown">
+                      <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                          Others <span class="caret"></span>
+                      </a>
+                      <ul class="dropdown-menu">
+                          <li><a href="{% url 'grounds:grounds' %}">Grounds</a></li>
+                          <li><a href="{% url 'coaches:coaches' %}">Coaches</a></li>
+                          <li><a href="{% url 'umpires:umpires' %}">Umpires</a></li>
+                      </ul>
+                  </li>
+                </ul>
             </nav>
             <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black float-right text-white">
-              <span class="icon-menu h3 text-white"></span>
+                <span class="icon-menu h3 text-white"></span>
             </a>
-          </div>
+        </div>
+
         </div>
       </div>
     </header>
@@ -160,6 +170,32 @@
           max-width: 100%;
           max-height: 100%;
         }
+        .dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+  }
+
+  .dropdown-menu a {
+    display: block;
+    padding: 5px 15px;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.2s;
+  }
+
+  .dropdown-menu a:hover {
+    background-color: #f0f0f0;
+  }
+
+
+
+
+
+
       </style>
     <!-- <section>
       <h1>Grounds</h1>

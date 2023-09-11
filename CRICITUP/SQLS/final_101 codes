@@ -1,0 +1,168 @@
+CREATE OR REPLACE PROCEDURE FIND_SERIES_WINNER IS 
+  team1 NUMBER;
+  team2 NUMBER;
+  team1win NUMBER;
+  team2win NUMBER;
+  winners NUMBER;
+BEGIN
+  FOR R IN (SELECT SERIES_ID FROM series)
+  LOOP
+    -- Initialize variables to NULL
+    team1 := NULL;
+    team2 := NULL;
+    
+    -- Handle the NO_DATA_FOUND exception
+    BEGIN
+      SELECT TEAM1_ID, TEAM2_ID INTO team1, team2 FROM MATCH 
+      WHERE SERIES_ID = R.SERIES_ID AND ROWNUM = 1;
+    EXCEPTION
+      WHEN NO_DATA_FOUND THEN
+        -- Handle the case when there is no matching data in the MATCH table
+        -- You can log the exception or take appropriate action here
+        team1 := NULL;
+        team2 := NULL;
+    END;
+
+    -- Initialize counters to 0
+    team1win := 0;
+    team2win := 0;
+
+    -- Handle the NO_DATA_FOUND exception
+    BEGIN
+      SELECT COUNT(*) INTO team1win 
+      FROM series s JOIN match m
+      ON s.SERIES_ID = m.SERIES_ID
+      AND m.TEAM1_ID = m.WINNER
+      AND m.SERIES_ID = R.SERIES_ID;
+    EXCEPTION
+      WHEN NO_DATA_FOUND THEN
+        -- Handle the case when there is no matching data in the series table
+        -- You can log the exception or take appropriate action here
+        team1win := 0;
+    END;
+
+    -- Handle the NO_DATA_FOUND exception
+    BEGIN
+      SELECT COUNT(*) INTO team2win 
+      FROM series s JOIN match m
+      ON s.SERIES_ID = m.SERIES_ID
+      AND m.TEAM2_ID = m.WINNER
+      AND m.SERIES_ID = R.SERIES_ID;
+    EXCEPTION
+      WHEN NO_DATA_FOUND THEN
+        -- Handle the case when there is no matching data in the series table
+        -- You can log the exception or take appropriate action here
+        team2win := 0;
+    END;
+
+    IF team1win != 0 AND team2win != 0 THEN 
+      IF team1win >= team2win THEN
+        winners := team1;
+      ELSE 
+        winners := team2; 
+      END IF;
+      
+      UPDATE SERIES 
+      SET WINNER = winners
+      WHERE SERIES_ID = R.SERIES_ID;
+    END IF;
+  END LOOP;
+END;
+/
+
+
+
+CREATE OR REPLACE PROCEDURE HIGHEST_RUN_IN_SERIES IS
+  playerid NUMBER;
+  run NUMBER;
+BEGIN
+  FOR R IN (SELECT SERIES_ID FROM series)
+  LOOP
+    -- Initialize variables to NULL
+    playerid := NULL;
+    run := NULL;
+
+    -- Handle the NO_DATA_FOUND exception
+    BEGIN
+      SELECT PLAYER_ID, SUM(TOTAL_RUNS) INTO playerid, run
+      FROM SCORECARD S
+      JOIN MATCH M ON S.MATCH_ID = M.MATCH_ID
+      WHERE M.SERIES_ID = R.SERIES_ID
+      GROUP BY PLAYER_ID
+      HAVING SUM(TOTAL_RUNS) >= ALL (
+        SELECT SUM(TOTAL_RUNS)
+        FROM SCORECARD S2
+        JOIN MATCH M2 ON S2.MATCH_ID = M2.MATCH_ID
+        WHERE M2.SERIES_ID = R.SERIES_ID
+        GROUP BY PLAYER_ID
+      )
+      FETCH FIRST 1 ROW ONLY;
+    EXCEPTION
+      WHEN NO_DATA_FOUND THEN
+        -- Handle the case when there is no matching data in the SCORECARD table
+        -- You can log the exception or take appropriate action here
+        playerid := NULL;
+        run := NULL;
+    END;
+
+    -- Update the SERIES table only if playerid and run are not NULL
+    IF playerid IS NOT NULL AND run IS NOT NULL THEN
+      UPDATE SERIES
+      SET HIGHEST_RUN_SCORER = playerid,
+          HIGHESTRUN = run
+      WHERE SERIES_ID = R.SERIES_ID;
+    END IF;
+
+  END LOOP;
+END;
+/
+
+
+
+
+CREATE OR REPLACE PROCEDURE HIGHEST_WICKET_IN_SERIES IS
+  playerid NUMBER;
+  wicket NUMBER;
+BEGIN
+  FOR R IN (SELECT SERIES_ID FROM series)
+  LOOP
+    -- Initialize variables to NULL
+    playerid := NULL;
+    wicket := NULL;
+
+    -- Handle the NO_DATA_FOUND exception
+    BEGIN
+      SELECT PLAYER_ID, SUM(TAKEN_WICKETS) INTO playerid, wicket
+      FROM SCORECARD S
+      JOIN MATCH M ON S.MATCH_ID = M.MATCH_ID
+      WHERE M.SERIES_ID = R.SERIES_ID
+      GROUP BY PLAYER_ID
+      HAVING SUM(TAKEN_WICKETS) >= ALL (
+        SELECT SUM(TAKEN_WICKETS)
+        FROM SCORECARD S2
+        JOIN MATCH M2 ON S2.MATCH_ID = M2.MATCH_ID
+        WHERE M2.SERIES_ID = R.SERIES_ID
+        GROUP BY PLAYER_ID
+      )
+      FETCH FIRST 1 ROW ONLY;
+    EXCEPTION
+      WHEN NO_DATA_FOUND THEN
+        -- Handle the case when there is no matching data in the SCORECARD table
+        -- You can log the exception or take appropriate action here
+        playerid := NULL;
+        wicket := NULL;
+    END;
+
+    -- Update the SERIES table only if playerid and wicket are not NULL
+    IF playerid IS NOT NULL AND wicket IS NOT NULL THEN
+      UPDATE SERIES
+      SET HIGHEST_WICKET_TAKER = playerid,
+          HIGHESTWICKET = wicket
+      WHERE SERIES_ID = R.SERIES_ID;
+    END IF;
+
+  END LOOP;
+END;
+/
+
+

@@ -2,7 +2,19 @@ from django.shortcuts import render
 from django.db import connection
 
 def series_records(request):
+    match_ids=[]
+    query="""
+SELECT MATCH_ID FROM MATCH
+
+"""
     with connection.cursor() as cursor:
+        cursor.execute(query)
+        match_ids = cursor.fetchall()  
+        for match_id in match_ids:
+        # Ensure that match_id is a single value (e.g., match_id[0]) if needed
+            match_winner = cursor.callfunc('Find_Match_Winner', str, [match_id[0]])
+            highest_scorer = cursor.callfunc('Find_Highest_Scorer', str, [match_id[0]])
+            highest_wicket_taker = cursor.callfunc('Find_Highest_Wicket_Taker', str, [match_id[0]])
         cursor.callproc('RESET_RATING')
         cursor.callproc('Rating_Update')
         cursor.execute("SELECT SERIES_ID, SERIES_NAME, HOST, SERIES_IMAGE FROM SERIES")
@@ -11,7 +23,10 @@ def series_records(request):
         cursor.callproc('FIND_SERIES_WINNER')
         cursor.callproc('SERIES_FOUR_SIX_UPDATE')
         cursor.callproc('HIGHEST_RUN_IN_SERIES')
+        cursor.callproc('HIGHEST_WICKET_IN_SERIES')
         cursor.callproc('MAN_OF_THE_SERIES')
+
+
 
     return render(request, 'series/series.html', {'series_records': serieses})
 
