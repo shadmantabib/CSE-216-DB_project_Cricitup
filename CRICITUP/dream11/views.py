@@ -207,6 +207,8 @@ def showStats(request):
     counts=cursor.fetchone()[0]
     cursor.callproc('TEAM_STRENGTH_UPDATE')
     cursor.callproc('UPDATE_DREAM11_STATS')
+    cursor.callproc('WINNING_CHANCE_CALCULATOR')
+
     query3="""
 SELECT bat,bowl,total FROM DREAM11STATS
 
@@ -241,6 +243,13 @@ WHERE total >%s
     
     
     """
+    query7="""
+    SELECT TEAMID, (SELECT TEAM_NAME FROM TEAM T WHERE T.TEAM_ID=S.TEAMID) NAME , CHANCE
+FROM WINNING_CHANCE S 
+    
+    """
+    cursor.execute(query7)
+    chances=cursor.fetchall()
     cursor.execute(query2,[values[2]])
     position=cursor.fetchone()[0]
     cursor.execute(query4,[values[2]])
@@ -249,7 +258,6 @@ WHERE total >%s
     worseteams=cursor.fetchall()
     cursor.execute(query6)
     opponentCountries=cursor.fetchall()
-    winingchances=[]
     context={
         'players': players,
         'dream11players':dream11players,
@@ -258,7 +266,8 @@ WHERE total >%s
          'dream11stats':values,
          'betterteams':betterteams,
          'worseteams':worseteams,
-         'opponentCountries':opponentCountries
+         'opponentCountries':opponentCountries,
+         'chances':chances
     }
     return render(request, 'dream11/dream11.html', context)
 
