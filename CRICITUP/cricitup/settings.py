@@ -60,6 +60,8 @@ INSTALLED_APPS = [
     'dream11',
     'adminlog',
     'series',
+    'deleteseries',
+    'deletematch',
    
     
 ]
